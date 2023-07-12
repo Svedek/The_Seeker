@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://ddviyet2y0si3" path="res://src/ArenaParts/wall_s_h.tscn" id="1_tvymi"]
 [ext_resource type="PackedScene" uid="uid://hqqrp754tngu" path="res://src/ArenaParts/wall_s_v.tscn" id="2_u7mx5"]
-[ext_resource type="PackedScene" uid="uid://dijbsr6yuija1" path="res://src/Player/player.tscn" id="3_s4f15"]
+[ext_resource type="PackedScene" uid="uid://dijbsr6yuija1" path="res://src/Health/Player/player.tscn" id="3_s4f15"]
 
 [node name="Arena" type="Node2D"]
 
