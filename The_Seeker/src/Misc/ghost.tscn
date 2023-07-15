@@ -1,0 +1,16 @@
+[gd_scene load_steps=5 format=3 uid="uid://cehadt8r3evy1"]
+
+[ext_resource type="Shader" path="res://src/Misc/ghost.gdshader" id="1_dr858"]
+[ext_resource type="Texture2D" uid="uid://dj518pyjxu6tw" path="res://icon.svg" id="1_oa6ga"]
+[ext_resource type="Script" path="res://src/Misc/Ghost.gd" id="1_v58ge"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_sqef4"]
+shader = ExtResource("1_dr858")
+shader_parameter/tint = true
+shader_parameter/tint_rgb = Vector3(0.35, 0, 0.7)
+shader_parameter/mix_weight = 0.5
+
+[node name="Ghost" type="Sprite2D"]
+material = SubResource("ShaderMaterial_sqef4")
+texture = ExtResource("1_oa6ga")
+script = ExtResource("1_v58ge")

@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://41jpmb2dtnau"]
+
+[ext_resource type="Texture2D" uid="uid://dj518pyjxu6tw" path="res://icon.svg" id="1_3wdrv"]
+[ext_resource type="Script" path="res://src/Health/Dummy/dummy.gd" id="1_mbedj"]
+[ext_resource type="PackedScene" uid="uid://dm7o6khwau2bj" path="res://src/Attacks/melee.tscn" id="2_uyha0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2t6ai"]
+size = Vector2(128, 128)
+
+[node name="Dummy" type="CharacterBody2D"]
+script = ExtResource("1_mbedj")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -16)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("1_3wdrv")
+
+[node name="Hurtbox" type="CollisionShape2D" parent="."]
+position = Vector2(0, -16)
+scale = Vector2(0.25, 0.25)
+shape = SubResource("RectangleShape2D_2t6ai")
+debug_color = Color(0, 0.6, 0.701961, 0.419608)
+
+[node name="Melee" parent="." instance=ExtResource("2_uyha0")]
+position = Vector2(0, -15)

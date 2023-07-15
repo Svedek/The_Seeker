@@ -7,12 +7,13 @@ enum STATE { IDLE, RUN, GENERIC_HI, DASH, AIM, ATTACK }
 var _state:STATE = STATE.IDLE : set = _set_state #, get = _get_state
 
 # Movement
-const MOVE_SPEED = 320.0
+const MOVE_SPEED = 240.0
 var _axis:Vector2
 #var _last_axis:Vector2
 
 # Dash
-const DASH_MOD = 1.5
+const DASH_MOD = 2
+const DASH_COOLDOWN_TIME = 1
 var _dash_available = true
 var _dash_cooldown_timer:Timer
 
@@ -24,6 +25,11 @@ var _attack_combo:int = 0
 var _attack_available = true
 var _attack_cooldown_timer:Timer
 
+
+var _ghost_scene = preload("res://src/Misc/ghost.tscn")
+
+@onready var _sprite = $Sprite
+@onready var _melee = $Melee
 @onready var _animation_tree : AnimationTree = $AnimationTree
 @onready var _animation_playback : AnimationNodeStateMachinePlayback = _animation_tree.get("parameters/playback")
 
@@ -64,7 +70,7 @@ func _ready():
 	var dash_reset = func ():
 		_dash_available = true
 		
-	_dash_cooldown_timer = _create_timer(dash_reset,0.5)
+	_dash_cooldown_timer = _create_timer(dash_reset,1)
 	
 	_animation_tree.active = true
 
@@ -77,7 +83,7 @@ func _physics_process(delta):
 
 func _movement_input():
 	_axis = Vector2(Input.get_axis("ui_left", "ui_right"),Input.get_axis("ui_up", "ui_down"))
-	_axis = _axis.limit_length(1.0)
+	_axis = _axis.limit_length(DASH_COOLDOWN_TIME)
 	
 	
 	
@@ -86,13 +92,13 @@ func _handle_movement():
 	match(_state):
 	# Specific States:
 		STATE.DASH:
-			pass
-			velocity = _axis * MOVE_SPEED * DASH_MOD
+			# velocity is set in dash()
 			move_and_slide()
 		STATE.AIM:
 			pass
 		STATE.ATTACK:
-			pass
+				velocity = _axis * MOVE_SPEED * 0.5
+				move_and_slide()
 		_:
 			if (_axis == Vector2.ZERO): # IDLE
 				_set_state(STATE.IDLE)
@@ -113,17 +119,25 @@ func _input(event):
 	if event.is_action_pressed("aim"):
 		aim()
 	if event.is_action_pressed("attack"):
-		attack()
+		# Calculate attack dir
+		var dir: Vector2
+		if event is InputEventMouseButton:
+			dir = get_global_mouse_position() - self.position
+		else:
+			print("_input else") # code for controller users :bleh: ;p
+		attack(dir)
 
 
 func dash():
 	if _dash_available && _state < STATE.GENERIC_HI:
 		_set_state(STATE.DASH)
 		_animation_tree["parameters/Dash/blend_position"] = _axis
-	pass
+		_dash_cooldown_timer.start(1)
+		
+		velocity = _axis * MOVE_SPEED * DASH_MOD
 
 
-func end_dash():
+func end_dash(): # Possibly covert all end_... to one end_state
 	_set_state(STATE.IDLE)
 
 
@@ -132,16 +146,27 @@ func aim():
 	pass
 
 
-func attack():
-	if(_state == STATE.ATTACK):
+func attack(dir:Vector2):
+	if(!_attack_available || _state > STATE.GENERIC_HI ):
 		pass
-	elif(_attack_available && _state < STATE.GENERIC_HI):
-		_set_state(STATE.ATTACK)
-	
-	_animation_tree["parameters/Attack_0/blend_position"] = _axis
+	_set_state(STATE.ATTACK)
+	_melee.activate(dir)
+	_animation_tree["parameters/Attack_0/blend_position"] = dir
 	
 func end_attack():
 	_set_state(STATE.IDLE)
+
+
+func instance_ghost():
+	var ghost: Sprite2D = _ghost_scene.instantiate()
+
+	get_parent().add_child(ghost)
+	
+	ghost.global_position = _sprite.global_position
+	ghost.texture = _sprite.texture
+	ghost.hframes = _sprite.hframes
+	ghost.vframes = _sprite.vframes
+	ghost.frame = _sprite.frame
 
 func testing(msg: String):
 	print(msg)

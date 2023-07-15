@@ -1,0 +1,44 @@
+ToDo:
+	Player Dash
+	dash art
+	dash effects
+	3 hit combo attack
+	attack art
+	aim state
+	aim art
+	aim projectile
+	projectile art
+	projectile effects
+	player death transition
+	player death art
+	player death effects
+	
+	Main menu
+	main menu art
+	options menu
+	options slider
+	options riddle
+	menu background art
+	transitions to new rooms on menu option click
+	
+	Dion
+	seperate phase AI
+	on death phase transitions
+	basic orb movement
+	orb disabling allows dion to become vulnerable
+	
+	UI
+	Dion healthbar includes orb health, missing health, current health, and orb shield (outside purple if active and black if not)
+	healthbar updates on damaging dion
+	
+	Arena art
+	alternative arena rooms
+	
+	
+	
+	
+Riddle
+upon victory, you get a lore question and a hint to the options riddle:
+(maybe is too much work inbetween puzzle steps - maybe after reaching a new milestone say every 3 stages and then on victory you get a new step, perhaps also a log of notes made including hint quotes among other quotes but hints have colored dialogue contained)
+
+"with 12 options, the most nondescript is the path forward" - set options slider to 12 and click the button with no description
