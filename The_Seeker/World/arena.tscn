@@ -1,0 +1,43 @@
+[gd_scene load_steps=6 format=3 uid="uid://cdkjuokn3yjp7"]
+
+[ext_resource type="PackedScene" uid="uid://dijbsr6yuija1" path="res://Creatures/Player/player.tscn" id="1_qlgki"]
+[ext_resource type="PackedScene" uid="uid://ddviyet2y0si3" path="res://World/wall_s_h.tscn" id="2_8ddce"]
+[ext_resource type="PackedScene" uid="uid://hqqrp754tngu" path="res://World/wall_s_v.tscn" id="3_dbjp3"]
+[ext_resource type="PackedScene" uid="uid://41jpmb2dtnau" path="res://Creatures/Dummy/dummy.tscn" id="4_r1ldl"]
+[ext_resource type="PackedScene" uid="uid://cehadt8r3evy1" path="res://Misc/ghost.tscn" id="5_in48c"]
+
+[node name="Arena" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource("1_qlgki")]
+
+[node name="WallHandler" type="Node" parent="."]
+
+[node name="WallS-H" parent="WallHandler" instance=ExtResource("2_8ddce")]
+position = Vector2(0, -240)
+
+[node name="WallS-V" parent="WallHandler" instance=ExtResource("3_dbjp3")]
+position = Vector2(-240, 0)
+
+[node name="WallS-H2" parent="WallHandler" instance=ExtResource("2_8ddce")]
+position = Vector2(0, 240)
+
+[node name="WallS-V2" parent="WallHandler" instance=ExtResource("3_dbjp3")]
+position = Vector2(240, 0)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(1.5, 1.5)
+
+[node name="Dummy" parent="." instance=ExtResource("4_r1ldl")]
+position = Vector2(-128, -128)
+
+[node name="Dummy2" parent="." instance=ExtResource("4_r1ldl")]
+position = Vector2(108, -129)
+
+[node name="Dummy3" parent="." instance=ExtResource("4_r1ldl")]
+position = Vector2(114, 105)
+
+[node name="Dummy4" parent="." instance=ExtResource("4_r1ldl")]
+position = Vector2(-133, 109)
+
+[node name="Ghost" parent="." instance=ExtResource("5_in48c")]
+position = Vector2(-125, -22)

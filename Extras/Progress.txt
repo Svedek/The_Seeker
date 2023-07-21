@@ -42,3 +42,9 @@ upon victory, you get a lore question and a hint to the options riddle:
 (maybe is too much work inbetween puzzle steps - maybe after reaching a new milestone say every 3 stages and then on victory you get a new step, perhaps also a log of notes made including hint quotes among other quotes but hints have colored dialogue contained)
 
 "with 12 options, the most nondescript is the path forward" - set options slider to 12 and click the button with no description
+
+
+
+
+
+Create health as a node that I can just slap on any guy
