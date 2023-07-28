@@ -5,6 +5,7 @@ uniform vec3 tint_rgb = vec3(1,1,1);
 uniform float mix_weight = 0.5;
 
 void fragment() {
+	float a = COLOR.a;
 	vec4 texture_color = texture(TEXTURE, UV);
 	if (tint) {
 		vec3 tinted_texture_rgb = mix(texture_color.rgb, tint_rgb, mix_weight);
@@ -12,4 +13,6 @@ void fragment() {
 	} else {
 		COLOR = texture_color;
 	}
+	
+	COLOR.a = a;
 }

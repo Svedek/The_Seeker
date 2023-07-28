@@ -4,13 +4,14 @@
 [ext_resource type="Texture2D" uid="uid://dj518pyjxu6tw" path="res://icon.svg" id="2_tlah0"]
 [ext_resource type="Script" path="res://Misc/Ghost.gd" id="3_2jmav"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_sqef4"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_da4cg"]
 shader = ExtResource("1_pgrw3")
 shader_parameter/tint = true
-shader_parameter/tint_rgb = Vector3(0.35, 0, 0.7)
+shader_parameter/tint_rgb = Vector3(0.5, 0.2, 0.8)
 shader_parameter/mix_weight = 0.5
 
 [node name="Ghost" type="Sprite2D"]
-material = SubResource("ShaderMaterial_sqef4")
+modulate = Color(0.729412, 0.172549, 0.988235, 1)
+material = SubResource("ShaderMaterial_da4cg")
 texture = ExtResource("2_tlah0")
 script = ExtResource("3_2jmav")

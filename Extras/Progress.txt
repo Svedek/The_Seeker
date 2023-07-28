@@ -1,5 +1,5 @@
 ToDo:
-	Player Dash
+X	Player Dash
 	dash art
 	dash effects
 	3 hit combo attack

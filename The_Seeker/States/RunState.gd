@@ -12,7 +12,6 @@ extends MovementState
 @onready var attack_state: BaseState = get_node(attack_node)
 @onready var aim_state: BaseState = get_node(aim_node)
 
-
 func input(event):
 	if event.is_action_pressed("dash"):
 		return dash_state
@@ -27,7 +26,9 @@ func physics_process(delta: float) -> BaseState:
 	if (axis == Vector2.ZERO): # IDLE
 		return idle_state
 		
-	#_animation_tree["parameters/Run/blend_position"] = axis
+	dir = axis.normalized()
+	player.set_blend_position(animation_name, dir)
+	
 	player.velocity = axis * player.MOVE_SPEED
 	super.physics_process(delta)
 	return null

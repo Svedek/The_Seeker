@@ -25,7 +25,7 @@ position = Vector2(0, 240)
 position = Vector2(240, 0)
 
 [node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(1.5, 1.5)
+zoom = Vector2(2, 2)
 
 [node name="Dummy" parent="." instance=ExtResource("4_r1ldl")]
 position = Vector2(-128, -128)

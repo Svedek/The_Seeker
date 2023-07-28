@@ -14,16 +14,15 @@ extends MovementState
 
 
 const DASH_MOD = 2
-const DASH_TIME = 0.3
+const DASH_TIME = 0.2
 const DASH_COOLDOWN_TIME = 0.7
-const GHOST_DELAY = 0.2
+const GHOST_DELAY = 0.05
 const DASH_CHARGES = 3
 
 var charges_remaining: int
 var _dash_timer:Timer
 var _dash_cooldown_timer:Timer
 var _dash_ghost_timer:Timer
-
 
 func dash_available() -> bool:
 	return _dash_cooldown_timer.time_left <= 0.0
@@ -32,19 +31,20 @@ func _ready():
 	print("dash_state TODO : idea")
 	_dash_timer = create_timer (dash_end, DASH_TIME)
 	_dash_cooldown_timer = create_timer (null, DASH_COOLDOWN_TIME)
-	_dash_ghost_timer = create_timer (player.instance_ghost(), GHOST_DELAY)
+	_dash_ghost_timer = create_timer (instance_ghost, GHOST_DELAY)
 	_dash_ghost_timer.one_shot = false
 
-func enter():
-	super.enter()
-	player._animation_tree["parameters/Dash/blend_position"] = player.dir
-	player.velocity = player.dir* player.MOVE_SPEED * DASH_MOD
+func enter(direction: Vector2):
+	super.enter(direction)
+	player._animation_tree["parameters/Dash/blend_position"] = dir
+	player.velocity = dir* player.MOVE_SPEED * DASH_MOD
 	_dash_timer.start()
 	_dash_ghost_timer.start()
 	
-func exit():
+func exit() -> Vector2:
 	_dash_cooldown_timer.start()
 	_dash_ghost_timer.stop()
+	return dir
 	
 func input(event):
 	if event.is_action_pressed("dash"):
@@ -52,6 +52,7 @@ func input(event):
 	return null
 	
 func process(delta:float) -> BaseState:
+	print("Dash_state dash_timer: " + str(_dash_timer.time_left))
 	if _dash_timer.time_left <= 0 and !false: # and no dash queued
 		if get_axis() != Vector2.ZERO:
 			return run_state
@@ -62,11 +63,7 @@ func process(delta:float) -> BaseState:
 func dash_end():
 	if charges_remaining && true: #and dash queued
 		--charges_remaining
+		#continue dash
 
-func create_timer (function, time) -> Timer:
-	var timer = Timer.new()
-	add_child(timer)
-	timer.set_wait_time(time)
-	timer.one_shot = true
-	timer.connect("timeout", function) 
-	return timer
+func instance_ghost() -> void:
+	player.instance_ghost()
