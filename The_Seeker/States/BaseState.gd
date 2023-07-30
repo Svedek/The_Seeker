@@ -9,8 +9,8 @@ var dir: Vector2
 
 func enter(direction: Vector2):
 	dir = direction
-	player.play_animation(animation_name)
 	player.set_blend_position(animation_name, dir)
+	player.play_animation(animation_name)
 	
 func exit() -> Vector2:
 	return dir

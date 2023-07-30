@@ -6,11 +6,11 @@ extends MovementState
 
 @export var idle_node: NodePath
 @export var run_node: NodePath
-@export var dash_attack_node: NodePath
+#@export var dash_attack_node: NodePath
 
 @onready var idle_state: BaseState = get_node(idle_node)
 @onready var run_state: BaseState = get_node(run_node)
-@onready var dash_attack_state: BaseState = get_node(dash_attack_node)
+#@onready var dash_attack_state: BaseState = get_node(dash_attack_node)
 
 
 const DASH_MOD = 2

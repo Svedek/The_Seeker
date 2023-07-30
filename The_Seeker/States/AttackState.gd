@@ -72,8 +72,9 @@ func physics_process(delta: float) -> BaseState:
 
 func attack():
 	print("Attack: " + str(_current_attack))
-	player.play_animation(animation_name + str(_current_attack))
+	player.set_weapon_pivot_dir(dir)
 	player.set_blend_position(animation_name + str(_current_attack), dir)
+	player.play_animation(animation_name + str(_current_attack))
 	_attack_timer.start(_attack_durrations[_current_attack-1])
 	_attack_cooldown_timer.start()
 	_attack_queued = false

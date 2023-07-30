@@ -13,7 +13,7 @@ func change_state(new_state:BaseState) -> void:
 		
 	current_state = new_state
 	current_state.enter(dir)
-	print(current_state)
+	#rint(current_state)
 
 func init(player: Player) -> void:
 	for child in get_children():

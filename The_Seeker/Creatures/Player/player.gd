@@ -6,6 +6,7 @@ var _ghost_scene = preload("res://Misc/ghost.tscn")
 const MOVE_SPEED = 160.0
 
 @onready var _sprite = $Sprite
+@onready var _weapon_pivot = $WeaponPivot
 @onready var _animation_tree : AnimationTree = $AnimationTree
 @onready var _animation_playback : AnimationNodeStateMachinePlayback = _animation_tree.get("parameters/playback")
 
@@ -49,3 +50,10 @@ func play_animation(animation: String):
 	
 func set_blend_position(animation: String, blend_position: Vector2):
 	_animation_tree["parameters/" + animation + "/blend_position"] = blend_position
+
+func set_weapon_pivot_dir(dir:Vector2):
+	_weapon_pivot.rotation = dir.angle()
+
+
+func _on_hurtbox_damaged(damage):
+	print("player took " + str(damage) + " damage")

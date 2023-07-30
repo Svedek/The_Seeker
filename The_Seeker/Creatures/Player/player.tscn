@@ -1,15 +1,24 @@
-[gd_scene load_steps=66 format=3 uid="uid://dijbsr6yuija1"]
+[gd_scene load_steps=74 format=3 uid="uid://dijbsr6yuija1"]
 
 [ext_resource type="Script" path="res://Creatures/Player/player.gd" id="1_gw3gt"]
 [ext_resource type="Texture2D" uid="uid://dm17wh2j538cs" path="res://Creatures/Player/player_idle.png" id="3_gmrv0"]
+[ext_resource type="Texture2D" uid="uid://de5lcv3lw77k7" path="res://Creatures/Player/Player.png" id="3_kwee6"]
+[ext_resource type="Texture2D" uid="uid://sb80mxbmso8t" path="res://Misc/melee.png" id="4_5e8g4"]
+[ext_resource type="PackedScene" uid="uid://ckqeh7bxqv75i" path="res://Collision/hitbox.tscn" id="4_bjqt7"]
 [ext_resource type="Texture2D" uid="uid://cftm5ajvant1n" path="res://Creatures/Player/player_run.png" id="4_kk8jk"]
+[ext_resource type="Texture2D" uid="uid://41g0kx4j0dhh" path="res://Creatures/Player/PlayerMelee_test.png" id="5_61gxn"]
 [ext_resource type="Script" path="res://States/StateManager.gd" id="5_bx2nc"]
-[ext_resource type="PackedScene" uid="uid://dm7o6khwau2bj" path="res://Misc/melee.tscn" id="5_valg0"]
+[ext_resource type="PackedScene" uid="uid://dxb2qirskqwqj" path="res://Collision/hurtbox.tscn" id="5_s10wn"]
+[ext_resource type="Texture2D" uid="uid://b33072r8pu6h4" path="res://Misc/melee_1.png" id="5_vhw0i"]
 [ext_resource type="Script" path="res://States/IdleState.gd" id="6_uybuy"]
 [ext_resource type="Script" path="res://States/RunState.gd" id="7_iplj1"]
 [ext_resource type="Script" path="res://States/DashState.gd" id="8_sfsrd"]
 [ext_resource type="Script" path="res://States/AttackState.gd" id="9_6kli8"]
 [ext_resource type="Script" path="res://States/AimState.gd" id="10_lmude"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5wsgk"]
+radius = 4.0
+height = 12.0
 
 [sub_resource type="Animation" id="Animation_lwvup"]
 length = 0.001
@@ -61,6 +70,90 @@ tracks/3/keys = {
 "update": 1,
 "values": [0]
 }
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("WeaponPivot/Weapon:texture")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("4_5e8g4")]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("WeaponPivot/Weapon:hframes")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [3]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("WeaponPivot/Weapon:vframes")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("WeaponPivot/Weapon:frame")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("WeaponPivot/Weapon:z_index")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [5]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("WeaponPivot/Weapon:visible")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("WeaponPivot/SwordHitboxLight:monitoring")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_cc08d"]
 resource_name = "aim_down"
@@ -103,7 +196,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("3_gmrv0")]
+"values": [ExtResource("3_kwee6")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -304,9 +397,142 @@ tracks/3/keys = {
 "values": [0, 1, 2, 1, 0, 3, 4, 3]
 }
 
-[sub_resource type="Animation" id="Animation_57ub4"]
-resource_name = "melee_0_down"
-length = 0.4
+[sub_resource type="Animation" id="Animation_8gtbo"]
+resource_name = "melee_1_down"
+length = 0.25
+step = 0.125
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("5_61gxn")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [4]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite:vframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.125),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [2, 3]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("WeaponPivot/Weapon:texture")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("5_vhw0i")]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("WeaponPivot/Weapon:hframes")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [2]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("WeaponPivot/Weapon:vframes")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("WeaponPivot/Weapon:frame")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.125),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("WeaponPivot/Weapon:z_index")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [5]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("WeaponPivot/Weapon:visible")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("WeaponPivot/SwordHitboxLight:monitoring")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0, 0.24),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
 
 [sub_resource type="Animation" id="Animation_5lr0h"]
 resource_name = "run_down"
@@ -538,7 +764,7 @@ _data = {
 "idle_left": SubResource("Animation_5c4yo"),
 "idle_right": SubResource("Animation_x4hv7"),
 "idle_up": SubResource("Animation_asee1"),
-"melee_0_down": SubResource("Animation_57ub4"),
+"melee_1_down": SubResource("Animation_8gtbo"),
 "run_down": SubResource("Animation_5lr0h"),
 "run_left": SubResource("Animation_cdlyr"),
 "run_right": SubResource("Animation_ctykf"),
@@ -547,13 +773,13 @@ _data = {
 }
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_xeqrq"]
-animation = &"melee_0_down"
+animation = &"melee_1_down"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_q1cvp"]
-animation = &"melee_0_down"
+animation = &"melee_1_down"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_6wc6y"]
-animation = &"melee_0_down"
+animation = &"melee_1_down"
 
 [sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_caev1"]
 blend_point_0/node = SubResource("AnimationNodeAnimation_xeqrq")
@@ -567,13 +793,13 @@ max_space = Vector2(1, 1.1)
 blend_mode = 1
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_1gpr5"]
-animation = &"melee_0_down"
+animation = &"melee_1_down"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_hy04g"]
-animation = &"melee_0_down"
+animation = &"melee_1_down"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_g5y0d"]
-animation = &"melee_0_down"
+animation = &"melee_1_down"
 
 [sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_4ibr4"]
 blend_point_0/node = SubResource("AnimationNodeAnimation_1gpr5")
@@ -585,13 +811,13 @@ blend_point_2/pos = Vector2(0.1, 0.2)
 blend_mode = 1
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_gmox4"]
-animation = &"melee_0_down"
+animation = &"melee_1_down"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ewcft"]
-animation = &"melee_0_down"
+animation = &"melee_1_down"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_4fk53"]
-animation = &"melee_0_down"
+animation = &"melee_1_down"
 
 [sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_ppu4c"]
 blend_point_0/node = SubResource("AnimationNodeAnimation_gmox4")
@@ -729,6 +955,13 @@ states/end_melee/position = Vector2(504, 117)
 transitions = ["Idle", "Run", SubResource("AnimationNodeStateMachineTransition_alnd5"), "Run", "Idle", SubResource("AnimationNodeStateMachineTransition_x8ouc"), "Idle", "Attack_1", SubResource("AnimationNodeStateMachineTransition_o4twj"), "Idle", "Dash", SubResource("AnimationNodeStateMachineTransition_k6mtd"), "Dash", "Idle", SubResource("AnimationNodeStateMachineTransition_yrxck"), "Start", "Idle", SubResource("AnimationNodeStateMachineTransition_pfg27"), "Attack_1", "Attack_2", SubResource("AnimationNodeStateMachineTransition_h7qxy"), "Attack_2", "Attack_3", SubResource("AnimationNodeStateMachineTransition_qjch4"), "Attack_1", "end_melee", SubResource("AnimationNodeStateMachineTransition_keiso"), "end_melee", "Idle", SubResource("AnimationNodeStateMachineTransition_8ewa5"), "Attack_2", "end_melee", SubResource("AnimationNodeStateMachineTransition_c5t3o"), "Attack_3", "end_melee", SubResource("AnimationNodeStateMachineTransition_13uxi")]
 graph_offset = Vector2(-77, 47)
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_3n8t5"]
+radius = 24.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2uu27"]
+radius = 6.0
+height = 18.0
+
 [node name="Player" type="CharacterBody2D"]
 collision_layer = 4
 collision_mask = 13
@@ -740,10 +973,12 @@ position = Vector2(0, -16)
 texture = ExtResource("3_gmrv0")
 hframes = 5
 
-[node name="Hurtbox" type="CollisionPolygon2D" parent="."]
-position = Vector2(1, -30)
-polygon = PackedVector2Array(-5, 32, 3, 32, 5, 30, 5, 23, 3, 21, -5, 21, -7, 23, -7, 30)
+[node name="Body" type="CollisionShape2D" parent="."]
+position = Vector2(0, -3)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_5wsgk")
 disabled = true
+debug_color = Color(1, 1, 1, 0.419608)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -753,7 +988,6 @@ libraries = {
 [node name="AnimationTree" type="AnimationTree" parent="."]
 tree_root = SubResource("AnimationNodeStateMachine_vnyx2")
 anim_player = NodePath("../AnimationPlayer")
-active = true
 parameters/Attack_1/blend_position = Vector2(-0.208, 0.408297)
 parameters/Attack_2/blend_position = Vector2(0, 0)
 parameters/Attack_3/blend_position = Vector2(0, 0)
@@ -761,8 +995,36 @@ parameters/Dash/blend_position = Vector2(0, 0)
 parameters/Idle/blend_position = Vector2(0.00479996, 0.417904)
 parameters/Run/blend_position = Vector2(-0.0272, -0.389083)
 
-[node name="Melee" parent="." instance=ExtResource("5_valg0")]
-position = Vector2(0, -8)
+[node name="WeaponPivot" type="Marker2D" parent="."]
+position = Vector2(0, -12)
+rotation = 1.5708
+
+[node name="Weapon" type="Sprite2D" parent="WeaponPivot"]
+visible = false
+z_index = 5
+position = Vector2(12, -4.29153e-05)
+rotation = -1.5708
+texture = ExtResource("4_5e8g4")
+hframes = 3
+
+[node name="SwordHitboxLight" parent="WeaponPivot" instance=ExtResource("4_bjqt7")]
+position = Vector2(7, -3.05983e-07)
+rotation = -1.5708
+collision_mask = 128
+monitoring = false
+
+[node name="CollisionShape2D" parent="WeaponPivot/SwordHitboxLight" index="0"]
+position = Vector2(2.5034e-05, 4)
+shape = SubResource("CircleShape2D_3n8t5")
+debug_color = Color(1, 0, 0, 0.419608)
+
+[node name="Hurtbox" parent="." instance=ExtResource("5_s10wn")]
+collision_layer = 64
+
+[node name="CollisionShape2D" parent="Hurtbox" index="0"]
+position = Vector2(0, -7)
+shape = SubResource("CapsuleShape2D_2uu27")
+debug_color = Color(0, 0.643137, 0.32549, 0.419608)
 
 [node name="StateManager" type="Node" parent="."]
 script = ExtResource("5_bx2nc")
@@ -802,3 +1064,8 @@ script = ExtResource("10_lmude")
 animation_name = "Aim"
 
 [node name="Health" type="Node" parent="."]
+
+[connection signal="damaged" from="Hurtbox" to="." method="_on_hurtbox_damaged"]
+
+[editable path="WeaponPivot/SwordHitboxLight"]
+[editable path="Hurtbox"]
