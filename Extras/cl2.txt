@@ -1,0 +1,55 @@
+hitbox and hurtbox scenes - logic in hurtbox? (area taht takes damage)
+
+Stats scene
+ export max_health  -  onready health = max_health  -  signal :dies:
+
+
+define states and the rules for transitions between the states
+enum States { Idle, Walking, Falling, etc}
+
+create generic state interface, implement interface with class per state, let parent delegate logic to the state
+interface State: enter(), exit() [allows for resetting for next time that state activated],input(event), update(delta)
+class_name base state class to implement methods with base definitions
+
+
+
+
+
+
+heirarchichal states - having levels of inheritance in states such that a state or its parents will handle a method call
+ex: baseState - MoveState -> Walk,Run,Dash State
+basestate may define input (called in player _input) to go into specific states 
+
+states hold the reference to states they transition to
+state manager holds current state
+
+functions can be passed into states for example: play animation or move and slide
+
+
+in order to abstract player from states, possibly seperate movementState -> specificState into: movementState -> inputMovementState -> specificState
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@export var movement_data : PlayerMovementData
+
+class_name PlayerMovementData
+extends Resource
+
+@export var speed = 100.0
+@export var acceleration = 800.0
+@export var friction = 1000.0
+@export var jump_velocity = -300.0
+@export var gravity_scale = 1.0
+@export var air_resistance = 200.0
+@export var air_acceleration = 400.0
