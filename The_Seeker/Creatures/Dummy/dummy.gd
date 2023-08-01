@@ -20,3 +20,7 @@ func die():
 
 func _on_hurtbox_damaged(damage):
 	print("dummy_oof: " + str(damage) +  " damage")
+
+func _physics_process(delta):
+	velocity = Vector2.RIGHT*30
+	move_and_slide()

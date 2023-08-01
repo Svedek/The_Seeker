@@ -13,16 +13,18 @@
 [node name="WallHandler" type="Node" parent="."]
 
 [node name="WallS-H" parent="WallHandler" instance=ExtResource("2_8ddce")]
-position = Vector2(0, -240)
+position = Vector2(0, -192)
 
 [node name="WallS-V" parent="WallHandler" instance=ExtResource("3_dbjp3")]
-position = Vector2(-240, 0)
+position = Vector2(-192, 0)
+collision_mask = 1
 
 [node name="WallS-H2" parent="WallHandler" instance=ExtResource("2_8ddce")]
-position = Vector2(0, 240)
+position = Vector2(0, 192)
 
 [node name="WallS-V2" parent="WallHandler" instance=ExtResource("3_dbjp3")]
-position = Vector2(240, 0)
+position = Vector2(192, 0)
+collision_mask = 1
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(2, 2)

@@ -12,6 +12,7 @@ shader_parameter/mix_weight = 0.5
 
 [node name="Ghost" type="Sprite2D"]
 modulate = Color(0.729412, 0.172549, 0.988235, 1)
+z_index = 8
 material = SubResource("ShaderMaterial_da4cg")
 texture = ExtResource("2_tlah0")
 script = ExtResource("3_2jmav")

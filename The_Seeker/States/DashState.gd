@@ -6,15 +6,17 @@ extends MovementState
 
 @export var idle_node: NodePath
 @export var run_node: NodePath
-#@export var dash_attack_node: NodePath
+@export var attack_node: NodePath # TODO possibly make into dash attack
+@export var aim_node: NodePath
 
 @onready var idle_state: BaseState = get_node(idle_node)
 @onready var run_state: BaseState = get_node(run_node)
-#@onready var dash_attack_state: BaseState = get_node(dash_attack_node)
+@onready var attack_state: BaseState = get_node(attack_node)
+@onready var aim_state: BaseState = get_node(aim_node)
 
 
 const DASH_MOD = 2
-const DASH_TIME = 0.2
+const DASH_TIME = 0.25
 const DASH_COOLDOWN_TIME = 0.7
 const GHOST_DELAY = 0.05
 const DASH_CHARGES = 3

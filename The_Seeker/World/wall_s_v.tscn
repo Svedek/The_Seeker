@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://mlfe0pbo8tbq" path="res://World/WallV-S.png" id="2_s20dg"]
 
 [node name="WallS-V" instance=ExtResource("1_0i3lo")]
+collision_mask = 0
 
 [node name="Sprite2D" parent="." index="0"]
 texture = ExtResource("2_s20dg")

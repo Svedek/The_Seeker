@@ -13,15 +13,6 @@ const MOVE_SPEED = 160.0
 @onready var state_manager : StateManager = $StateManager
 
 
-#func _create_timer (function, time) -> Timer:
-#	var timer = Timer.new()
-#	add_child(timer)
-#	timer.set_wait_time(time)
-#	timer.one_shot = true
-#	timer.connect("timeout", function) 
-#	return timer
-
-
 func _ready():
 	_animation_tree.active = true
 	state_manager.init(self)
@@ -35,6 +26,14 @@ func _physics_process(delta):
 func _unhandled_input(event):
 	state_manager.input(event)
 
+func play_animation(animation: String):
+	_animation_playback.travel(animation)
+	
+func set_blend_position(animation: String, blend_position: Vector2):
+	_animation_tree["parameters/" + animation + "/blend_position"] = blend_position
+
+func set_weapon_pivot_dir(dir:Vector2):
+	_weapon_pivot.rotation = dir.angle()
 
 func instance_ghost():
 	var ghost: Sprite2D = _ghost_scene.instantiate()
@@ -44,15 +43,6 @@ func instance_ghost():
 	ghost.hframes = _sprite.hframes
 	ghost.vframes = _sprite.vframes
 	ghost.frame = _sprite.frame
-
-func play_animation(animation: String):
-	_animation_playback.travel(animation)
-	
-func set_blend_position(animation: String, blend_position: Vector2):
-	_animation_tree["parameters/" + animation + "/blend_position"] = blend_position
-
-func set_weapon_pivot_dir(dir:Vector2):
-	_weapon_pivot.rotation = dir.angle()
 
 
 func _on_hurtbox_damaged(damage):
