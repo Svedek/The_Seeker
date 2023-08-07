@@ -2,6 +2,7 @@ extends MovementState
 
 # Goes to Idle, Dash, Attack, Aim
 
+@export_category("State Transitions")
 @export var idle_node: NodePath
 @export var dash_node: NodePath
 @export var attack_node: NodePath
@@ -13,12 +14,13 @@ extends MovementState
 @onready var aim_state: BaseState = get_node(aim_node)
 
 func input(event):
-	if event.is_action_pressed("dash"):
+	if event.is_action_pressed("dash") && dash_state.available:
+		dir = get_axis()
 		return dash_state
-	elif event.is_action_pressed("attack"):
+	elif event.is_action_pressed("attack") && attack_state.available:
 		attack_state.input(event) # ?
 		return attack_state # Some way to sense the direction of the attack (in attack or before call)
-	elif event.is_action_pressed("aim"):
+	elif event.is_action_pressed("aim") && aim_state.available:
 		return aim_state
 	
 func physics_process(delta: float) -> BaseState:
@@ -29,6 +31,6 @@ func physics_process(delta: float) -> BaseState:
 	dir = axis.normalized()
 	player.set_blend_position(animation_name, dir)
 	
-	player.velocity = axis * player.MOVE_SPEED
+	player.velocity = axis * player.stats.move_speed
 	super.physics_process(delta)
 	return null

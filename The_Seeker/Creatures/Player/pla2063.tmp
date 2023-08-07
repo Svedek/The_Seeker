@@ -2862,13 +2862,17 @@ idle_node = NodePath("../IdleState")
 run_node = NodePath("../RunState")
 attack_node = NodePath("../AttackState")
 aim_node = NodePath("../AimState")
+_dash_mod = null
+_dash_time = null
+_charge_regen_time = null
+_ghost_delay = null
+_dash_charges = null
 animation_name = "Dash"
 
 [node name="AttackState" type="Node" parent="StateManager"]
 script = ExtResource("9_6kli8")
 idle_node = NodePath("../IdleState")
 run_node = NodePath("../RunState")
-_cooldown_time = 0.25
 _attack_durrations = Array[float]([0.25, 0.25, 0.375])
 animation_name = "Attack_"
 

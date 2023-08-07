@@ -3,28 +3,27 @@ extends CharacterBody2D
 
 var _ghost_scene = preload("res://Misc/ghost.tscn")
 
-const MOVE_SPEED = 160.0
+@onready var stats : CreatureStats = $Stats
 
-@onready var _sprite = $Sprite
-@onready var _weapon_pivot = $WeaponPivot
+@onready var _sprite : Sprite2D = $Sprite
+@onready var _weapon_pivot : Marker2D = $WeaponPivot
 @onready var _animation_tree : AnimationTree = $AnimationTree
 @onready var _animation_playback : AnimationNodeStateMachinePlayback = _animation_tree.get("parameters/playback")
-
-@onready var state_manager : StateManager = $StateManager
+@onready var _state_manager : StateManager = $StateManager
 
 
 func _ready():
 	_animation_tree.active = true
-	state_manager.init(self)
+	_state_manager.init(self)
 
 func _process(delta):
-	state_manager.process(delta)
+	_state_manager.process(delta)
 	
 func _physics_process(delta):
-	state_manager.physics_process(delta)
+	_state_manager.physics_process(delta)
 
 func _unhandled_input(event):
-	state_manager.input(event)
+	_state_manager.input(event)
 
 func play_animation(animation: String):
 	_animation_playback.travel(animation)

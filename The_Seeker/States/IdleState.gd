@@ -1,6 +1,8 @@
 extends BaseState
 
 # Goes to Run, Dash, Attack, Aim
+
+@export_category("State Transitions")
 @export var run_node: NodePath
 @export var dash_node: NodePath
 @export var attack_node: NodePath

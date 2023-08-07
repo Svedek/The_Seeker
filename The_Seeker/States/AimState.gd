@@ -1,5 +1,6 @@
 extends BaseState
 
+@export_category("State Transitions")
 # Goes to Idle, Run
 
 
