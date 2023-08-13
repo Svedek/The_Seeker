@@ -1,4 +1,4 @@
-extends MovementState
+extends InputState
 
 #TODO maybe have dash speed influenced by input dir slightly
 #TODO if redo movement system to be not snap movement, have dash be boost of speed with input momvement too?
@@ -42,6 +42,7 @@ func _ready():
 
 func enter(direction: Vector2):
 	super.enter(direction)
+	print(direction)
 	player._animation_tree["parameters/Dash/blend_position"] = dir
 	player.velocity = dir * player.stats.move_speed * _dash_mod
 	_dash_timer.start()
@@ -75,6 +76,10 @@ func process(delta:float) -> BaseState:
 			return run_state
 		else:
 			return idle_state
+	return null
+	
+func physics_process(delta: float) -> BaseState:
+	player.move_and_slide()
 	return null
 	
 func instance_ghost() -> void:

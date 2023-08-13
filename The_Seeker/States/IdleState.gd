@@ -1,4 +1,4 @@
-extends BaseState
+extends InputState
 
 # Goes to Run, Dash, Attack, Aim
 
@@ -23,7 +23,7 @@ func input(event: InputEvent) -> BaseState:
 	elif event.is_action_pressed("aim") && aim_state.available:
 		return aim_state
 	
-	var axis: Vector2 = Vector2(Input.get_axis("ui_left", "ui_right"),Input.get_axis("ui_up", "ui_down"))
+	var axis: Vector2 = get_axis()
 	if axis != Vector2.ZERO:
 		return run_state
 	return null

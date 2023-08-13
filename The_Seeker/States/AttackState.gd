@@ -1,9 +1,8 @@
-extends MovementState
+extends InputState
 
 @export_category("State Transitions")
 @export var idle_node: NodePath
 @export var run_node: NodePath
-
 
 @onready var idle_state: BaseState = get_node(idle_node)
 @onready var run_state: BaseState = get_node(run_node)
@@ -53,7 +52,7 @@ func input(event):
 				new_dir = get_axis()
 			
 			if new_dir != Vector2.ZERO:
-				dir = new_dir
+				dir = new_dir.normalized()
 				
 			print(dir)
 			_attack_queued = true
@@ -66,7 +65,6 @@ func process(delta:float) -> BaseState:
 			if get_axis() != Vector2.ZERO:
 				return run_state
 			else:
-				print(" --- " + str(dir))
 				return idle_state
 	return null
 	

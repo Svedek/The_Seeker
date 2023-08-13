@@ -1,0 +1,50 @@
+[gd_scene load_steps=5 format=3 uid="uid://cufipt3ncog4o"]
+
+[ext_resource type="Script" path="res://Misc/DecayTrail.gd" id="1_cboti"]
+
+[sub_resource type="Animation" id="Animation_skxwt"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_xdhjg"]
+resource_name = "decay"
+length = 0.25
+step = 0.125
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ey3k1"]
+_data = {
+"RESET": SubResource("Animation_skxwt"),
+"decay": SubResource("Animation_xdhjg")
+}
+
+[node name="DecayTrail" type="Line2D"]
+width = 5.0
+script = ExtResource("1_cboti")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_ey3k1")
+}

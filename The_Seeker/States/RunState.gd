@@ -1,4 +1,4 @@
-extends MovementState
+extends InputState
 
 # Goes to Idle, Dash, Attack, Aim
 
@@ -32,5 +32,5 @@ func physics_process(delta: float) -> BaseState:
 	player.set_blend_position(animation_name, dir)
 	
 	player.velocity = axis * player.stats.move_speed
-	super.physics_process(delta)
+	player.move_and_slide()
 	return null

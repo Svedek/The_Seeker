@@ -7,6 +7,7 @@ var _ghost_scene = preload("res://Misc/ghost.tscn")
 
 @onready var _sprite : Sprite2D = $Sprite
 @onready var _weapon_pivot : Marker2D = $WeaponPivot
+@onready var _firepoint : Marker2D = $WeaponPivot/Firepoint
 @onready var _animation_tree : AnimationTree = $AnimationTree
 @onready var _animation_playback : AnimationNodeStateMachinePlayback = _animation_tree.get("parameters/playback")
 @onready var _state_manager : StateManager = $StateManager
@@ -42,7 +43,6 @@ func instance_ghost():
 	ghost.hframes = _sprite.hframes
 	ghost.vframes = _sprite.vframes
 	ghost.frame = _sprite.frame
-
 
 func _on_hurtbox_damaged(damage):
 	print("player took " + str(damage) + " damage")
