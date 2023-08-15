@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://41g0kx4j0dhh"
-path="res://.godot/imported/PlayerMelee_test.png-54f74970512132fb1dd3079f48cdd183.ctex"
+uid="uid://c3li8bhrucfi2"
+path="res://.godot/imported/player_melee_1.png-73fbb578709a56e303f1b61533184737.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Creatures/Player/PlayerMelee_test.png"
-dest_files=["res://.godot/imported/PlayerMelee_test.png-54f74970512132fb1dd3079f48cdd183.ctex"]
+source_file="res://Actors/Creatures/Player/player_melee_1.png"
+dest_files=["res://.godot/imported/player_melee_1.png-73fbb578709a56e303f1b61533184737.ctex"]
 
 [params]
 

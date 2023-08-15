@@ -1,24 +1,25 @@
-[gd_scene load_steps=104 format=3 uid="uid://dijbsr6yuija1"]
+[gd_scene load_steps=105 format=3 uid="uid://dijbsr6yuija1"]
 
-[ext_resource type="Script" path="res://Creatures/Player/player.gd" id="1_gw3gt"]
-[ext_resource type="Texture2D" uid="uid://dm17wh2j538cs" path="res://Creatures/Player/player_idle.png" id="3_gmrv0"]
-[ext_resource type="Texture2D" uid="uid://de5lcv3lw77k7" path="res://Creatures/Player/Player.png" id="3_kwee6"]
-[ext_resource type="Texture2D" uid="uid://sb80mxbmso8t" path="res://Misc/melee.png" id="4_5e8g4"]
-[ext_resource type="PackedScene" uid="uid://ckqeh7bxqv75i" path="res://Collision/hitbox.tscn" id="4_bjqt7"]
-[ext_resource type="Texture2D" uid="uid://ch1l2bdhuorqx" path="res://Creatures/Player/player_dash.png" id="4_jbfx0"]
-[ext_resource type="Texture2D" uid="uid://cftm5ajvant1n" path="res://Creatures/Player/player_run.png" id="4_kk8jk"]
-[ext_resource type="Script" path="res://States/StateManager.gd" id="5_bx2nc"]
-[ext_resource type="Texture2D" uid="uid://c3li8bhrucfi2" path="res://Creatures/Player/player_melee_1.png" id="5_fessy"]
-[ext_resource type="PackedScene" uid="uid://dxb2qirskqwqj" path="res://Collision/hurtbox.tscn" id="5_s10wn"]
-[ext_resource type="Texture2D" uid="uid://bs042we2byxy5" path="res://Misc/melee_combo.png" id="6_2j78j"]
-[ext_resource type="Script" path="res://States/IdleState.gd" id="6_uybuy"]
-[ext_resource type="Script" path="res://States/RunState.gd" id="7_iplj1"]
-[ext_resource type="Script" path="res://States/DashState.gd" id="8_sfsrd"]
-[ext_resource type="Script" path="res://States/AttackState.gd" id="9_6kli8"]
-[ext_resource type="Texture2D" uid="uid://doq8t5um5qyd6" path="res://Creatures/Player/player_aim.png" id="9_kbr1v"]
-[ext_resource type="Script" path="res://States/AimState.gd" id="10_lmude"]
-[ext_resource type="PackedScene" uid="uid://cufipt3ncog4o" path="res://Misc/decay_trail.tscn" id="18_iyo6w"]
-[ext_resource type="Script" path="res://Creatures/CreatureStats.gd" id="18_mo8j3"]
+[ext_resource type="Script" path="res://Actors/Creatures/Player/player.gd" id="1_sxsqt"]
+[ext_resource type="Texture2D" uid="uid://dm17wh2j538cs" path="res://Actors/Creatures/Player/player_idle.png" id="2_gwh8x"]
+[ext_resource type="Texture2D" uid="uid://sb80mxbmso8t" path="res://Misc/melee.png" id="3_dhbed"]
+[ext_resource type="Texture2D" uid="uid://doq8t5um5qyd6" path="res://Actors/Creatures/Player/player_aim.png" id="4_lniia"]
+[ext_resource type="Texture2D" uid="uid://bs042we2byxy5" path="res://Misc/melee_combo.png" id="5_cxrem"]
+[ext_resource type="Texture2D" uid="uid://ch1l2bdhuorqx" path="res://Actors/Creatures/Player/player_dash.png" id="6_t65wj"]
+[ext_resource type="Texture2D" uid="uid://de5lcv3lw77k7" path="res://Actors/Creatures/Player/Player.png" id="7_0r3vi"]
+[ext_resource type="Texture2D" uid="uid://c3li8bhrucfi2" path="res://Actors/Creatures/Player/player_melee_1.png" id="8_trdbo"]
+[ext_resource type="Texture2D" uid="uid://cftm5ajvant1n" path="res://Actors/Creatures/Player/player_run.png" id="9_wrodd"]
+[ext_resource type="PackedScene" uid="uid://ckqeh7bxqv75i" path="res://Collision/hitbox.tscn" id="10_t0elq"]
+[ext_resource type="PackedScene" uid="uid://dxb2qirskqwqj" path="res://Collision/hurtbox.tscn" id="11_8l01r"]
+[ext_resource type="Script" path="res://States/StateManager.gd" id="12_fgi80"]
+[ext_resource type="Script" path="res://States/IdleState.gd" id="13_bq06b"]
+[ext_resource type="Script" path="res://States/RunState.gd" id="14_yvn4p"]
+[ext_resource type="Script" path="res://States/DashState.gd" id="15_0a5vf"]
+[ext_resource type="Script" path="res://States/AttackState.gd" id="16_k0rak"]
+[ext_resource type="Script" path="res://States/AimState.gd" id="17_w8o82"]
+[ext_resource type="PackedScene" uid="uid://cufipt3ncog4o" path="res://Misc/decay_trail.tscn" id="18_wrul7"]
+[ext_resource type="Shape2D" uid="uid://dq26y1xqh4cup" path="res://Actors/Creatures/Player/player_shoot_shape.tres" id="19_o6hh0"]
+[ext_resource type="Script" path="res://Actors/Creatures/CreatureStats.gd" id="20_i3dsa"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5wsgk"]
 radius = 4.0
@@ -36,7 +37,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("3_gmrv0")]
+"values": [ExtResource("2_gwh8x")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -84,7 +85,7 @@ tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("4_5e8g4")]
+"values": [ExtResource("3_dhbed")]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
@@ -198,7 +199,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("9_kbr1v")]
+"values": [ExtResource("4_lniia")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -246,7 +247,7 @@ tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("6_2j78j")]
+"values": [ExtResource("5_cxrem")]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
@@ -324,7 +325,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("9_kbr1v")]
+"values": [ExtResource("4_lniia")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -372,7 +373,7 @@ tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("6_2j78j")]
+"values": [ExtResource("5_cxrem")]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
@@ -450,7 +451,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("9_kbr1v")]
+"values": [ExtResource("4_lniia")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -498,7 +499,7 @@ tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("6_2j78j")]
+"values": [ExtResource("5_cxrem")]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
@@ -576,7 +577,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("9_kbr1v")]
+"values": [ExtResource("4_lniia")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -624,7 +625,7 @@ tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("6_2j78j")]
+"values": [ExtResource("5_cxrem")]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
@@ -701,7 +702,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("4_jbfx0")]
+"values": [ExtResource("6_t65wj")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -766,7 +767,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("4_jbfx0")]
+"values": [ExtResource("6_t65wj")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -831,7 +832,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("4_jbfx0")]
+"values": [ExtResource("6_t65wj")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -896,7 +897,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("4_jbfx0")]
+"values": [ExtResource("6_t65wj")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -962,7 +963,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("3_kwee6")]
+"values": [ExtResource("7_0r3vi")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -1016,7 +1017,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("3_gmrv0")]
+"values": [ExtResource("2_gwh8x")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -1070,7 +1071,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("3_gmrv0")]
+"values": [ExtResource("2_gwh8x")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -1124,7 +1125,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("3_gmrv0")]
+"values": [ExtResource("2_gwh8x")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -1177,7 +1178,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("5_fessy")]
+"values": [ExtResource("8_trdbo")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -1225,7 +1226,7 @@ tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("6_2j78j")]
+"values": [ExtResource("5_cxrem")]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
@@ -1314,7 +1315,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("5_fessy")]
+"values": [ExtResource("8_trdbo")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -1362,7 +1363,7 @@ tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("6_2j78j")]
+"values": [ExtResource("5_cxrem")]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
@@ -1451,7 +1452,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("5_fessy")]
+"values": [ExtResource("8_trdbo")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -1499,7 +1500,7 @@ tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("6_2j78j")]
+"values": [ExtResource("5_cxrem")]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
@@ -1588,7 +1589,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("5_fessy")]
+"values": [ExtResource("8_trdbo")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -1636,7 +1637,7 @@ tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("6_2j78j")]
+"values": [ExtResource("5_cxrem")]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
@@ -1725,7 +1726,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("5_fessy")]
+"values": [ExtResource("8_trdbo")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -1773,7 +1774,7 @@ tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("6_2j78j")]
+"values": [ExtResource("5_cxrem")]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
@@ -1862,7 +1863,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("5_fessy")]
+"values": [ExtResource("8_trdbo")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -1910,7 +1911,7 @@ tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("6_2j78j")]
+"values": [ExtResource("5_cxrem")]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
@@ -1999,7 +2000,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("5_fessy")]
+"values": [ExtResource("8_trdbo")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -2047,7 +2048,7 @@ tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("6_2j78j")]
+"values": [ExtResource("5_cxrem")]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
@@ -2136,7 +2137,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("5_fessy")]
+"values": [ExtResource("8_trdbo")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -2184,7 +2185,7 @@ tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("6_2j78j")]
+"values": [ExtResource("5_cxrem")]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
@@ -2273,7 +2274,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("5_fessy")]
+"values": [ExtResource("8_trdbo")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -2321,7 +2322,7 @@ tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("6_2j78j")]
+"values": [ExtResource("5_cxrem")]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
@@ -2410,7 +2411,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("5_fessy")]
+"values": [ExtResource("8_trdbo")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -2458,7 +2459,7 @@ tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("6_2j78j")]
+"values": [ExtResource("5_cxrem")]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
@@ -2547,7 +2548,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("5_fessy")]
+"values": [ExtResource("8_trdbo")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -2595,7 +2596,7 @@ tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("6_2j78j")]
+"values": [ExtResource("5_cxrem")]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
@@ -2684,7 +2685,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("5_fessy")]
+"values": [ExtResource("8_trdbo")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -2732,7 +2733,7 @@ tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("6_2j78j")]
+"values": [ExtResource("5_cxrem")]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
@@ -2822,7 +2823,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("4_kk8jk")]
+"values": [ExtResource("9_wrodd")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -2876,7 +2877,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("4_kk8jk")]
+"values": [ExtResource("9_wrodd")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -2930,7 +2931,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("4_kk8jk")]
+"values": [ExtResource("9_wrodd")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -2984,7 +2985,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("4_kk8jk")]
+"values": [ExtResource("9_wrodd")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -3297,12 +3298,12 @@ height = 18.0
 
 [node name="Player" type="CharacterBody2D"]
 collision_layer = 4
-script = ExtResource("1_gw3gt")
+script = ExtResource("1_sxsqt")
 
 [node name="Sprite" type="Sprite2D" parent="."]
 z_index = 10
 position = Vector2(0, -16)
-texture = ExtResource("3_gmrv0")
+texture = ExtResource("2_gwh8x")
 hframes = 5
 vframes = 4
 frame = 5
@@ -3339,12 +3340,12 @@ visible = false
 z_index = 5
 position = Vector2(20, -7.23998e-05)
 rotation = -1.5708
-texture = ExtResource("4_5e8g4")
+texture = ExtResource("3_dhbed")
 hframes = 3
 vframes = 4
 frame = 4
 
-[node name="SwordHitboxLight" parent="WeaponPivot" instance=ExtResource("4_bjqt7")]
+[node name="SwordHitboxLight" parent="WeaponPivot" instance=ExtResource("10_t0elq")]
 position = Vector2(7, -3.05983e-07)
 rotation = -1.5708
 collision_mask = 128
@@ -3355,7 +3356,7 @@ position = Vector2(2.5034e-05, 4)
 shape = SubResource("CircleShape2D_3n8t5")
 debug_color = Color(1, 0, 0, 0.419608)
 
-[node name="SwordHitboxHeavy" parent="WeaponPivot" instance=ExtResource("4_bjqt7")]
+[node name="SwordHitboxHeavy" parent="WeaponPivot" instance=ExtResource("10_t0elq")]
 position = Vector2(7, -3.05983e-07)
 rotation = -1.5708
 collision_mask = 128
@@ -3370,7 +3371,7 @@ debug_color = Color(1, 0, 0, 0.419608)
 [node name="Firepoint" type="Marker2D" parent="WeaponPivot"]
 position = Vector2(12, 0)
 
-[node name="Hurtbox" parent="." instance=ExtResource("5_s10wn")]
+[node name="Hurtbox" parent="." instance=ExtResource("11_8l01r")]
 collision_layer = 64
 
 [node name="CollisionShape2D" parent="Hurtbox" index="0"]
@@ -3379,11 +3380,11 @@ shape = SubResource("CapsuleShape2D_2uu27")
 debug_color = Color(0, 0.643137, 0.32549, 0.419608)
 
 [node name="StateManager" type="Node" parent="."]
-script = ExtResource("5_bx2nc")
+script = ExtResource("12_fgi80")
 starting_state = NodePath("IdleState")
 
 [node name="IdleState" type="Node" parent="StateManager"]
-script = ExtResource("6_uybuy")
+script = ExtResource("13_bq06b")
 run_node = NodePath("../RunState")
 dash_node = NodePath("../DashState")
 attack_node = NodePath("../AttackState")
@@ -3391,7 +3392,7 @@ aim_node = NodePath("../AimState")
 animation_name = "Idle"
 
 [node name="RunState" type="Node" parent="StateManager"]
-script = ExtResource("7_iplj1")
+script = ExtResource("14_yvn4p")
 idle_node = NodePath("../IdleState")
 dash_node = NodePath("../DashState")
 attack_node = NodePath("../AttackState")
@@ -3399,7 +3400,7 @@ aim_node = NodePath("../AimState")
 animation_name = "Run"
 
 [node name="DashState" type="Node" parent="StateManager"]
-script = ExtResource("8_sfsrd")
+script = ExtResource("15_0a5vf")
 idle_node = NodePath("../IdleState")
 run_node = NodePath("../RunState")
 attack_node = NodePath("../AttackState")
@@ -3408,7 +3409,7 @@ _charge_regen_time = 0.25
 animation_name = "Dash"
 
 [node name="AttackState" type="Node" parent="StateManager"]
-script = ExtResource("9_6kli8")
+script = ExtResource("16_k0rak")
 idle_node = NodePath("../IdleState")
 run_node = NodePath("../RunState")
 _cooldown_time = 0.25
@@ -3416,15 +3417,16 @@ _attack_durrations = Array[float]([0.25, 0.25, 0.375])
 animation_name = "Attack_"
 
 [node name="AimState" type="Node" parent="StateManager"]
-script = ExtResource("10_lmude")
+script = ExtResource("17_w8o82")
 idle_node = NodePath("../IdleState")
 run_node = NodePath("../RunState")
-_decay_trail = ExtResource("18_iyo6w")
-_raycast_collision_mask = 1
+_decay_trail = ExtResource("18_wrul7")
+_shapecast_shape = ExtResource("19_o6hh0")
+_damage_collision_mask = 384
 animation_name = "Aim"
 
 [node name="Stats" type="Node" parent="."]
-script = ExtResource("18_mo8j3")
+script = ExtResource("20_i3dsa")
 
 [connection signal="damaged" from="Hurtbox" to="." method="_on_hurtbox_damaged"]
 

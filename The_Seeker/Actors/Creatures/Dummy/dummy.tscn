@@ -1,8 +1,8 @@
 [gd_scene load_steps=6 format=3 uid="uid://41jpmb2dtnau"]
 
-[ext_resource type="Script" path="res://Creatures/Dummy/dummy.gd" id="1_j7e87"]
-[ext_resource type="PackedScene" uid="uid://dxb2qirskqwqj" path="res://Collision/hurtbox.tscn" id="2_1s4c3"]
-[ext_resource type="Texture2D" uid="uid://dj518pyjxu6tw" path="res://icon.svg" id="2_ngqad"]
+[ext_resource type="Script" path="res://Actors/Creatures/Dummy/dummy.gd" id="1_s8pbf"]
+[ext_resource type="PackedScene" uid="uid://dxb2qirskqwqj" path="res://Collision/hurtbox.tscn" id="2_wv453"]
+[ext_resource type="Texture2D" uid="uid://dj518pyjxu6tw" path="res://icon.svg" id="3_x8jwv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jtpby"]
 size = Vector2(32, 32)
@@ -13,9 +13,9 @@ size = Vector2(128, 128)
 [node name="Dummy" type="CharacterBody2D"]
 collision_layer = 8
 collision_mask = 13
-script = ExtResource("1_j7e87")
+script = ExtResource("1_s8pbf")
 
-[node name="Hurtbox" parent="." instance=ExtResource("2_1s4c3")]
+[node name="Hurtbox" parent="." instance=ExtResource("2_wv453")]
 collision_layer = 128
 
 [node name="CollisionShape2D" parent="Hurtbox" index="0"]
@@ -25,7 +25,7 @@ shape = SubResource("RectangleShape2D_jtpby")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, -16)
 scale = Vector2(0.25, 0.25)
-texture = ExtResource("2_ngqad")
+texture = ExtResource("3_x8jwv")
 
 [node name="CollisionBox Wee Woo" type="CollisionShape2D" parent="."]
 position = Vector2(0, -16)

@@ -13,27 +13,38 @@ extends InputState
 
 @export_category("Data")
 @export var _decay_trail: PackedScene
-@export_flags_2d_physics var _raycast_collision_mask: int
+@export var _shapecast_shape: Shape2D
+@export_flags_2d_physics var _wall_collision_mask: int = 1 << 0
+@export_flags_2d_physics var _damage_collision_mask: int = 1 << 7
 @export var _raycast_length: float = 1024.0
 
-const MAX_ARROWS = 9
+const NUM_TRAILS = 9
+const SHOT_DAMAGE = 3
 
 var _arrows: int = 5
 var _raycast: RayCast2D
+var _shapecast: ShapeCast2D
 var _trails: Array
 var _trails_index: int : 
 	set(value):
-		_trails_index = value % MAX_ARROWS
+		_trails_index = value % NUM_TRAILS
 
 var _mouse_mode: bool = true
 
 func _ready():
 	_raycast = RayCast2D.new()
 	add_child(_raycast)
-	_raycast.collision_mask = _raycast_collision_mask
+	_raycast.collision_mask = _wall_collision_mask
+	
+	_shapecast = ShapeCast2D.new()
+	add_child(_shapecast)
+	_shapecast.collision_mask = _damage_collision_mask
+	_shapecast.collide_with_areas = true
+	_shapecast.collide_with_bodies = false
+	_shapecast.shape = _shapecast_shape
 	
 	_trails = Array()
-	for i in range(MAX_ARROWS):
+	for i in range(NUM_TRAILS):
 		_trails.append(_decay_trail.instantiate())
 		add_child(_trails[i])
 
@@ -57,21 +68,25 @@ func input(event):
 		if new_dir != Vector2.ZERO:
 			dir = new_dir.normalized()
 		
-#		_raycast.position = player._firepoint.global_position
-#		_raycast.target_position = player.get_global_mouse_position() - _raycast.position
-#		_raycast.target_position = _raycast.target_position.normalized() * _raycast_length
+		_raycast.position = player._firepoint.global_position
+		_raycast.target_position = player.get_global_mouse_position() - _raycast.position
+		_raycast.target_position = _raycast.target_position.normalized() * _raycast_length
+		_raycast.force_raycast_update()
+		
+		_shapecast.position = _raycast.position
+		_shapecast.target_position = _raycast.get_collision_point()-_raycast.position
+		_shapecast.force_shapecast_update()
+		
+		for i in range(_shapecast.collision_result.size()):
+			var collider = _shapecast.collision_result[i].collider
+			if collider.has_method("take_damage"):
+				collider.take_damage(SHOT_DAMAGE)
+			if collider.has_method("ORB_METHOD"): # TODO APPLY KNOCKBACK AND DISABLE ORBS
+				pass
+		
 		var points : Array[Vector2] = [player._firepoint.global_position, _raycast.get_collision_point()]
 		_trails[_trails_index].set_trail(points)
 		_trails_index += 1
-		
-		
-		
-
-func physics_process(delta:float) -> BaseState:
-	_raycast.position = player.global_position
-	_raycast.target_position = player.get_global_mouse_position() - _raycast.position
-	_raycast.target_position = _raycast.target_position.normalized() * _raycast_length
-	return null
 
 func process(delta:float) -> BaseState:
 	var new_dir: Vector2

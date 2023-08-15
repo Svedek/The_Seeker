@@ -98,10 +98,11 @@ aim={
 
 2d_physics/layer_1="Terrain"
 2d_physics/layer_2="Collectable"
-2d_physics/layer_3="Player"
-2d_physics/layer_4="Enemy"
+2d_physics/layer_3="PlayerBody"
+2d_physics/layer_4="EnemyBody"
 2d_physics/layer_7="PlayerHurtbox"
 2d_physics/layer_8="EnemyHurtbox"
+2d_physics/layer_9="OrbHurtbox"
 
 [rendering]
 
