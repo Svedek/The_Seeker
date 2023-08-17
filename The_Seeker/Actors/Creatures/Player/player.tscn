@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" path="res://Actors/Creatures/Player/player.gd" id="1_sxsqt"]
 [ext_resource type="Texture2D" uid="uid://dm17wh2j538cs" path="res://Actors/Creatures/Player/player_idle.png" id="2_gwh8x"]
-[ext_resource type="Texture2D" uid="uid://sb80mxbmso8t" path="res://Misc/melee.png" id="3_dhbed"]
 [ext_resource type="Texture2D" uid="uid://doq8t5um5qyd6" path="res://Actors/Creatures/Player/player_aim.png" id="4_lniia"]
 [ext_resource type="Texture2D" uid="uid://bs042we2byxy5" path="res://Misc/melee_combo.png" id="5_cxrem"]
 [ext_resource type="Texture2D" uid="uid://ch1l2bdhuorqx" path="res://Actors/Creatures/Player/player_dash.png" id="6_t65wj"]
@@ -24,6 +23,9 @@
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5wsgk"]
 radius = 4.0
 height = 12.0
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_miuqm"]
+load_path = "res://.godot/imported/melee.png-7f197808267e4da640d4bf8541974160.ctex"
 
 [sub_resource type="Animation" id="Animation_lwvup"]
 length = 0.001
@@ -85,7 +87,7 @@ tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("3_dhbed")]
+"values": [SubResource("CompressedTexture2D_miuqm")]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
@@ -182,6 +184,18 @@ tracks/12/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath(".:collision_layer")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [4]
 }
 
 [sub_resource type="Animation" id="Animation_usmee"]
@@ -752,6 +766,18 @@ tracks/4/keys = {
 "update": 1,
 "values": [false, true]
 }
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath(".:collision_layer")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 4]
+}
 
 [sub_resource type="Animation" id="Animation_cumk8"]
 resource_name = "dash_left"
@@ -816,6 +842,18 @@ tracks/4/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [false, true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath(".:collision_layer")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 4]
 }
 
 [sub_resource type="Animation" id="Animation_5s172"]
@@ -882,6 +920,18 @@ tracks/4/keys = {
 "update": 1,
 "values": [false, true]
 }
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath(".:collision_layer")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 4]
+}
 
 [sub_resource type="Animation" id="Animation_mjsns"]
 resource_name = "dash_up"
@@ -946,6 +996,18 @@ tracks/4/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [false, true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath(".:collision_layer")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 4]
 }
 
 [sub_resource type="Animation" id="Animation_6wais"]
@@ -3340,7 +3402,7 @@ visible = false
 z_index = 5
 position = Vector2(20, -7.23998e-05)
 rotation = -1.5708
-texture = ExtResource("3_dhbed")
+texture = SubResource("CompressedTexture2D_miuqm")
 hframes = 3
 vframes = 4
 frame = 4

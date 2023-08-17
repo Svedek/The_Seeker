@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://cdkjuokn3yjp7"]
+[gd_scene load_steps=7 format=3 uid="uid://cdkjuokn3yjp7"]
 
 [ext_resource type="PackedScene" uid="uid://dijbsr6yuija1" path="res://Actors/Creatures/Player/player.tscn" id="1_qlgki"]
 [ext_resource type="PackedScene" uid="uid://ddviyet2y0si3" path="res://World/wall_s_h.tscn" id="2_8ddce"]
 [ext_resource type="PackedScene" uid="uid://hqqrp754tngu" path="res://World/wall_s_v.tscn" id="3_dbjp3"]
 [ext_resource type="PackedScene" uid="uid://41jpmb2dtnau" path="res://Actors/Creatures/Dummy/dummy.tscn" id="4_r1ldl"]
 [ext_resource type="PackedScene" uid="uid://cehadt8r3evy1" path="res://Misc/ghost.tscn" id="5_in48c"]
+[ext_resource type="PackedScene" uid="uid://6h8jq2ohqyda" path="res://Menus+GUI/gameplay_gui.tscn" id="6_nvq5b"]
 
 [node name="Arena" type="Node2D"]
 
@@ -33,3 +34,8 @@ zoom = Vector2(2, 2)
 
 [node name="Ghost" parent="." instance=ExtResource("5_in48c")]
 position = Vector2(-125, -22)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="GameplayGUI" parent="CanvasLayer" instance=ExtResource("6_nvq5b")]
+mouse_filter = 2
