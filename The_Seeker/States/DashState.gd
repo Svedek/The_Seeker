@@ -40,6 +40,12 @@ func _ready():
 	_dash_ghost_timer = create_timer (instance_ghost, _ghost_delay)
 	_dash_ghost_timer.one_shot = false
 
+func _process(delta):
+	var partial = 0
+	if !_charge_regen_timer.is_stopped():
+		partial = (_charge_regen_time-_charge_regen_timer.time_left)/_charge_regen_time
+	player.update_stamina(_charges + partial)
+
 func enter(direction: Vector2):
 	super.enter(direction)
 	print(direction)

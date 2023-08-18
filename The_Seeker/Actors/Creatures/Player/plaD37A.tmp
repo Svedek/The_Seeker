@@ -19,14 +19,15 @@
 [ext_resource type="PackedScene" uid="uid://cufipt3ncog4o" path="res://Misc/decay_trail.tscn" id="18_wrul7"]
 [ext_resource type="Shape2D" uid="uid://dq26y1xqh4cup" path="res://Actors/Creatures/Player/player_shoot_shape.tres" id="19_o6hh0"]
 [ext_resource type="Script" path="res://Actors/Creatures/CreatureStats.gd" id="20_i3dsa"]
-[ext_resource type="Texture2D" uid="uid://cw5j4574xrwsy" path="res://Misc/TEMP/stamina_empty_smol.png" id="20_mspwo"]
-[ext_resource type="Texture2D" uid="uid://b24mj28ej6oc2" path="res://Misc/TEMP/stamina_progress_smol.png" id="21_smnfw"]
+[ext_resource type="Texture2D" uid="uid://bvoiexltqypi7" path="res://Misc/TEMP/stamina_empty.png" id="20_w5ijd"]
+[ext_resource type="Texture2D" uid="uid://cqd2gschf2nki" path="res://Misc/TEMP/stamina_progress.png" id="21_lc7dd"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5wsgk"]
 radius = 4.0
 height = 12.0
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_miuqm"]
+load_path = "res://.godot/imported/melee.png-7f197808267e4da640d4bf8541974160.ctex"
 
 [sub_resource type="Animation" id="Animation_lwvup"]
 length = 0.001
@@ -3366,7 +3367,7 @@ script = ExtResource("1_sxsqt")
 [node name="Sprite" type="Sprite2D" parent="."]
 z_index = 10
 position = Vector2(0, -16)
-texture = ExtResource("2_gwh8x")
+texture = ExtResource("7_0r3vi")
 hframes = 5
 vframes = 4
 frame = 5
@@ -3492,40 +3493,22 @@ animation_name = "Aim"
 script = ExtResource("20_i3dsa")
 
 [node name="TextureProgressBar" type="TextureProgressBar" parent="."]
-modulate = Color(1, 1, 1, 0.501961)
-offset_left = -12.0
-offset_top = 4.0
-offset_right = -8.0
+offset_left = 64.0
+offset_right = 72.0
 offset_bottom = 8.0
-min_value = 75.0
-value = 75.0
-allow_lesser = true
-texture_under = ExtResource("20_mspwo")
-texture_progress = ExtResource("21_smnfw")
+value = 94.0
+fill_mode = 5
+texture_under = ExtResource("20_w5ijd")
+texture_progress = ExtResource("21_lc7dd")
 
 [node name="TextureProgressBar2" type="TextureProgressBar" parent="."]
-modulate = Color(1, 1, 1, 0.501961)
-offset_left = -2.0
-offset_top = 6.0
-offset_right = 2.0
-offset_bottom = 10.0
-min_value = 75.0
-value = 75.0
-allow_lesser = true
-texture_under = ExtResource("20_mspwo")
-texture_progress = ExtResource("21_smnfw")
-
-[node name="TextureProgressBar3" type="TextureProgressBar" parent="."]
-modulate = Color(1, 1, 1, 0.501961)
-offset_left = 8.0
-offset_top = 4.0
-offset_right = 12.0
+offset_left = 64.0
+offset_right = 72.0
 offset_bottom = 8.0
-min_value = 75.0
-value = 75.0
-allow_lesser = true
-texture_under = ExtResource("20_mspwo")
-texture_progress = ExtResource("21_smnfw")
+value = 94.0
+fill_mode = 5
+texture_under = ExtResource("20_w5ijd")
+texture_progress = ExtResource("21_lc7dd")
 
 [connection signal="damaged" from="Hurtbox" to="." method="_on_hurtbox_damaged"]
 

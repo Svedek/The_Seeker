@@ -1,10 +1,10 @@
 class_name Player
 extends CharacterBody2D
 
-var _ghost_scene = preload("res://Misc/ghost.tscn")
+signal update_arrows(count: int)
+# signal update_stamina(value: float)
 
 @onready var stats : CreatureStats = $Stats
-
 @onready var _sprite : Sprite2D = $Sprite
 @onready var _weapon_pivot : Marker2D = $WeaponPivot
 @onready var _firepoint : Marker2D = $WeaponPivot/Firepoint
@@ -12,6 +12,12 @@ var _ghost_scene = preload("res://Misc/ghost.tscn")
 @onready var _animation_playback : AnimationNodeStateMachinePlayback = _animation_tree.get("parameters/playback")
 @onready var _state_manager : StateManager = $StateManager
 
+var _ghost_scene = preload("res://Misc/ghost.tscn")
+var _arrows:int = 3 :
+	set (count):
+		_arrows = count
+		emit_signal("update_arrows", _arrows)
+	
 
 func _ready():
 	_animation_tree.active = true
@@ -26,6 +32,9 @@ func _physics_process(delta):
 func _unhandled_input(event):
 	_state_manager.input(event)
 
+func _on_hurtbox_damaged(damage):
+	print("player took " + str(damage) + " damage")
+	
 func play_animation(animation: String):
 	_animation_playback.travel(animation)
 	
@@ -43,6 +52,14 @@ func instance_ghost():
 	ghost.hframes = _sprite.hframes
 	ghost.vframes = _sprite.vframes
 	ghost.frame = _sprite.frame
+	
+func gain_arrow():
+	_arrows += 1
 
-func _on_hurtbox_damaged(damage):
-	print("player took " + str(damage) + " damage")
+@onready var texture_progress_bar = $TextureProgressBar
+@onready var texture_progress_bar_2 = $TextureProgressBar2
+@onready var texture_progress_bar_3 = $TextureProgressBar3
+func update_stamina(value:float):
+	texture_progress_bar.value = value*100
+	texture_progress_bar_2.value = (value-1)*100
+	texture_progress_bar_3.value = (value-2)*100
