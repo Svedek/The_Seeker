@@ -11,6 +11,9 @@ signal update_arrows(count: int)
 @onready var _animation_tree : AnimationTree = $AnimationTree
 @onready var _animation_playback : AnimationNodeStateMachinePlayback = _animation_tree.get("parameters/playback")
 @onready var _state_manager : StateManager = $StateManager
+@onready var stamina_node_1 = $StaminaNode1
+@onready var stamina_node_2 = $StaminaNode2
+@onready var stamina_node_3 = $StaminaNode3
 
 var _ghost_scene = preload("res://Misc/ghost.tscn")
 var _arrows:int = 3 :
@@ -56,10 +59,7 @@ func instance_ghost():
 func gain_arrow():
 	_arrows += 1
 
-@onready var texture_progress_bar = $TextureProgressBar
-@onready var texture_progress_bar_2 = $TextureProgressBar2
-@onready var texture_progress_bar_3 = $TextureProgressBar3
 func update_stamina(value:float):
-	texture_progress_bar.value = value*100
-	texture_progress_bar_2.value = (value-1)*100
-	texture_progress_bar_3.value = (value-2)*100
+	stamina_node_1.value = value*100
+	stamina_node_2.value = (value-1)*100
+	stamina_node_3.value = (value-2)*100

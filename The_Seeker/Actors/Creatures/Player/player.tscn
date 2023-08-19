@@ -3491,38 +3491,38 @@ animation_name = "Aim"
 [node name="Stats" type="Node" parent="."]
 script = ExtResource("20_i3dsa")
 
-[node name="TextureProgressBar" type="TextureProgressBar" parent="."]
+[node name="StaminaNode1" type="TextureProgressBar" parent="."]
 modulate = Color(1, 1, 1, 0.501961)
 offset_left = -12.0
 offset_top = 4.0
 offset_right = -8.0
 offset_bottom = 8.0
 min_value = 75.0
-value = 75.0
+value = 100.0
 allow_lesser = true
 texture_under = ExtResource("20_mspwo")
 texture_progress = ExtResource("21_smnfw")
 
-[node name="TextureProgressBar2" type="TextureProgressBar" parent="."]
+[node name="StaminaNode2" type="TextureProgressBar" parent="."]
 modulate = Color(1, 1, 1, 0.501961)
 offset_left = -2.0
 offset_top = 6.0
 offset_right = 2.0
 offset_bottom = 10.0
 min_value = 75.0
-value = 75.0
+value = 100.0
 allow_lesser = true
 texture_under = ExtResource("20_mspwo")
 texture_progress = ExtResource("21_smnfw")
 
-[node name="TextureProgressBar3" type="TextureProgressBar" parent="."]
+[node name="StaminaNode3" type="TextureProgressBar" parent="."]
 modulate = Color(1, 1, 1, 0.501961)
 offset_left = 8.0
 offset_top = 4.0
 offset_right = 12.0
 offset_bottom = 8.0
 min_value = 75.0
-value = 75.0
+value = 85.0
 allow_lesser = true
 texture_under = ExtResource("20_mspwo")
 texture_progress = ExtResource("21_smnfw")
