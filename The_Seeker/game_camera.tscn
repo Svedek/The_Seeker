@@ -3,4 +3,5 @@
 [ext_resource type="Script" path="res://GameCamera.gd" id="1_ur8o5"]
 
 [node name="GameCamera" type="Camera2D"]
+position_smoothing_enabled = true
 script = ExtResource("1_ur8o5")

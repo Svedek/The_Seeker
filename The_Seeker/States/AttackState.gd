@@ -54,7 +54,6 @@ func input(event):
 			if new_dir != Vector2.ZERO:
 				dir = new_dir.normalized()
 				
-			print(dir)
 			_attack_queued = true
 	
 func process(delta:float) -> BaseState:
@@ -74,7 +73,6 @@ func physics_process(delta: float) -> BaseState:
 	return null
 
 func attack():
-	print("Attack: " + str(_current_attack))
 	player.set_weapon_pivot_dir(dir)
 	player.set_blend_position(animation_name + str(_current_attack), dir)
 	player.play_animation(animation_name + str(_current_attack))

@@ -8,12 +8,19 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if Input.is_action_just_pressed("attack",true):
-		print("yes")
 	pass
 
-func _unhandled_input(event):
-	print(event)
-	#if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT && event.is_echo():
-		
+func _unhandled_input(event: InputEvent):
+	if event.is_action_pressed("attack"):
+		if event.is_class("InputEventMouseButton"):
+			position = get_global_mouse_position()
+
+func _follow_player():
 	pass
+
+func update_camera(pos:Vector2, limits:Vector4):
+	position = pos
+	limit_left = limits.w
+	limit_top = limits.x
+	limit_right = limits.y
+	limit_bottom = limits.z
