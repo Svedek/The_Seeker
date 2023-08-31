@@ -3493,6 +3493,7 @@ script = ExtResource("20_i3dsa")
 
 [node name="StaminaNode1" type="TextureProgressBar" parent="."]
 modulate = Color(1, 1, 1, 0.501961)
+z_index = 12
 offset_left = -12.0
 offset_top = 4.0
 offset_right = -8.0
@@ -3505,6 +3506,7 @@ texture_progress = ExtResource("21_smnfw")
 
 [node name="StaminaNode2" type="TextureProgressBar" parent="."]
 modulate = Color(1, 1, 1, 0.501961)
+z_index = 12
 offset_left = -2.0
 offset_top = 6.0
 offset_right = 2.0
@@ -3517,6 +3519,7 @@ texture_progress = ExtResource("21_smnfw")
 
 [node name="StaminaNode3" type="TextureProgressBar" parent="."]
 modulate = Color(1, 1, 1, 0.501961)
+z_index = 12
 offset_left = 8.0
 offset_top = 4.0
 offset_right = 12.0

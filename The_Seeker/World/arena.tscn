@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://cdkjuokn3yjp7"]
+[gd_scene load_steps=9 format=3 uid="uid://cdkjuokn3yjp7"]
 
 [ext_resource type="PackedScene" uid="uid://dijbsr6yuija1" path="res://Actors/Creatures/Player/player.tscn" id="1_qlgki"]
 [ext_resource type="PackedScene" uid="uid://ddviyet2y0si3" path="res://World/wall_s_h.tscn" id="2_8ddce"]
@@ -6,6 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://41jpmb2dtnau" path="res://Actors/Creatures/Dummy/dummy.tscn" id="4_r1ldl"]
 [ext_resource type="PackedScene" uid="uid://cehadt8r3evy1" path="res://Misc/ghost.tscn" id="5_in48c"]
 [ext_resource type="PackedScene" uid="uid://6h8jq2ohqyda" path="res://Menus+GUI/gameplay_gui.tscn" id="6_nvq5b"]
+[ext_resource type="PackedScene" uid="uid://dd8pug5tc7gjf" path="res://Actors/Creatures/Bots/enforcerbot.tscn" id="7_3ge43"]
+[ext_resource type="Texture2D" uid="uid://duinmw3wkjg5j" path="res://World/TilesheetTEST.png" id="8_2ac86"]
 
 [node name="Arena" type="Node2D"]
 
@@ -39,3 +41,13 @@ position = Vector2(-125, -22)
 
 [node name="GameplayGUI" parent="CanvasLayer" instance=ExtResource("6_nvq5b")]
 mouse_filter = 2
+
+[node name="Enforcerbot" parent="." instance=ExtResource("7_3ge43")]
+position = Vector2(141, -140)
+
+[node name="Enforcerbot2" parent="." instance=ExtResource("7_3ge43")]
+position = Vector2(-117, -140)
+
+[node name="TilesheetTest" type="Sprite2D" parent="."]
+position = Vector2(34, 78)
+texture = ExtResource("8_2ac86")

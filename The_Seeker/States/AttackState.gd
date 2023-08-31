@@ -7,7 +7,7 @@ extends InputState
 @onready var idle_state: BaseState = get_node(idle_node)
 @onready var run_state: BaseState = get_node(run_node)
 
-const MOVE_MOD = 0.25
+const MOVE_MOD = 0.5
 
 var _active: bool = false
 var _queued_input: InputEvent
