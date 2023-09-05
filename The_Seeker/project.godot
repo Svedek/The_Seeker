@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="The_Seeker"
-run/main_scene="res://World/arena.tscn"
+run/main_scene="res://World/tutorial_level.tscn"
 config/features=PackedStringArray("4.1", "Forward Plus")
 boot_splash/bg_color=Color(0.141176, 0.141176, 0.141176, 1)
 config/icon="res://icon.svg"
@@ -104,6 +104,8 @@ aim={
 2d_physics/layer_2="Collectable"
 2d_physics/layer_3="PlayerBody"
 2d_physics/layer_4="EnemyBody"
+2d_physics/layer_5="PlayerCollidable"
+2d_physics/layer_6="PlayerCollidable"
 2d_physics/layer_7="PlayerHurtbox"
 2d_physics/layer_8="EnemyHurtbox"
 2d_physics/layer_9="OrbHurtbox"

@@ -777,7 +777,7 @@ tracks/5/keys = {
 "times": PackedFloat32Array(0, 0.25),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [0, 4]
+"values": [4, 20]
 }
 
 [sub_resource type="Animation" id="Animation_cumk8"]
@@ -854,7 +854,7 @@ tracks/5/keys = {
 "times": PackedFloat32Array(0, 0.25),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [0, 4]
+"values": [4, 20]
 }
 
 [sub_resource type="Animation" id="Animation_5s172"]
@@ -931,7 +931,7 @@ tracks/5/keys = {
 "times": PackedFloat32Array(0, 0.25),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [0, 4]
+"values": [4, 20]
 }
 
 [sub_resource type="Animation" id="Animation_mjsns"]
@@ -1008,7 +1008,7 @@ tracks/5/keys = {
 "times": PackedFloat32Array(0, 0.25),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [0, 4]
+"values": [4, 20]
 }
 
 [sub_resource type="Animation" id="Animation_6wais"]

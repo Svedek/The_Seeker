@@ -12,7 +12,7 @@ size = Vector2(128, 128)
 
 [node name="Dummy" type="CharacterBody2D"]
 collision_layer = 8
-collision_mask = 13
+collision_mask = 49
 script = ExtResource("1_s8pbf")
 
 [node name="Hurtbox" parent="." instance=ExtResource("2_wv453")]

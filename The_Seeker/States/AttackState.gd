@@ -47,7 +47,7 @@ func input(event):
 		if  _current_attack <= _attack_durrations.size() && !_attack_queued:
 			var new_dir: Vector2
 			if event is InputEventMouseButton:
-				new_dir = player.get_global_mouse_position() - player.position
+				new_dir = player.get_global_mouse_position() - player._weapon_pivot.global_position
 			else:
 				new_dir = get_axis()
 			

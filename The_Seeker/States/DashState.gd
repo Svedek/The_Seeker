@@ -50,7 +50,6 @@ func enter(direction: Vector2):
 	super.enter(direction)
 	print(direction)
 	player._animation_tree["parameters/Dash/blend_position"] = dir
-	player.velocity = dir * player.stats.move_speed * _dash_mod
 	_dash_timer.start()
 	_charge_regen_timer.stop()
 	_dash_ghost_timer.start()
@@ -85,6 +84,7 @@ func process(delta:float) -> BaseState:
 	return null
 	
 func physics_process(delta: float) -> BaseState:
+	player.velocity = dir * player.stats.move_speed * _dash_mod
 	player.move_and_slide()
 	return null
 	

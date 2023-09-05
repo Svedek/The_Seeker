@@ -2,7 +2,6 @@ class_name Player
 extends CharacterBody2D
 
 signal update_arrows(count: int)
-# signal update_stamina(value: float)
 
 @onready var stats : CreatureStats = $Stats
 @onready var _sprite : Sprite2D = $Sprite
@@ -23,6 +22,7 @@ var _arrows:int = 3 :
 	
 
 func _ready():
+	GameCamera.player = self
 	_animation_tree.active = true
 	_state_manager.init(self)
 
@@ -35,7 +35,7 @@ func _physics_process(delta):
 func _unhandled_input(event):
 	_state_manager.input(event)
 
-func _on_hurtbox_damaged(damage):
+func _on_hurtbox_damaged(damage): # IS THIS CORRECT?
 	print("player took " + str(damage) + " damage")
 	
 func play_animation(animation: String):
