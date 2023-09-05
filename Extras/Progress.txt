@@ -1,12 +1,12 @@
 ToDo:
 X	Player Dash
-	dash art
-	dash effects
-	3 hit combo attack
-	attack art
-	aim state
+X	dash art
+X	dash effects
+X	3 hit combo attack
+X	attack art
+X	aim state
 	aim art
-	aim projectile
+X	aim projectile
 	projectile art
 	projectile effects
 	player death transition
