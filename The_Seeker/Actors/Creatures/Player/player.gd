@@ -1,6 +1,7 @@
 class_name Player
 extends CharacterBody2D
 
+signal player_death()
 signal update_arrows(count: int)
 
 @onready var stats : CreatureStats = $Stats

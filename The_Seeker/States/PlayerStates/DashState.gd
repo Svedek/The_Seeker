@@ -48,7 +48,6 @@ func _process(delta):
 
 func enter(direction: Vector2):
 	super.enter(direction)
-	print(direction)
 	player._animation_tree["parameters/Dash/blend_position"] = dir
 	_dash_timer.start()
 	_charge_regen_timer.stop()

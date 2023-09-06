@@ -11,11 +11,11 @@
 [ext_resource type="PackedScene" uid="uid://ckqeh7bxqv75i" path="res://Collision/hitbox.tscn" id="10_t0elq"]
 [ext_resource type="PackedScene" uid="uid://dxb2qirskqwqj" path="res://Collision/hurtbox.tscn" id="11_8l01r"]
 [ext_resource type="Script" path="res://States/StateManager.gd" id="12_fgi80"]
-[ext_resource type="Script" path="res://States/IdleState.gd" id="13_bq06b"]
-[ext_resource type="Script" path="res://States/RunState.gd" id="14_yvn4p"]
-[ext_resource type="Script" path="res://States/DashState.gd" id="15_0a5vf"]
-[ext_resource type="Script" path="res://States/AttackState.gd" id="16_k0rak"]
-[ext_resource type="Script" path="res://States/AimState.gd" id="17_w8o82"]
+[ext_resource type="Script" path="res://States/PlayerStates/IdleState.gd" id="12_u881v"]
+[ext_resource type="Script" path="res://States/PlayerStates/RunState.gd" id="13_msm7b"]
+[ext_resource type="Script" path="res://States/PlayerStates/DashState.gd" id="14_6bcxq"]
+[ext_resource type="Script" path="res://States/PlayerStates/AttackState.gd" id="15_7poi0"]
+[ext_resource type="Script" path="res://States/PlayerStates/AimState.gd" id="16_4836q"]
 [ext_resource type="PackedScene" uid="uid://cufipt3ncog4o" path="res://Misc/decay_trail.tscn" id="18_wrul7"]
 [ext_resource type="Shape2D" uid="uid://dq26y1xqh4cup" path="res://Actors/Creatures/Player/player_shoot_shape.tres" id="19_o6hh0"]
 [ext_resource type="Script" path="res://Actors/Creatures/CreatureStats.gd" id="20_i3dsa"]
@@ -3447,7 +3447,7 @@ script = ExtResource("12_fgi80")
 starting_state = NodePath("IdleState")
 
 [node name="IdleState" type="Node" parent="StateManager"]
-script = ExtResource("13_bq06b")
+script = ExtResource("12_u881v")
 run_node = NodePath("../RunState")
 dash_node = NodePath("../DashState")
 attack_node = NodePath("../AttackState")
@@ -3455,7 +3455,7 @@ aim_node = NodePath("../AimState")
 animation_name = "Idle"
 
 [node name="RunState" type="Node" parent="StateManager"]
-script = ExtResource("14_yvn4p")
+script = ExtResource("13_msm7b")
 idle_node = NodePath("../IdleState")
 dash_node = NodePath("../DashState")
 attack_node = NodePath("../AttackState")
@@ -3463,7 +3463,7 @@ aim_node = NodePath("../AimState")
 animation_name = "Run"
 
 [node name="DashState" type="Node" parent="StateManager"]
-script = ExtResource("15_0a5vf")
+script = ExtResource("14_6bcxq")
 idle_node = NodePath("../IdleState")
 run_node = NodePath("../RunState")
 attack_node = NodePath("../AttackState")
@@ -3472,7 +3472,7 @@ _charge_regen_time = 0.25
 animation_name = "Dash"
 
 [node name="AttackState" type="Node" parent="StateManager"]
-script = ExtResource("16_k0rak")
+script = ExtResource("15_7poi0")
 idle_node = NodePath("../IdleState")
 run_node = NodePath("../RunState")
 _cooldown_time = 0.25
@@ -3480,7 +3480,7 @@ _attack_durrations = Array[float]([0.25, 0.25, 0.375])
 animation_name = "Attack_"
 
 [node name="AimState" type="Node" parent="StateManager"]
-script = ExtResource("17_w8o82")
+script = ExtResource("16_4836q")
 idle_node = NodePath("../IdleState")
 run_node = NodePath("../RunState")
 _decay_trail = ExtResource("18_wrul7")

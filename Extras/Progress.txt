@@ -1,18 +1,12 @@
 ToDo:
-X	Player Dash
-X	dash art
-X	dash effects
-X	3 hit combo attack
-X	attack art
-X	aim state
-	aim art
-X	aim projectile
-	projectile art
-	projectile effects
+	Bow art
+	arrow drops at wall
+	ammo (decrease on shot and increase on pickup)
+	
 	player death transition
 	player death art
 	player death effects
-	
+
 	Main menu
 	main menu art
 	options menu
@@ -22,10 +16,40 @@ X	aim projectile
 	transitions to new rooms on menu option click
 	
 	Dion
-	seperate phase AI
-	on death phase transitions
 	basic orb movement
+	orbs disabled on being shot
+	orbs release arrow on new phase
 	orb disabling allows dion to become vulnerable
+	
+	Base
+		Movement
+			Attacking
+				attackDash
+				melee
+				parryAttack
+			moving throw proj?
+			harmless dash?
+			walk
+			run
+			sprint
+		Channel
+			change orb orders
+			stage change (maybe same as above)
+			parry
+			throw proj standing
+
+
+X	Player Dash
+X	dash art
+X	dash effects
+X	3 hit combo attack
+X	attack art
+X	aim state
+X	aim projectile
+	projectile art
+	projectile effects
+	
+	
 	
 	UI
 	Dion healthbar includes orb health, missing health, current health, and orb shield (outside purple if active and black if not)
