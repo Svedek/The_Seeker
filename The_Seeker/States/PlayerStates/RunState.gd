@@ -29,8 +29,8 @@ func physics_process(delta: float) -> BaseState:
 		return idle_state
 		
 	dir = axis.normalized()
-	player.set_blend_position(animation_name, dir)
+	character.set_blend_position(animation_name, dir)
 	
-	player.velocity = axis * player.stats.move_speed
-	player.move_and_slide()
+	character.velocity = axis * character.stats.move_speed
+	character.move_and_slide()
 	return null

@@ -62,14 +62,14 @@ func input(event):
 		_mouse_mode = event is InputEventMouseButton # maybe temp
 		var new_dir: Vector2
 		if event is InputEventMouseButton:
-			new_dir = player.get_global_mouse_position() - player.position
+			new_dir = character.get_global_mouse_position() - character.position
 		else:
 			new_dir = get_axis()
 		if new_dir != Vector2.ZERO:
 			dir = new_dir.normalized()
 		
-		_raycast.position = player._firepoint.global_position
-		_raycast.target_position = player.get_global_mouse_position() - _raycast.position
+		_raycast.position = character._firepoint.global_position
+		_raycast.target_position = character.get_global_mouse_position() - _raycast.position
 		_raycast.target_position = _raycast.target_position.normalized() * _raycast_length
 		_raycast.force_raycast_update()
 		
@@ -84,19 +84,19 @@ func input(event):
 			if collider.has_method("ORB_METHOD"): # TODO APPLY KNOCKBACK AND DISABLE ORBS
 				pass
 		
-		var points : Array[Vector2] = [player._firepoint.global_position, _raycast.get_collision_point()]
+		var points : Array[Vector2] = [character._firepoint.global_position, _raycast.get_collision_point()]
 		_trails[_trails_index].set_trail(points)
 		_trails_index += 1
 
 func process(delta:float) -> BaseState:
 	var new_dir: Vector2
 	if _mouse_mode:
-		new_dir = player.get_global_mouse_position() - player.position
+		new_dir = character.get_global_mouse_position() - character.position
 	else:
 		new_dir = get_axis()
 	if new_dir != Vector2.ZERO:
 		dir = new_dir.normalized()
 		
-	player.set_blend_position(animation_name, dir)
-	player.set_weapon_pivot_dir(dir)
+	character.set_blend_position(animation_name, dir)
+	character.set_weapon_pivot_dir(dir)
 	return null

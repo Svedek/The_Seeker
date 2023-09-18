@@ -44,11 +44,11 @@ func _process(delta):
 	var partial = 0
 	if !_charge_regen_timer.is_stopped():
 		partial = (_charge_regen_time-_charge_regen_timer.time_left)/_charge_regen_time
-	player.update_stamina(_charges + partial)
+	character.update_stamina(_charges + partial)
 
 func enter(direction: Vector2):
 	super.enter(direction)
-	player._animation_tree["parameters/Dash/blend_position"] = dir
+	character._animation_tree["parameters/Dash/blend_position"] = dir
 	_dash_timer.start()
 	_charge_regen_timer.stop()
 	_dash_ghost_timer.start()
@@ -83,12 +83,12 @@ func process(delta:float) -> BaseState:
 	return null
 	
 func physics_process(delta: float) -> BaseState:
-	player.velocity = dir * player.stats.move_speed * _dash_mod
-	player.move_and_slide()
+	character.velocity = dir * character.stats.move_speed * _dash_mod
+	character.move_and_slide()
 	return null
 	
 func instance_ghost() -> void:
-	player.instance_ghost()
+	character.instance_ghost()
 	
 func charge_regen_timeout():
 	self._charges += 1

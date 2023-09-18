@@ -3,14 +3,14 @@ extends Node
 
 @export var animation_name: String
 
-var player: Player
+var character: CharacterBody2D
 var available: bool = true
 var dir: Vector2
 
 func enter(direction: Vector2):
 	dir = direction
-	player.set_blend_position(animation_name, dir)
-	player.play_animation(animation_name)
+	character.set_blend_position(animation_name, dir)
+	character.play_animation(animation_name)
 	
 func exit() -> Vector2:
 	return dir

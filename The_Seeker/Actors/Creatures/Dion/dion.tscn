@@ -1,8 +1,27 @@
-[gd_scene load_steps=2 format=3 uid="uid://bifbf5weev334"]
+[gd_scene load_steps=7 format=3 uid="uid://bifbf5weev334"]
+
+[ext_resource type="Script" path="res://Actors/Creatures/Dion/dion.gd" id="1_5qskg"]
+[ext_resource type="Script" path="res://States/StateManager.gd" id="2_340h8"]
+[ext_resource type="PackedScene" uid="uid://cpeinc0q3v1e4" path="res://Misc/stats.tscn" id="3_m2j67"]
+[ext_resource type="PackedScene" uid="uid://ckqeh7bxqv75i" path="res://Collision/hitbox.tscn" id="4_y1puo"]
+[ext_resource type="PackedScene" uid="uid://dxb2qirskqwqj" path="res://Collision/hurtbox.tscn" id="5_d23kb"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_fmnag"]
 
 [node name="Dion" type="CharacterBody2D"]
+script = ExtResource("1_5qskg")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="Body" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_fmnag")
+
+[node name="NodStateManager" type="Node" parent="."]
+script = ExtResource("2_340h8")
+
+[node name="Stats" parent="." instance=ExtResource("3_m2j67")]
+_max_health = 9
+
+[node name="Hitbox" parent="." instance=ExtResource("4_y1puo")]
+
+[node name="Hurtbox" parent="." instance=ExtResource("5_d23kb")]
+
+[connection signal="damaged" from="Hurtbox" to="." method="_on_hurtbox_damaged"]

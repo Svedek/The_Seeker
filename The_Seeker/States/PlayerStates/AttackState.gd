@@ -47,7 +47,7 @@ func input(event):
 		if  _current_attack <= _attack_durrations.size() && !_attack_queued:
 			var new_dir: Vector2
 			if event is InputEventMouseButton:
-				new_dir = player.get_global_mouse_position() - player._weapon_pivot.global_position
+				new_dir = character.get_global_mouse_position() - character._weapon_pivot.global_position
 			else:
 				new_dir = get_axis()
 			
@@ -68,14 +68,14 @@ func process(delta:float) -> BaseState:
 	return null
 	
 func physics_process(delta: float) -> BaseState:
-	player.velocity = get_axis() * player.stats.move_speed * MOVE_MOD
-	player.move_and_slide()
+	character.velocity = get_axis() * character.stats.move_speed * MOVE_MOD
+	character.move_and_slide()
 	return null
 
 func attack():
-	player.set_weapon_pivot_dir(dir)
-	player.set_blend_position(animation_name + str(_current_attack), dir)
-	player.play_animation(animation_name + str(_current_attack))
+	character.set_weapon_pivot_dir(dir)
+	character.set_blend_position(animation_name + str(_current_attack), dir)
+	character.play_animation(animation_name + str(_current_attack))
 	_attack_timer.start(_attack_durrations[_current_attack-1])
 	_attack_queued = false
 	_current_attack += 1

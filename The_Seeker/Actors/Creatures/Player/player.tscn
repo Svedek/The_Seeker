@@ -17,8 +17,8 @@
 [ext_resource type="Script" path="res://States/PlayerStates/AttackState.gd" id="15_7poi0"]
 [ext_resource type="Script" path="res://States/PlayerStates/AimState.gd" id="16_4836q"]
 [ext_resource type="PackedScene" uid="uid://cufipt3ncog4o" path="res://Misc/decay_trail.tscn" id="18_wrul7"]
+[ext_resource type="PackedScene" uid="uid://cpeinc0q3v1e4" path="res://Misc/stats.tscn" id="19_1dqlw"]
 [ext_resource type="Shape2D" uid="uid://dq26y1xqh4cup" path="res://Actors/Creatures/Player/player_shoot_shape.tres" id="19_o6hh0"]
-[ext_resource type="Script" path="res://Actors/Creatures/CreatureStats.gd" id="20_i3dsa"]
 [ext_resource type="Texture2D" uid="uid://cw5j4574xrwsy" path="res://Misc/TEMP/stamina_empty_smol.png" id="20_mspwo"]
 [ext_resource type="Texture2D" uid="uid://b24mj28ej6oc2" path="res://Misc/TEMP/stamina_progress_smol.png" id="21_smnfw"]
 
@@ -3488,8 +3488,7 @@ _shapecast_shape = ExtResource("19_o6hh0")
 _damage_collision_mask = 384
 animation_name = "Aim"
 
-[node name="Stats" type="Node" parent="."]
-script = ExtResource("20_i3dsa")
+[node name="Stats" parent="." instance=ExtResource("19_1dqlw")]
 
 [node name="StaminaNode1" type="TextureProgressBar" parent="."]
 modulate = Color(1, 1, 1, 0.501961)

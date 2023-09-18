@@ -1,32 +1,22 @@
-class_name Player
-#extends StateManagedCreature
 extends CharacterBody2D
 
-signal player_death()
-signal update_arrows(count: int)
+
+const SPEED = 300.0
+const JUMP_VELOCITY = -400.0
+
 
 @onready var stats : CreatureStats = $Stats
+@onready var _sprite : Sprite2D = $Sprite
 @onready var _weapon_pivot : Marker2D = $WeaponPivot
 @onready var _firepoint : Marker2D = $WeaponPivot/Firepoint
-@onready var stamina_node_1 = $StaminaNode1
-@onready var stamina_node_2 = $StaminaNode2
-@onready var stamina_node_3 = $StaminaNode3
-
-#move these to state managed creatrue
-@onready var _sprite : Sprite2D = $Sprite
 @onready var _animation_tree : AnimationTree = $AnimationTree
 @onready var _animation_playback : AnimationNodeStateMachinePlayback = _animation_tree.get("parameters/playback")
 @onready var _state_manager : StateManager = $StateManager
 
 var _ghost_scene = preload("res://Misc/ghost.tscn")
-var _arrows:int = 3 :
-	set (count):
-		_arrows = count
-		emit_signal("update_arrows", _arrows)
-	
+
 
 func _ready():
-	GameCamera.player = self
 	_animation_tree.active = true
 	_state_manager.init(self)
 
@@ -39,9 +29,6 @@ func _physics_process(delta):
 func _unhandled_input(event):
 	_state_manager.input(event)
 
-func _on_hurtbox_damaged(damage): # IS THIS CORRECT?
-	print("player took " + str(damage) + " damage")
-	
 func play_animation(animation: String):
 	_animation_playback.travel(animation)
 	
@@ -59,11 +46,6 @@ func instance_ghost():
 	ghost.hframes = _sprite.hframes
 	ghost.vframes = _sprite.vframes
 	ghost.frame = _sprite.frame
-	
-func gain_arrow():
-	_arrows += 1
 
-func update_stamina(value:float):
-	stamina_node_1.value = value*100
-	stamina_node_2.value = (value-1)*100
-	stamina_node_3.value = (value-2)*100
+func _on_hurtbox_damaged(damage):
+	pass # Replace with function body.
