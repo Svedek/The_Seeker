@@ -1,6 +1,6 @@
 class_name Player
-#extends StateManagedCreature
-extends CharacterBody2D
+extends StateManagedCreature
+#extends CharacterBody2D
 
 signal player_death()
 signal update_arrows(count: int)
@@ -12,12 +12,6 @@ signal update_arrows(count: int)
 @onready var stamina_node_2 = $StaminaNode2
 @onready var stamina_node_3 = $StaminaNode3
 
-#move these to state managed creatrue
-@onready var _sprite : Sprite2D = $Sprite
-@onready var _animation_tree : AnimationTree = $AnimationTree
-@onready var _animation_playback : AnimationNodeStateMachinePlayback = _animation_tree.get("parameters/playback")
-@onready var _state_manager : StateManager = $StateManager
-
 var _ghost_scene = preload("res://Misc/ghost.tscn")
 var _arrows:int = 3 :
 	set (count):
@@ -26,27 +20,14 @@ var _arrows:int = 3 :
 	
 
 func _ready():
+	super._ready()
 	GameCamera.player = self
-	_animation_tree.active = true
-	_state_manager.init(self)
-
-func _process(delta):
-	_state_manager.process(delta)
-	
-func _physics_process(delta):
-	_state_manager.physics_process(delta)
-
-func _unhandled_input(event):
-	_state_manager.input(event)
 
 func _on_hurtbox_damaged(damage): # IS THIS CORRECT?
 	print("player took " + str(damage) + " damage")
 	
 func play_animation(animation: String):
 	_animation_playback.travel(animation)
-	
-func set_blend_position(animation: String, blend_position: Vector2):
-	_animation_tree["parameters/" + animation + "/blend_position"] = blend_position
 
 func set_weapon_pivot_dir(dir:Vector2):
 	_weapon_pivot.rotation = dir.angle()
