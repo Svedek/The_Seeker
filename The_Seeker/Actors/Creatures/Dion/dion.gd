@@ -1,9 +1,7 @@
 extends StateManagedCreature
 
-
-const SPEED = 300.0
-const JUMP_VELOCITY = -400.0
-
+signal initiate_boss(id: int) # ???
+signal update_boss_health(health: int)
 
 @onready var stats : CreatureStats = $Stats
 @onready var _weapon_pivot : Marker2D = $WeaponPivot
@@ -11,19 +9,6 @@ const JUMP_VELOCITY = -400.0
 
 var _ghost_scene = preload("res://Misc/ghost.tscn")
 
-
-func _ready():
-	_animation_tree.active = true
-	_state_manager.init(self)
-
-func _process(delta):
-	_state_manager.process(delta)
-	
-func _physics_process(delta):
-	_state_manager.physics_process(delta)
-
-func _unhandled_input(event):
-	_state_manager.input(event)
 
 func play_animation(animation: String):
 	_animation_playback.travel(animation)

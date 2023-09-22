@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://bifbf5weev334"]
+[gd_scene load_steps=8 format=3 uid="uid://bifbf5weev334"]
 
 [ext_resource type="Script" path="res://Actors/Creatures/Dion/dion.gd" id="1_5qskg"]
 [ext_resource type="Script" path="res://States/StateManager.gd" id="2_340h8"]
@@ -7,6 +7,8 @@
 [ext_resource type="PackedScene" uid="uid://dxb2qirskqwqj" path="res://Collision/hurtbox.tscn" id="5_d23kb"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_fmnag"]
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_6ll1h"]
 
 [node name="Dion" type="CharacterBody2D"]
 script = ExtResource("1_5qskg")
@@ -21,13 +23,15 @@ shape = SubResource("CapsuleShape2D_fmnag")
 [node name="Hurtbox" parent="." instance=ExtResource("5_d23kb")]
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource("AnimationNodeStateMachine_6ll1h")
+anim_player = NodePath("../AnimationPlayer")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 
 [node name="StateManager" type="Node" parent="."]
 script = ExtResource("2_340h8")
 
 [node name="Stats" parent="." instance=ExtResource("3_m2j67")]
 _max_health = 9
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 
 [connection signal="damaged" from="Hurtbox" to="." method="_on_hurtbox_damaged"]

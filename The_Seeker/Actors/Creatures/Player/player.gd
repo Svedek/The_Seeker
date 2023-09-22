@@ -1,6 +1,5 @@
 class_name Player
 extends StateManagedCreature
-#extends CharacterBody2D
 
 signal player_death()
 signal update_arrows(count: int)
