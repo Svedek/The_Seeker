@@ -2,5 +2,5 @@ extends BaseState
 class_name EnemyState
 
 
-func get_player(): # Dir or ref?
-	pass
+func player_pos() -> Vector2: # Dir or ref?
+	return Player.Instance.position

@@ -11,6 +11,8 @@ signal update_arrows(count: int)
 @onready var stamina_node_2 = $StaminaNode2
 @onready var stamina_node_3 = $StaminaNode3
 
+static var Instance:Player
+
 var _ghost_scene = preload("res://Misc/ghost.tscn")
 var _arrows:int = 3 :
 	set (count):
@@ -21,6 +23,7 @@ var _arrows:int = 3 :
 func _ready():
 	super._ready()
 	GameCamera.player = self
+	Instance = self
 
 func _on_hurtbox_damaged(damage): # IS THIS CORRECT?
 	print("player took " + str(damage) + " damage")
