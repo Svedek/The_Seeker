@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://bifbf5weev334"]
+[gd_scene load_steps=18 format=3 uid="uid://bifbf5weev334"]
 
 [ext_resource type="Script" path="res://Actors/Creatures/Dion/dion.gd" id="1_5qskg"]
 [ext_resource type="Script" path="res://States/StateManager.gd" id="2_340h8"]
@@ -7,15 +7,14 @@
 [ext_resource type="PackedScene" uid="uid://dxb2qirskqwqj" path="res://Collision/hurtbox.tscn" id="5_d23kb"]
 [ext_resource type="Script" path="res://States/EnemyState/EnemyMoveState/DashAtkState.gd" id="5_i0eo5"]
 [ext_resource type="Script" path="res://States/EnemyState/EnemyMoveState/MeleeState.gd" id="6_0in2x"]
-[ext_resource type="Script" path="res://States/EnemyState/EnemyMoveState/EnemyMoveState.gd" id="7_tudxf"]
+[ext_resource type="Script" path="res://States/EnemyState/EnemyMoveState/EnemyMoveProjState.gd" id="7_f1wd4"]
 [ext_resource type="Script" path="res://States/EnemyState/EnemyMoveState/EnemyDashState.gd" id="8_tpr1y"]
 [ext_resource type="Script" path="res://States/EnemyState/EnemyMoveState/EnemyWalkState.gd" id="9_vd6a6"]
-[ext_resource type="Script" path="res://States/EnemyState/EnemyMoveState/EnemyRunState.gd" id="10_o2mkb"]
-[ext_resource type="Script" path="res://States/EnemyState/EnemyMoveState/EnemySprintState.gd" id="11_l7f4u"]
 [ext_resource type="Script" path="res://States/EnemyState/ChangeOrbState.gd" id="12_ia07t"]
 [ext_resource type="Script" path="res://States/EnemyState/ChangeStageState.gd" id="13_mn3nw"]
 [ext_resource type="Script" path="res://States/EnemyState/ParryState.gd" id="14_pi21h"]
 [ext_resource type="Script" path="res://States/EnemyState/ProjState.gd" id="15_idimh"]
+[ext_resource type="Script" path="res://States/EnemyState/EnemyIdleState.gd" id="16_slkjt"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_fmnag"]
 
@@ -49,19 +48,13 @@ script = ExtResource("5_i0eo5")
 script = ExtResource("6_0in2x")
 
 [node name="MoveProjState" type="Node" parent="StateManager"]
-script = ExtResource("7_tudxf")
+script = ExtResource("7_f1wd4")
 
 [node name="DashState" type="Node" parent="StateManager"]
 script = ExtResource("8_tpr1y")
 
 [node name="WalkState" type="Node" parent="StateManager"]
 script = ExtResource("9_vd6a6")
-
-[node name="RunState" type="Node" parent="StateManager"]
-script = ExtResource("10_o2mkb")
-
-[node name="SprintState" type="Node" parent="StateManager"]
-script = ExtResource("11_l7f4u")
 
 [node name="ChangeOrbState" type="Node" parent="StateManager"]
 script = ExtResource("12_ia07t")
@@ -74,6 +67,9 @@ script = ExtResource("14_pi21h")
 
 [node name="ProjState" type="Node" parent="StateManager"]
 script = ExtResource("15_idimh")
+
+[node name="EnemyIdleState" type="Node" parent="StateManager"]
+script = ExtResource("16_slkjt")
 
 [node name="Stats" parent="." instance=ExtResource("3_m2j67")]
 _max_health = 9
