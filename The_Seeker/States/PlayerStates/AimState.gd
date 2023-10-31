@@ -61,16 +61,20 @@ func input(event):
 	if event.is_action_pressed("attack"):
 		_mouse_mode = event is InputEventMouseButton # maybe temp
 		var new_dir: Vector2
+		var target_position: Vector2
 		if event is InputEventMouseButton:
 			new_dir = character.get_global_mouse_position() - character.position
+			target_position = character.get_global_mouse_position() - _raycast.position
 		else:
 			new_dir = get_axis()
+			target_position = dir
+			if new_dir != Vector2.ZERO:
+				target_position = new_dir 
 		if new_dir != Vector2.ZERO:
 			dir = new_dir.normalized()
 		
 		_raycast.position = character._firepoint.global_position
-		_raycast.target_position = character.get_global_mouse_position() - _raycast.position
-		_raycast.target_position = _raycast.target_position.normalized() * _raycast_length
+		_raycast.target_position = target_position.normalized() * _raycast_length
 		_raycast.force_raycast_update()
 		
 		_shapecast.position = _raycast.position
