@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://cdkjuokn3yjp7"]
+[gd_scene load_steps=7 format=3 uid="uid://cdkjuokn3yjp7"]
 
 [ext_resource type="PackedScene" uid="uid://dijbsr6yuija1" path="res://Actors/Creatures/Player/player.tscn" id="1_qlgki"]
 [ext_resource type="TileSet" uid="uid://c6hoh56g4x836" path="res://World/Boink_Tileset.tres" id="3_68mpw"]
 [ext_resource type="PackedScene" uid="uid://bu4yhyn64sud4" path="res://World/room_sensor.tscn" id="4_p31mb"]
+[ext_resource type="PackedScene" uid="uid://8xaq1ub5lvqd" path="res://Actors/orb.tscn" id="5_niyho"]
 [ext_resource type="PackedScene" uid="uid://6h8jq2ohqyda" path="res://Menus+GUI/gameplay_gui.tscn" id="6_nvq5b"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_irlqw"]
@@ -27,5 +28,13 @@ layer_0/tile_data = PackedInt32Array(65535, 65537, 1, 65534, 65537, 1, 65533, 65
 
 [node name="CollisionShape2D" parent="TileMap/RoomSensorSmall2" index="0"]
 shape = SubResource("RectangleShape2D_irlqw")
+
+[node name="Orb" parent="." instance=ExtResource("5_niyho")]
+position = Vector2(-48, -32)
+
+[node name="Orb2" parent="." instance=ExtResource("5_niyho")]
+position = Vector2(80, -80)
+
+[connection signal="update_arrows" from="Player" to="CanvasLayer/GameplayGUI" method="_on_player_update_arrows"]
 
 [editable path="TileMap/RoomSensorSmall2"]

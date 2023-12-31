@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://cidn48x2o4xsn"]
+
+[ext_resource type="Script" path="res://Actors/Collectable/Arrow/arrow_collectable.gd" id="1_bhida"]
+[ext_resource type="Texture2D" uid="uid://n437hpgu0kfp" path="res://Misc/TEMP/ArrowDark.png" id="2_j7dk1"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_345ox"]
+radius = 12.0
+height = 56.0
+
+[node name="ArrowCollectable" type="Area2D"]
+rotation = 1.5708
+collision_layer = 2
+collision_mask = 4
+monitoring = false
+monitorable = false
+script = ExtResource("1_bhida")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_345ox")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_j7dk1")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

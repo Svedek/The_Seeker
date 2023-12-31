@@ -1,0 +1,93 @@
+[gd_scene load_steps=10 format=3 uid="uid://8xaq1ub5lvqd"]
+
+[ext_resource type="Texture2D" uid="uid://dcc6vitjnsbul" path="res://Misc/TEMP/orb.png" id="1_nuomw"]
+[ext_resource type="Script" path="res://Actors/orb.gd" id="1_vdhes"]
+[ext_resource type="PackedScene" uid="uid://ckqeh7bxqv75i" path="res://Collision/hitbox.tscn" id="3_qlnr8"]
+
+[sub_resource type="Animation" id="Animation_jvafh"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_bne1n"]
+resource_name = "active"
+length = 0.625
+loop_mode = 1
+step = 0.125
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.125, 0.25, 0.375, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4]
+}
+
+[sub_resource type="Animation" id="Animation_aut38"]
+resource_name = "deactive"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [5]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_60ess"]
+_data = {
+"RESET": SubResource("Animation_jvafh"),
+"active": SubResource("Animation_bne1n"),
+"deactive": SubResource("Animation_aut38")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vhumo"]
+radius = 19.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ucnwq"]
+radius = 13.0
+
+[node name="Orb" type="Area2D"]
+collision_layer = 256
+collision_mask = 0
+monitoring = false
+script = ExtResource("1_vdhes")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_nuomw")
+hframes = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_60ess")
+}
+autoplay = "active"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_vhumo")
+
+[node name="Hitbox" parent="." instance=ExtResource("3_qlnr8")]
+collision_mask = 64
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+shape = SubResource("CircleShape2D_ucnwq")
+debug_color = Color(1, 0, 0, 0.419608)

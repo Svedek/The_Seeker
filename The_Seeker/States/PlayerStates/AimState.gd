@@ -13,6 +13,7 @@ extends InputState
 
 @export_category("Data")
 @export var _decay_trail: PackedScene
+@export var _arrow_collectable: PackedScene
 @export var _shapecast_shape: Shape2D
 @export_flags_2d_physics var _wall_collision_mask: int = 1 << 0
 @export_flags_2d_physics var _damage_collision_mask: int = 1 << 7
@@ -21,7 +22,6 @@ extends InputState
 const NUM_TRAILS = 9
 const SHOT_DAMAGE = 3
 
-var _arrows: int = 5
 var _raycast: RayCast2D
 var _shapecast: ShapeCast2D
 var _trails: Array
@@ -29,7 +29,7 @@ var _trails_index: int :
 	set(value):
 		_trails_index = value % NUM_TRAILS
 
-var _mouse_mode: bool = true
+#var _mouse_mode: bool = true
 
 func _ready():
 	_raycast = RayCast2D.new()
@@ -59,17 +59,18 @@ func input(event):
 			return idle_state
 		
 	if event.is_action_pressed("attack"):
-		_mouse_mode = event is InputEventMouseButton # maybe temp
+		#_mouse_mode = event is InputEventMouseButton # maybe temp
 		var new_dir: Vector2
 		var target_position: Vector2
 		if event is InputEventMouseButton:
 			new_dir = character.get_global_mouse_position() - character.position
-			target_position = character.get_global_mouse_position() - _raycast.position
+			target_position = character.get_global_mouse_position() - character._firepoint.global_position
 		else:
 			new_dir = get_axis()
 			target_position = dir
 			if new_dir != Vector2.ZERO:
 				target_position = new_dir 
+		
 		if new_dir != Vector2.ZERO:
 			dir = new_dir.normalized()
 		
@@ -81,12 +82,20 @@ func input(event):
 		_shapecast.target_position = _raycast.get_collision_point()-_raycast.position
 		_shapecast.force_shapecast_update()
 		
+		var orb_hit = false
 		for i in range(_shapecast.collision_result.size()):
+			print(i)
 			var collider = _shapecast.collision_result[i].collider
 			if collider.has_method("take_damage"):
 				collider.take_damage(SHOT_DAMAGE)
-			if collider.has_method("ORB_METHOD"): # TODO APPLY KNOCKBACK AND DISABLE ORBS
-				pass
+			if collider.has_method("orb_pierced"): # TODO APPLY KNOCKBACK AND DISABLE ORBS
+				collider.orb_pierced()
+				collider.position = _raycast.get_collision_point()
+				orb_hit = true
+		var arrow = _arrow_collectable.instantiate()
+		get_tree().root.add_child(arrow)
+		arrow.global_position = _raycast.get_collision_point()
+		arrow.rotate((_raycast.get_collision_point() - character._firepoint.global_position).angle())
 		
 		var points : Array[Vector2] = [character._firepoint.global_position, _raycast.get_collision_point()]
 		_trails[_trails_index].set_trail(points)
@@ -94,13 +103,19 @@ func input(event):
 
 func process(delta:float) -> BaseState:
 	var new_dir: Vector2
-	if _mouse_mode:
-		new_dir = character.get_global_mouse_position() - character.position
-	else:
-		new_dir = get_axis()
+	new_dir = character.get_global_mouse_position() - character.position
+	#if _mouse_mode:
+		#new_dir = character.get_global_mouse_position() - character.position
+	#else:
+		#new_dir = get_axis()
+		
 	if new_dir != Vector2.ZERO:
 		dir = new_dir.normalized()
 		
 	character.set_blend_position(animation_name, dir)
 	character.set_weapon_pivot_dir(dir)
 	return null
+
+
+func _on_player_update_arrows(count):
+	available = count > 0

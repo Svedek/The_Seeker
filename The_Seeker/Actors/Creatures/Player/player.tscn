@@ -1,4 +1,4 @@
-[gd_scene load_steps=107 format=3 uid="uid://dijbsr6yuija1"]
+[gd_scene load_steps=108 format=3 uid="uid://dijbsr6yuija1"]
 
 [ext_resource type="Script" path="res://Actors/Creatures/Player/player.gd" id="1_sxsqt"]
 [ext_resource type="Texture2D" uid="uid://dm17wh2j538cs" path="res://Actors/Creatures/Player/player_idle.png" id="2_gwh8x"]
@@ -16,6 +16,7 @@
 [ext_resource type="Script" path="res://States/PlayerStates/DashState.gd" id="14_6bcxq"]
 [ext_resource type="Script" path="res://States/PlayerStates/AttackState.gd" id="15_7poi0"]
 [ext_resource type="Script" path="res://States/PlayerStates/AimState.gd" id="16_4836q"]
+[ext_resource type="PackedScene" uid="uid://cidn48x2o4xsn" path="res://Actors/Collectable/Arrow/arrow_collectable.tscn" id="18_7tam5"]
 [ext_resource type="PackedScene" uid="uid://cufipt3ncog4o" path="res://Misc/decay_trail.tscn" id="18_wrul7"]
 [ext_resource type="PackedScene" uid="uid://cpeinc0q3v1e4" path="res://Misc/stats.tscn" id="19_1dqlw"]
 [ext_resource type="Shape2D" uid="uid://dq26y1xqh4cup" path="res://Actors/Creatures/Player/player_shoot_shape.tres" id="19_o6hh0"]
@@ -3355,7 +3356,7 @@ radius = 24.0
 radius = 16.0
 height = 56.0
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2uu27"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ne72p"]
 radius = 6.0
 height = 18.0
 
@@ -3383,9 +3384,11 @@ libraries = {
 }
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_l083i")
+}
 tree_root = SubResource("AnimationNodeStateMachine_vnyx2")
 anim_player = NodePath("../AnimationPlayer")
-active = true
 parameters/Aim/blend_position = Vector2(-0.5536, 0.27592)
 parameters/Attack_1/blend_position = Vector2(-0.1104, 0.627302)
 parameters/Attack_2/blend_position = Vector2(0, 0)
@@ -3414,7 +3417,7 @@ rotation = -1.5708
 collision_mask = 128
 monitoring = false
 
-[node name="CollisionShape2D" parent="WeaponPivot/SwordHitboxLight" index="0"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WeaponPivot/SwordHitboxLight"]
 position = Vector2(2.5034e-05, 4)
 shape = SubResource("CircleShape2D_3n8t5")
 debug_color = Color(1, 0, 0, 0.419608)
@@ -3426,8 +3429,8 @@ collision_mask = 128
 monitoring = false
 damage = 2
 
-[node name="CollisionShape2D" parent="WeaponPivot/SwordHitboxHeavy" index="0"]
-position = Vector2(2.50339e-05, 21)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WeaponPivot/SwordHitboxHeavy"]
+position = Vector2(5.00678e-05, 42)
 shape = SubResource("CapsuleShape2D_yk5fm")
 debug_color = Color(1, 0, 0, 0.419608)
 
@@ -3437,10 +3440,10 @@ position = Vector2(12, 0)
 [node name="Hurtbox" parent="." instance=ExtResource("11_8l01r")]
 collision_layer = 64
 
-[node name="CollisionShape2D" parent="Hurtbox" index="0"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
 position = Vector2(0, -7)
-shape = SubResource("CapsuleShape2D_2uu27")
-debug_color = Color(0, 0.643137, 0.32549, 0.419608)
+shape = SubResource("CapsuleShape2D_ne72p")
+debug_color = Color(0.643137, 0.32549, 0.419608, 0.419608)
 
 [node name="StateManager" type="Node" parent="."]
 script = ExtResource("12_fgi80")
@@ -3484,6 +3487,7 @@ script = ExtResource("16_4836q")
 idle_node = NodePath("../IdleState")
 run_node = NodePath("../RunState")
 _decay_trail = ExtResource("18_wrul7")
+_arrow_collectable = ExtResource("18_7tam5")
 _shapecast_shape = ExtResource("19_o6hh0")
 _damage_collision_mask = 384
 animation_name = "Aim"
@@ -3529,8 +3533,5 @@ allow_lesser = true
 texture_under = ExtResource("20_mspwo")
 texture_progress = ExtResource("21_smnfw")
 
+[connection signal="update_arrows" from="." to="StateManager/AimState" method="_on_player_update_arrows"]
 [connection signal="damaged" from="Hurtbox" to="." method="_on_hurtbox_damaged"]
-
-[editable path="WeaponPivot/SwordHitboxLight"]
-[editable path="WeaponPivot/SwordHitboxHeavy"]
-[editable path="Hurtbox"]

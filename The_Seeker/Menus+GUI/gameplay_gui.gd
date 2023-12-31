@@ -27,3 +27,7 @@ func update_health(current_hp:int, orb_hp:int):
 func update_arrows(count:int):
 	arrow_label.text = str(count)
 
+
+
+func _on_player_update_arrows(count):
+	arrow_label.text = str(count)
