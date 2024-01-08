@@ -1,7 +1,7 @@
-[gd_scene load_steps=10 format=3 uid="uid://8xaq1ub5lvqd"]
+[gd_scene load_steps=11 format=3 uid="uid://8xaq1ub5lvqd"]
 
 [ext_resource type="Texture2D" uid="uid://dcc6vitjnsbul" path="res://Misc/TEMP/orb.png" id="1_nuomw"]
-[ext_resource type="Script" path="res://Actors/orb.gd" id="1_vdhes"]
+[ext_resource type="Script" path="res://Actors/Orb/orb.gd" id="1_vdhes"]
 [ext_resource type="PackedScene" uid="uid://ckqeh7bxqv75i" path="res://Collision/hitbox.tscn" id="3_qlnr8"]
 
 [sub_resource type="Animation" id="Animation_jvafh"]
@@ -66,6 +66,9 @@ radius = 19.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_ucnwq"]
 radius = 13.0
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xou03"]
+size = Vector2(16, 8)
+
 [node name="Orb" type="Area2D"]
 collision_layer = 256
 collision_mask = 0
@@ -91,3 +94,43 @@ collision_mask = 64
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
 shape = SubResource("CircleShape2D_ucnwq")
 debug_color = Color(1, 0, 0, 0.419608)
+
+[node name="RightBumper" type="Area2D" parent="."]
+rotation = -1.5708
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RightBumper"]
+position = Vector2(0, 16)
+shape = SubResource("RectangleShape2D_xou03")
+debug_color = Color(0.678431, 0.505882, 0, 0.419608)
+
+[node name="TopBumper" type="Area2D" parent="."]
+rotation = 3.14159
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TopBumper"]
+position = Vector2(0, 16)
+shape = SubResource("RectangleShape2D_xou03")
+debug_color = Color(0.678431, 0.505882, 0, 0.419608)
+
+[node name="LeftBumper" type="Area2D" parent="."]
+rotation = 1.5708
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LeftBumper"]
+position = Vector2(0, 16)
+shape = SubResource("RectangleShape2D_xou03")
+debug_color = Color(0.678431, 0.505882, 0, 0.419608)
+
+[node name="BotBumper" type="Area2D" parent="."]
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BotBumper"]
+position = Vector2(0, 16)
+shape = SubResource("RectangleShape2D_xou03")
+debug_color = Color(0.678431, 0.505882, 0, 0.419608)
+
+[connection signal="body_entered" from="RightBumper" to="." method="_on_right_bumper_body_entered"]
+[connection signal="body_entered" from="TopBumper" to="." method="_on_top_bumper_body_entered"]
+[connection signal="body_entered" from="LeftBumper" to="." method="_on_left_bumper_body_entered"]
+[connection signal="body_entered" from="BotBumper" to="." method="_on_bot_bumper_body_entered"]

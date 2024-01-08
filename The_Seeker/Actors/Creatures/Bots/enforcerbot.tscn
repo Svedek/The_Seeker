@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://Actors/Creatures/Bots/enforcerbot.gd" id="1_lljhc"]
 [ext_resource type="Texture2D" uid="uid://bmdd6e105nb0h" path="res://Actors/Creatures/Bots/enforcerbot.png" id="2_berdx"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_lw6w6"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_05l5u"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_fjasm"]
 radius = 6.0
@@ -320,8 +320,8 @@ script = ExtResource("1_lljhc")
 visible = false
 collision_layer = 128
 
-[node name="CollisionShape2D" parent="Hurtbox" index="0"]
-shape = SubResource("RectangleShape2D_lw6w6")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+shape = SubResource("CircleShape2D_05l5u")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -3)
@@ -341,9 +341,10 @@ libraries = {
 }
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
+root_node = NodePath("../Sprite2D")
+libraries = {
+"": SubResource("AnimationLibrary_5p51f")
+}
 tree_root = SubResource("AnimationNodeBlendSpace2D_3ejdh")
 anim_player = NodePath("../AnimationPlayer")
-active = true
 parameters/blend_position = Vector2(0, 0)
-
-[editable path="Hurtbox"]

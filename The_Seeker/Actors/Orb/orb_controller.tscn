@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bfc8hmf7w55j0"]
+
+[ext_resource type="Script" path="res://Actors/Orb/orb_controller.gd" id="1_wg8j7"]
+
+[node name="OrbController" type="Node"]
+script = ExtResource("1_wg8j7")

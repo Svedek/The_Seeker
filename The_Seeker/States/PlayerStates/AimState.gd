@@ -84,7 +84,6 @@ func input(event):
 		
 		var orb_hit = false
 		for i in range(_shapecast.collision_result.size()):
-			print(i)
 			var collider = _shapecast.collision_result[i].collider
 			if collider.has_method("take_damage"):
 				collider.take_damage(SHOT_DAMAGE)

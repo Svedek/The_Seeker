@@ -2,6 +2,7 @@ extends InputState
 
 #TODO maybe have dash speed influenced by input dir slightly
 #TODO if redo movement system to be not snap movement, have dash be boost of speed with input momvement too?
+#TODO initial frames do not provide invincibility likely due to monitorable being changed in animation
 
 signal dash_charges_update(charges:int)
 
