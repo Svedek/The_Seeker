@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://cqkooyhov3s6r"]
 
 [ext_resource type="TileSet" uid="uid://c6hoh56g4x836" path="res://World/Boink_Tileset.tres" id="1_1kgv3"]
-[ext_resource type="PackedScene" uid="uid://dijbsr6yuija1" path="res://Actors/Creatures/Player/player.tscn" id="2_84ooe"]
+[ext_resource type="PackedScene" uid="uid://lv1hnnxdvbln" path="res://Menus+GUI/player_dummy.tscn" id="2_muqyx"]
 
 [node name="MenuHallway" type="Node2D"]
 
@@ -31,8 +31,4 @@ position = Vector2(2304, 768)
 [node name="OptionsMenuPosition" type="Marker2D" parent="."]
 position = Vector2(2816, 256)
 
-[node name="Player" parent="." instance=ExtResource("2_84ooe")]
-position = Vector2(256, 768)
-
-[node name="Camera2D" type="Camera2D" parent="Player"]
-zoom = Vector2(2, 2)
+[node name="PlayerDummy" parent="." instance=ExtResource("2_muqyx")]
