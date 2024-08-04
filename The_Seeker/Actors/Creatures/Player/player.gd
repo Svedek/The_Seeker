@@ -13,7 +13,7 @@ signal update_arrows(count: int)
 
 static var Instance:Player
 
-var _ghost_scene = preload("res://Misc/ghost.tscn")
+var _ghost_scene = preload("res://Actors/Effects/Ghost/ghost.tscn")
 var _arrows:int = 3 :
 	set (count):
 		_arrows = count

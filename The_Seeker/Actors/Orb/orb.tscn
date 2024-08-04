@@ -1,8 +1,8 @@
 [gd_scene load_steps=11 format=3 uid="uid://8xaq1ub5lvqd"]
 
-[ext_resource type="Texture2D" uid="uid://dcc6vitjnsbul" path="res://Misc/TEMP/orb.png" id="1_nuomw"]
+[ext_resource type="Texture2D" uid="uid://dcc6vitjnsbul" path="res://Assets/Images/Projectile/orb.png" id="1_nuomw"]
 [ext_resource type="Script" path="res://Actors/Orb/orb.gd" id="1_vdhes"]
-[ext_resource type="PackedScene" uid="uid://ckqeh7bxqv75i" path="res://Collision/hitbox.tscn" id="3_qlnr8"]
+[ext_resource type="PackedScene" uid="uid://ckqeh7bxqv75i" path="res://Actors/Collision/hitbox.tscn" id="3_qlnr8"]
 
 [sub_resource type="Animation" id="Animation_jvafh"]
 length = 0.001

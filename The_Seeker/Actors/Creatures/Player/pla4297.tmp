@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://Actors/Creatures/Player/player.gd" id="1_sxsqt"]
 [ext_resource type="Texture2D" uid="uid://dm17wh2j538cs" path="res://Actors/Creatures/Player/player_idle.png" id="2_gwh8x"]
 [ext_resource type="Texture2D" uid="uid://doq8t5um5qyd6" path="res://Actors/Creatures/Player/player_aim.png" id="4_lniia"]
-[ext_resource type="Texture2D" uid="uid://bs042we2byxy5" path="res://Assets/Images/Player/melee_combo.png" id="5_cxrem"]
+[ext_resource type="Texture2D" uid="uid://bs042we2byxy5" path="res://Misc/melee_combo.png" id="5_cxrem"]
 [ext_resource type="Texture2D" uid="uid://ch1l2bdhuorqx" path="res://Actors/Creatures/Player/player_dash.png" id="6_t65wj"]
 [ext_resource type="Texture2D" uid="uid://de5lcv3lw77k7" path="res://Actors/Creatures/Player/Player.png" id="7_0r3vi"]
 [ext_resource type="Texture2D" uid="uid://c3li8bhrucfi2" path="res://Actors/Creatures/Player/player_melee_1.png" id="8_trdbo"]
@@ -16,9 +16,9 @@
 [ext_resource type="Script" path="res://States/PlayerStates/DashState.gd" id="14_6bcxq"]
 [ext_resource type="Script" path="res://States/PlayerStates/AttackState.gd" id="15_7poi0"]
 [ext_resource type="Script" path="res://States/PlayerStates/AimState.gd" id="16_4836q"]
-[ext_resource type="PackedScene" uid="uid://cufipt3ncog4o" path="res://Actors/Effects/DecayTrail/decay_trail.tscn" id="17_j2sjk"]
 [ext_resource type="PackedScene" uid="uid://cidn48x2o4xsn" path="res://Actors/Collectable/Arrow/arrow_collectable.tscn" id="18_7tam5"]
-[ext_resource type="PackedScene" uid="uid://cpeinc0q3v1e4" path="res://Actors/Creatures/stats.tscn" id="19_1dqlw"]
+[ext_resource type="PackedScene" uid="uid://cufipt3ncog4o" path="res://Misc/decay_trail.tscn" id="18_wrul7"]
+[ext_resource type="PackedScene" uid="uid://cpeinc0q3v1e4" path="res://Misc/stats.tscn" id="19_1dqlw"]
 [ext_resource type="Shape2D" uid="uid://dq26y1xqh4cup" path="res://Actors/Creatures/Player/player_shoot_shape.tres" id="19_o6hh0"]
 [ext_resource type="Texture2D" uid="uid://cw5j4574xrwsy" path="res://Assets/Images/MenusAndUI/stamina_empty_smol.png" id="20_mspwo"]
 [ext_resource type="Texture2D" uid="uid://b24mj28ej6oc2" path="res://Assets/Images/MenusAndUI/stamina_progress_smol.png" id="21_smnfw"]
@@ -3486,7 +3486,7 @@ animation_name = "Attack_"
 script = ExtResource("16_4836q")
 idle_node = NodePath("../IdleState")
 run_node = NodePath("../RunState")
-_decay_trail = ExtResource("17_j2sjk")
+_decay_trail = ExtResource("18_wrul7")
 _arrow_collectable = ExtResource("18_7tam5")
 _shapecast_shape = ExtResource("19_o6hh0")
 _damage_collision_mask = 384

@@ -2,9 +2,9 @@
 
 [ext_resource type="Script" path="res://Actors/Creatures/Dion/dion.gd" id="1_5qskg"]
 [ext_resource type="Script" path="res://States/StateManager.gd" id="2_340h8"]
-[ext_resource type="PackedScene" uid="uid://cpeinc0q3v1e4" path="res://Misc/stats.tscn" id="3_m2j67"]
-[ext_resource type="PackedScene" uid="uid://ckqeh7bxqv75i" path="res://Collision/hitbox.tscn" id="4_y1puo"]
-[ext_resource type="PackedScene" uid="uid://dxb2qirskqwqj" path="res://Collision/hurtbox.tscn" id="5_d23kb"]
+[ext_resource type="PackedScene" uid="uid://cpeinc0q3v1e4" path="res://Actors/Creatures/stats.tscn" id="3_m2j67"]
+[ext_resource type="PackedScene" uid="uid://ckqeh7bxqv75i" path="res://Actors/Collision/hitbox.tscn" id="4_y1puo"]
+[ext_resource type="PackedScene" uid="uid://dxb2qirskqwqj" path="res://Actors/Collision/hurtbox.tscn" id="5_d23kb"]
 [ext_resource type="Script" path="res://States/EnemyState/EnemyMoveState/DashAtkState.gd" id="5_i0eo5"]
 [ext_resource type="Script" path="res://States/EnemyState/EnemyMoveState/MeleeState.gd" id="6_0in2x"]
 [ext_resource type="Script" path="res://States/EnemyState/EnemyMoveState/EnemyMoveProjState.gd" id="7_f1wd4"]

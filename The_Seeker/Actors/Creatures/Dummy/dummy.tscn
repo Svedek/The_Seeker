@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://41jpmb2dtnau"]
 
 [ext_resource type="Script" path="res://Actors/Creatures/Dummy/dummy.gd" id="1_s8pbf"]
-[ext_resource type="PackedScene" uid="uid://dxb2qirskqwqj" path="res://Collision/hurtbox.tscn" id="2_wv453"]
+[ext_resource type="PackedScene" uid="uid://dxb2qirskqwqj" path="res://Actors/Collision/hurtbox.tscn" id="2_wv453"]
 [ext_resource type="Texture2D" uid="uid://dj518pyjxu6tw" path="res://icon.svg" id="3_x8jwv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jtpby"]

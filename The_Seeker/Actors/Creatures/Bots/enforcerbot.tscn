@@ -1,6 +1,6 @@
 [gd_scene load_steps=17 format=3 uid="uid://dd8pug5tc7gjf"]
 
-[ext_resource type="PackedScene" uid="uid://dxb2qirskqwqj" path="res://Collision/hurtbox.tscn" id="1_3vayw"]
+[ext_resource type="PackedScene" uid="uid://dxb2qirskqwqj" path="res://Actors/Collision/hurtbox.tscn" id="1_3vayw"]
 [ext_resource type="Script" path="res://Actors/Creatures/Bots/enforcerbot.gd" id="1_lljhc"]
 [ext_resource type="Texture2D" uid="uid://bmdd6e105nb0h" path="res://Actors/Creatures/Bots/enforcerbot.png" id="2_berdx"]
 

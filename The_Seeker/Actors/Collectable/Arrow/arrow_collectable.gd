@@ -1,6 +1,6 @@
 extends Area2D
 
-const ARROW = preload("res://Misc/TEMP/Arrow.png")
+const ARROW = preload("res://Assets/Images/Projectile/Arrow.png")
 
 
 func _ready():
