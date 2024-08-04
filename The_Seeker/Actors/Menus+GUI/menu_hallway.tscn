@@ -443,6 +443,7 @@ script = ExtResource("1_7uusj")
 libraries = {
 "": SubResource("AnimationLibrary_54iiv")
 }
+speed_scale = 2.0
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
 libraries = {

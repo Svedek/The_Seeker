@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://bfohk3dxx3qbv"]
+[gd_scene load_steps=8 format=3 uid="uid://bfohk3dxx3qbv"]
 
 [ext_resource type="Script" path="res://Actors/Menus+GUI/main_menu.gd" id="1_jw1op"]
 [ext_resource type="FontFile" uid="uid://brt3paij5eo6b" path="res://Assets/Fonts/Pixelify_Sans/PixelifySans-VariableFont_wght.ttf" id="1_xtmee"]
@@ -20,6 +20,9 @@
 [sub_resource type="ViewportTexture" id="ViewportTexture_8llem"]
 viewport_path = NodePath("SubViewport")
 
+[sub_resource type="ViewportTexture" id="ViewportTexture_vn6i1"]
+viewport_path = NodePath("SubViewport")
+
 [node name="MainMenu" type="Control"]
 layout_mode = 3
 anchors_preset = 15
@@ -32,7 +35,7 @@ size_flags_vertical = 3
 theme = SubResource("Theme_s48co")
 script = ExtResource("1_jw1op")
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="TitleScreen" type="ColorRect" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -41,7 +44,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
-[node name="VBoxContainer" type="VBoxContainer" parent="ColorRect"]
+[node name="VBoxContainer" type="VBoxContainer" parent="TitleScreen"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -49,57 +52,59 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="ColorRect/VBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="TitleScreen/VBoxContainer"]
 layout_mode = 2
 theme_override_constants/margin_top = 32
 theme_override_constants/margin_bottom = 32
 
-[node name="CenterContainer" type="CenterContainer" parent="ColorRect/VBoxContainer/MarginContainer"]
+[node name="CenterContainer" type="CenterContainer" parent="TitleScreen/VBoxContainer/MarginContainer"]
 layout_mode = 2
 size_flags_vertical = 0
 
-[node name="Label" type="Label" parent="ColorRect/VBoxContainer/MarginContainer/CenterContainer"]
+[node name="Label" type="Label" parent="TitleScreen/VBoxContainer/MarginContainer/CenterContainer"]
 layout_mode = 2
 theme = SubResource("Theme_fnc02")
 text = "The
 Seeker"
 horizontal_alignment = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="ColorRect/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="TitleScreen/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="MarginContainer" type="MarginContainer" parent="ColorRect/VBoxContainer/HBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="TitleScreen/VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(128, 0)
 layout_mode = 2
 theme_override_constants/margin_left = 32
 
-[node name="VBoxContainer" type="VBoxContainer" parent="ColorRect/VBoxContainer/HBoxContainer/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="TitleScreen/VBoxContainer/HBoxContainer/MarginContainer"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="ColorRect/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer"]
+[node name="StartButton" type="Button" parent="TitleScreen/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "Start"
 
-[node name="HSeparator" type="HSeparator" parent="ColorRect/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer"]
+[node name="HSeparator" type="HSeparator" parent="TitleScreen/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="Label2" type="Label" parent="ColorRect/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer"]
+[node name="OptionsButton" type="Button" parent="TitleScreen/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
-text = "Options"
+text = "Options
+"
 
-[node name="HSeparator2" type="HSeparator" parent="ColorRect/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer"]
+[node name="HSeparator2" type="HSeparator" parent="TitleScreen/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="Label3" type="Label" parent="ColorRect/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer"]
+[node name="ExitButton" type="Button" parent="TitleScreen/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
-text = "Exit"
+text = "Exit
+"
 
-[node name="Control" type="Control" parent="ColorRect/VBoxContainer/HBoxContainer"]
+[node name="Control" type="Control" parent="TitleScreen/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="TextureRect" type="TextureRect" parent="ColorRect/VBoxContainer/HBoxContainer/Control"]
+[node name="TextureRect" type="TextureRect" parent="TitleScreen/VBoxContainer/HBoxContainer/Control"]
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
@@ -113,6 +118,87 @@ grow_vertical = 0
 texture = SubResource("ViewportTexture_8llem")
 stretch_mode = 4
 
+[node name="OptionsScreen" type="ColorRect" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.262745, 0.313726, 0.34902, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="OptionsScreen"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="OptionsScreen/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="CenterContainer" type="CenterContainer" parent="OptionsScreen/VBoxContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="OptionsScreen/VBoxContainer/MarginContainer/CenterContainer"]
+layout_mode = 2
+text = "Options
+"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="OptionsScreen/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="OptionsScreen/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="OptionsScreen/VBoxContainer/HBoxContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="SomethingButton" type="Button" parent="OptionsScreen/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+text = "Something
+"
+
+[node name="HSeparator" type="HSeparator" parent="OptionsScreen/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="OptionsReturnButton" type="Button" parent="OptionsScreen/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+text = "Return"
+
+[node name="Control" type="Control" parent="OptionsScreen/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="TextureRect" type="TextureRect" parent="OptionsScreen/VBoxContainer/HBoxContainer/Control"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -512.0
+offset_top = -512.0
+grow_horizontal = 0
+grow_vertical = 0
+texture = SubResource("ViewportTexture_vn6i1")
+
 [node name="SubViewport" type="SubViewport" parent="."]
 
 [node name="MenuHallway" parent="SubViewport" instance=ExtResource("3_dffns")]
+
+[connection signal="pressed" from="TitleScreen/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="TitleScreen/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/OptionsButton" to="." method="_on_options_button_pressed"]
+[connection signal="pressed" from="TitleScreen/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/ExitButton" to="." method="_on_exit_button_pressed"]
+[connection signal="pressed" from="OptionsScreen/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/OptionsReturnButton" to="." method="_on_options_return_button_pressed"]
+[connection signal="exit_reached" from="SubViewport/MenuHallway" to="." method="_on_menu_hallway_exit_reached"]
+[connection signal="options_left" from="SubViewport/MenuHallway" to="." method="_on_menu_hallway_options_left"]
+[connection signal="options_reached" from="SubViewport/MenuHallway" to="." method="_on_menu_hallway_options_reached"]
+[connection signal="start_reached" from="SubViewport/MenuHallway" to="." method="_on_menu_hallway_start_reached"]
