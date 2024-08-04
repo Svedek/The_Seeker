@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://cqkooyhov3s6r"]
+[gd_scene load_steps=12 format=3 uid="uid://cqkooyhov3s6r"]
 
 [ext_resource type="TileSet" uid="uid://c6hoh56g4x836" path="res://World/Boink_Tileset.tres" id="1_1kgv3"]
 [ext_resource type="Script" path="res://Menus+GUI/menu_hallway.gd" id="1_7uusj"]
@@ -77,7 +77,6 @@ tracks/1/keys = {
 [sub_resource type="Animation" id="Animation_sgess"]
 resource_name = "play"
 length = 12.0
-loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -85,10 +84,10 @@ tracks/0/path = NodePath("Camera2D:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 8, 12),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0, 8),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(1280, 768), Vector2(1280, 256), Vector2(1280, 256)]
+"values": [Vector2(1280, 768), Vector2(1280, 256)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -161,7 +160,7 @@ tracks/2/keys = {
 
 [sub_resource type="Animation" id="Animation_p54kq"]
 resource_name = "options_enter"
-length = 8.0
+length = 6.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -193,7 +192,7 @@ tracks/2/path = NodePath("PlayerDummy")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 6),
+"times": PackedFloat32Array(0, 6.5),
 "transitions": PackedFloat32Array(1, 1),
 "values": [{
 "args": [Vector2(1, 0)],
@@ -204,11 +203,54 @@ tracks/2/keys = {
 }]
 }
 
+[sub_resource type="Animation" id="Animation_seitk"]
+resource_name = "options_exit"
+length = 2.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2(2816, 256)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PlayerDummy:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(2720, 256), Vector2(2560, 256)]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PlayerDummy")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [Vector2(-1, 0)],
+"method": &"animate_run"
+}]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_54iiv"]
 _data = {
 "RESET": SubResource("Animation_ixhlc"),
 "options_approach": SubResource("Animation_nix7g"),
 "options_enter": SubResource("Animation_p54kq"),
+"options_exit": SubResource("Animation_seitk"),
 "play": SubResource("Animation_sgess"),
 "walk": SubResource("Animation_ad5ex")
 }
