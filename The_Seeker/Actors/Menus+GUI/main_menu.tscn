@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://bfohk3dxx3qbv"]
+[gd_scene load_steps=9 format=3 uid="uid://bfohk3dxx3qbv"]
 
 [ext_resource type="Script" path="res://Actors/Menus+GUI/main_menu.gd" id="1_jw1op"]
 [ext_resource type="FontFile" uid="uid://brt3paij5eo6b" path="res://Assets/Fonts/Pixelify_Sans/PixelifySans-VariableFont_wght.ttf" id="1_xtmee"]
 [ext_resource type="PackedScene" uid="uid://cqkooyhov3s6r" path="res://Actors/Menus+GUI/menu_hallway.tscn" id="3_dffns"]
+[ext_resource type="Texture2D" uid="uid://qlcvxcxstp5c" path="res://Assets/Images/MenusAndUI/HallwayMask.png" id="3_ypohn"]
 
 [sub_resource type="Theme" id="Theme_s48co"]
 /colors/Dark = Color(0, 0, 0, 1)
@@ -118,6 +119,12 @@ grow_vertical = 0
 texture = SubResource("ViewportTexture_8llem")
 stretch_mode = 4
 
+[node name="TextureRect" type="TextureRect" parent="TitleScreen/VBoxContainer/HBoxContainer/Control/TextureRect"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("3_ypohn")
+
 [node name="OptionsScreen" type="ColorRect" parent="."]
 visible = false
 layout_mode = 1
@@ -126,7 +133,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.262745, 0.313726, 0.34902, 1)
+color = Color(0.121569, 0.137255, 0.180392, 1)
 
 [node name="VBoxContainer" type="VBoxContainer" parent="OptionsScreen"]
 layout_mode = 1
@@ -189,6 +196,14 @@ offset_top = -512.0
 grow_horizontal = 0
 grow_vertical = 0
 texture = SubResource("ViewportTexture_vn6i1")
+stretch_mode = 4
+
+[node name="TextureRect" type="TextureRect" parent="OptionsScreen/VBoxContainer/HBoxContainer/Control/TextureRect"]
+modulate = Color(1, 1, 1, 0.25098)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("3_ypohn")
 
 [node name="SubViewport" type="SubViewport" parent="."]
 

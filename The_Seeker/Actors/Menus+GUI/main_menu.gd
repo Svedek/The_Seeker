@@ -42,12 +42,12 @@ func _on_menu_hallway_start_reached():
 
 func _on_menu_hallway_options_reached():
 	title_screen.visible = false
-	options_screen = true
+	options_screen.visible = true
 
 
 func _on_menu_hallway_options_left():
 	title_screen.visible = true
-	options_screen = false
+	options_screen.visible = false
 
 
 func _on_menu_hallway_exit_reached():
