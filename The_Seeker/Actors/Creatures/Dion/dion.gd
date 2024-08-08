@@ -7,7 +7,8 @@ signal update_boss_health(health: int)
 #@onready var _weapon_pivot : Marker2D = $WeaponPivot
 #@onready var _firepoint : Marker2D = $WeaponPivot/Firepoint                              
 
-var _ghost_scene = preload("res://Misc/ghost.tscn")
+var _ghost_scene = preload("res://Actors/Effects/Ghost/ghost.tscn")
+var stage = 0
 
 
 func play_animation(animation: String):
