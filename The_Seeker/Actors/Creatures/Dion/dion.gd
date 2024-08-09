@@ -3,22 +3,38 @@ extends StateManagedCreature
 signal initiate_boss(id: int) # ???
 signal update_boss_health(health: int)
 
-@onready var stats : CreatureStats = $Stats
-#@onready var _weapon_pivot : Marker2D = $WeaponPivot
-#@onready var _firepoint : Marker2D = $WeaponPivot/Firepoint                              
+
+@export var speeds: Array
+
+@onready var stats = $Stats
 
 var _ghost_scene = preload("res://Actors/Effects/Ghost/ghost.tscn")
-var stage = 0
+var stage: int = 0
+
+
+func movement_state() -> int:
+	return stage/3
 
 
 func play_animation(animation: String):
 	_animation_playback.travel(animation)
-	
+
+
 func set_blend_position(animation: String, blend_position: Vector2):
 	_animation_tree["parameters/" + animation + "/blend_position"] = blend_position
 
-#func set_weapon_pivot_dir(dir:Vector2):
-#	_weapon_pivot.rotation = dir.angle()
+
+func move_near_player(acceptable_distance: float):
+	pass
+
+
+func move_to(loc: Vector2):
+	pass
+
+
+func dodge_to(loc: Vector2):
+	pass
+
 
 func instance_ghost():
 	var ghost: Sprite2D = _ghost_scene.instantiate()
@@ -29,5 +45,10 @@ func instance_ghost():
 	ghost.vframes = _sprite.vframes
 	ghost.frame = _sprite.frame
 
+
 func _on_hurtbox_damaged(damage):
-	pass # Replace with function body.
+	stats.health -= damage
+
+
+func _on_stats_death():
+	pass # TODO intermission interrupt

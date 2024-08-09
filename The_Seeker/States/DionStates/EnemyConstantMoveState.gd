@@ -1,4 +1,4 @@
-extends EnemyState
+extends DionState
 class_name EnemyConstantMoveState
 
 @export var move_speed:float
