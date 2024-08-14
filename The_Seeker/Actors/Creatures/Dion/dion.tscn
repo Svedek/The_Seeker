@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://bifbf5weev334"]
+[gd_scene load_steps=17 format=3 uid="uid://bifbf5weev334"]
 
 [ext_resource type="Script" path="res://Actors/Creatures/Dion/dion.gd" id="1_5qskg"]
 [ext_resource type="Script" path="res://States/StateManager.gd" id="2_340h8"]
@@ -13,6 +13,7 @@
 [ext_resource type="Script" path="res://States/DionStates/Children/DionChargeState.gd" id="10_7l7x7"]
 [ext_resource type="Script" path="res://States/DionStates/Children/DionChannelOrbState.gd" id="11_mwfyc"]
 [ext_resource type="Script" path="res://States/DionStates/Children/DionTossOrbState.gd" id="12_ew63l"]
+[ext_resource type="PackedScene" uid="uid://6spl5qsl1et2" path="res://Actors/Creatures/Dion/AI/dion_stage_ai_controller.tscn" id="14_cedn8"]
 
 [sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_tm4yv"]
 
@@ -23,7 +24,7 @@ states/Idle/position = Vector2(464, 100)
 [node name="Dion" type="CharacterBody2D"]
 script = ExtResource("1_5qskg")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite" type="Sprite2D" parent="."]
 position = Vector2(0, -48)
 texture = ExtResource("2_tihj8")
 
@@ -69,6 +70,8 @@ script = ExtResource("11_mwfyc")
 script = ExtResource("12_ew63l")
 
 [node name="Stats" parent="." instance=ExtResource("3_m2j67")]
+
+[node name="DionStageAIController" parent="." instance=ExtResource("14_cedn8")]
 
 [connection signal="damaged" from="Hurtbox" to="." method="_on_hurtbox_damaged"]
 [connection signal="death" from="Stats" to="." method="_on_stats_death"]

@@ -7,6 +7,7 @@ signal update_boss_health(health: int)
 @export var speeds: Array
 
 @onready var stats = $Stats
+@onready var dion_stage_ai_controller = $DionStageAIController
 
 var _ghost_scene = preload("res://Actors/Effects/Ghost/ghost.tscn")
 var stage: int = 0

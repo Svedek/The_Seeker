@@ -1,18 +1,31 @@
 extends DionState
 
 
-@export_category("State Transitions")
-@export var strike_node: NodePath
-@export var fan_node: NodePath
-@export var charge_node: NodePath
-@export var channel_orb_node: NodePath
-@export var toss_orb_node: NodePath
+@onready var strike_state = $"../StrikeState"
+@onready var fan_state = $"../FanState"
+@onready var charge_state = $"../ChargeState"
+@onready var channel_orb_state = $"../ChannelOrbState"
+@onready var toss_orb_state = $"../TossOrbState"
 
-@onready var strike_state: BaseState = get_node(strike_node)
-@onready var fan_state: BaseState = get_node(fan_node)
-@onready var charge_state: BaseState = get_node(charge_node)
-@onready var channel_orb_state: BaseState = get_node(channel_orb_node)
-@onready var toss_orb_state: BaseState = get_node(toss_orb_node)
-
-
+var active_timer: Timer
+var next_action: DionStageAI.ACTION = -1
 # TODO logic to decide what to do
+
+func enter(direction: Vector2):
+	active_timer = create_timer(prepare_next_action, character.dion_stage_ai_controller.active_stage.global_cooldown)
+	super.enter(direction)
+
+
+func exit() -> Vector2:
+	# Reset active_timer, next_move
+	
+	next_action = -1
+	return super.exit()
+
+
+#TODO override update -> if next_action != -1 --> swap state
+
+
+func prepare_next_action():
+	pass  # TODO set next_action
+

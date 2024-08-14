@@ -1,0 +1,40 @@
+[gd_scene load_steps=3 format=3 uid="uid://6spl5qsl1et2"]
+
+[ext_resource type="Script" path="res://Actors/Creatures/Dion/AI/DionStageAIController.gd" id="1_wk3tc"]
+[ext_resource type="Script" path="res://Actors/Creatures/Dion/AI/DionStageAI.gd" id="2_gqpjq"]
+
+[node name="DionStageAIController" type="Node"]
+script = ExtResource("1_wk3tc")
+
+[node name="Stage1" type="Node" parent="."]
+script = ExtResource("2_gqpjq")
+
+[node name="Stage2" type="Node" parent="."]
+script = ExtResource("2_gqpjq")
+
+[node name="Stage3" type="Node" parent="."]
+script = ExtResource("2_gqpjq")
+
+[node name="Stage4" type="Node" parent="."]
+script = ExtResource("2_gqpjq")
+speed2 = 1
+
+[node name="Stage5" type="Node" parent="."]
+script = ExtResource("2_gqpjq")
+speed2 = 1
+
+[node name="Stage6" type="Node" parent="."]
+script = ExtResource("2_gqpjq")
+speed2 = 1
+
+[node name="Stage7" type="Node" parent="."]
+script = ExtResource("2_gqpjq")
+speed2 = 2
+
+[node name="Stage8" type="Node" parent="."]
+script = ExtResource("2_gqpjq")
+speed2 = 2
+
+[node name="Stage9" type="Node" parent="."]
+script = ExtResource("2_gqpjq")
+speed2 = 2

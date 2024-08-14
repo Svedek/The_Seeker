@@ -11,12 +11,12 @@ func orb_shot(): # TODO
 
 
 func testing():
-	var dion = $Dion
-	if dion:
-		if Input.is_physical_key_pressed(KEY_1):
-			pass
-		if Input.is_physical_key_pressed(KEY_2):
-			pass
+	#var dion = $"../arena/Dion"
+	#if dion:
+		#if Input.is_physical_key_pressed(KEY_1):
+			#pass
+		#if Input.is_physical_key_pressed(KEY_2):
+			#pass
 	if Input.is_physical_key_pressed(KEY_9):
 		new_stage.emit()
 	
