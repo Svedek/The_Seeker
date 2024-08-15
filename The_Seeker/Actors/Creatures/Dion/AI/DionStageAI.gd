@@ -3,14 +3,21 @@ class_name DionStageAI
 
 
 enum SPEED {Walk, Run, Scramble}
-enum ACTION {Strike, Fan, Charge, Channel_orb, Toss_orb}
+enum ACTION {Intermission, Idle, Strike, Fan, Charge, Channel_orb, Toss_orb}
 enum ORB_PATTERN {Bounce, Orbit}
 
 
 
 @export var speed2: SPEED
 @export var global_cooldown: float = 1.0  # Idle time between moves
+@export var leisure: float = 1.0  # Goofiness coefficient
 # @export var prep_time: float = 1.0  # Prep time between moves
+
+@export_group("Intermission")
+@export var intermission_stage_break: bool = false
+
+@export_group("Idle")
+@export var idle_something: bool = false
 
 @export_group("Strike")
 @export_range(0.0, 1.0) var stirke_probability: float = 0.0

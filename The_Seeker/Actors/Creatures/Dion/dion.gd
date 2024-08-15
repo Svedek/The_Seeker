@@ -2,6 +2,7 @@ extends StateManagedCreature
 
 signal initiate_boss(id: int) # ???
 signal update_boss_health(health: int)
+signal move_complete
 
 
 @export var speeds: Array
@@ -34,6 +35,10 @@ func move_to(loc: Vector2):
 
 
 func dodge_to(loc: Vector2):
+	pass
+
+
+func cancel_move():
 	pass
 
 

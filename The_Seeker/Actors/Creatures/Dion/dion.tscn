@@ -315,6 +315,7 @@ blend_point_3/node = SubResource("AnimationNodeAnimation_b1ayg")
 blend_point_3/pos = Vector2(1, 0)
 min_space = Vector2(-1, -1.1)
 max_space = Vector2(1, 1.1)
+blend_mode = 1
 
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_2nmbi"]
 states/Idle/node = SubResource("AnimationNodeBlendSpace2D_tm4yv")

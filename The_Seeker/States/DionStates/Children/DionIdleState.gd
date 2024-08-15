@@ -8,7 +8,6 @@ extends DionState
 @onready var toss_orb_state = $"../TossOrbState"
 
 var action_timer: Timer
-var next_action: DionStageAI.ACTION = -1
 # TODO logic to decide what to do
 
 func enter(direction: Vector2):
@@ -16,12 +15,11 @@ func enter(direction: Vector2):
 	super.enter(direction)
 
 
-# Reset active_timer and next_move
+# Reset active_timer
 func exit() -> Vector2:
 	if action_timer:
 		action_timer.stop()
 		action_timer.queue_free()
-	next_action = -1
 	return super.exit()
 
 
@@ -40,7 +38,7 @@ func process(delta:float) -> BaseState:
 			return channel_orb_state
 		DionStageAI.ACTION.Toss_orb:
 			return toss_orb_state
-	return null
+	return super.process(delta)
 
 
 func prepare_next_action():
