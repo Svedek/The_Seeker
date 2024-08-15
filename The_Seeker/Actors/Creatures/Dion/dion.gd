@@ -54,6 +54,7 @@ func instance_ghost():
 
 func _on_hurtbox_damaged(damage):
 	stats.health -= damage
+	GameManager.update_dion_health.emit(stats.health)
 
 
 func _on_stats_death():

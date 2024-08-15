@@ -8,7 +8,7 @@ enum ORB_PATTERN {Bounce, Orbit}
 
 
 
-@export var speed2: SPEED
+@export var speed: SPEED
 @export var global_cooldown: float = 1.0  # Idle time between moves
 @export var leisure: float = 1.0  # Goofiness coefficient
 # @export var prep_time: float = 1.0  # Prep time between moves

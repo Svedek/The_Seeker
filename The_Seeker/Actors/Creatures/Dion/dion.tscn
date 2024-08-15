@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://bifbf5weev334"]
+[gd_scene load_steps=29 format=3 uid="uid://bifbf5weev334"]
 
 [ext_resource type="Script" path="res://Actors/Creatures/Dion/dion.gd" id="1_5qskg"]
 [ext_resource type="Script" path="res://States/StateManager.gd" id="2_340h8"]
@@ -15,6 +15,9 @@
 [ext_resource type="Script" path="res://States/DionStates/Children/DionChannelOrbState.gd" id="11_mwfyc"]
 [ext_resource type="Script" path="res://States/DionStates/Children/DionTossOrbState.gd" id="12_ew63l"]
 [ext_resource type="PackedScene" uid="uid://6spl5qsl1et2" path="res://Actors/Creatures/Dion/AI/dion_stage_ai_controller.tscn" id="14_cedn8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dhw87"]
+size = Vector2(64, 64)
 
 [sub_resource type="Animation" id="Animation_p7y5d"]
 length = 0.001
@@ -335,6 +338,11 @@ rotation = 1.5708
 [node name="Hitbox" parent="." instance=ExtResource("4_y1puo")]
 
 [node name="Hurtbox" parent="." instance=ExtResource("5_d23kb")]
+collision_layer = 128
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+position = Vector2(0, -32)
+shape = SubResource("RectangleShape2D_dhw87")
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
 libraries = {
@@ -376,6 +384,8 @@ script = ExtResource("11_mwfyc")
 script = ExtResource("12_ew63l")
 
 [node name="Stats" parent="." instance=ExtResource("3_m2j67")]
+move_speed = -1.0
+_max_health = -1
 
 [node name="DionStageAIController" parent="." instance=ExtResource("14_cedn8")]
 
