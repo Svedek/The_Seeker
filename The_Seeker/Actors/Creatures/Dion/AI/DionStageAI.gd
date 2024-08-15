@@ -9,7 +9,8 @@ enum ORB_PATTERN {Bounce, Orbit}
 
 
 @export var speed2: SPEED
-@export var global_cooldown: float = 1.0  # Time between moves
+@export var global_cooldown: float = 1.0  # Idle time between moves
+# @export var prep_time: float = 1.0  # Prep time between moves
 
 @export_group("Strike")
 @export_range(0.0, 1.0) var stirke_probability: float = 0.0
@@ -20,7 +21,8 @@ enum ORB_PATTERN {Bounce, Orbit}
 @export_group("Fan")
 @export_range(0.0, 1.0) var fan_probability: float = 0.0
 @export_subgroup("Info")
-@export_range(1, 32) var fan_count: int = 1
+@export_range(1, 32) var fan_projectile_count: int = 1
+@export_range(1, 4) var fan_count: int = 1
 
 @export_group("Charge")
 @export_range(0.0, 1.0) var charge_probability: float = 0.0

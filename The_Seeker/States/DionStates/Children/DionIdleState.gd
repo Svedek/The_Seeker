@@ -7,25 +7,42 @@ extends DionState
 @onready var channel_orb_state = $"../ChannelOrbState"
 @onready var toss_orb_state = $"../TossOrbState"
 
-var active_timer: Timer
+var action_timer: Timer
 var next_action: DionStageAI.ACTION = -1
 # TODO logic to decide what to do
 
 func enter(direction: Vector2):
-	active_timer = create_timer(prepare_next_action, character.dion_stage_ai_controller.active_stage.global_cooldown)
+	action_timer = create_timer(prepare_next_action, ai_controller.active_stage.global_cooldown)
 	super.enter(direction)
 
 
+# Reset active_timer and next_move
 func exit() -> Vector2:
-	# Reset active_timer, next_move
-	
+	if action_timer:
+		action_timer.stop()
+		action_timer.queue_free()
 	next_action = -1
 	return super.exit()
 
 
-#TODO override update -> if next_action != -1 --> swap state
+func process(delta:float) -> BaseState:
+	dir = player_dir()
+	character.set_blend_position(animation_name, dir)
+	
+	match next_action:
+		DionStageAI.ACTION.Strike:
+			return strike_state
+		DionStageAI.ACTION.Fan:
+			return fan_state
+		DionStageAI.ACTION.Charge:
+			return charge_state
+		DionStageAI.ACTION.Channel_orb:
+			return channel_orb_state
+		DionStageAI.ACTION.Toss_orb:
+			return toss_orb_state
+	return null
 
 
 func prepare_next_action():
-	pass  # TODO set next_action
+		next_action = ai_controller.active_stage.get_next_move()
 

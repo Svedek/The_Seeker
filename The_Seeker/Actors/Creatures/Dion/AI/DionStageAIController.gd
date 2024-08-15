@@ -1,4 +1,5 @@
 extends Node
+class_name DionStageAIController
 
 
 var active_stage: DionStageAI
