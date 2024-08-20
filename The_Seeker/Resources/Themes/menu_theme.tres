@@ -1,0 +1,22 @@
+[gd_resource type="Theme" load_steps=5 format=3 uid="uid://cifp0gik2d7c3"]
+
+[ext_resource type="FontFile" uid="uid://7kqrpaov0fny" path="res://Assets/Fonts/Pixelify_Sans/static/PixelifySans-SemiBold.ttf" id="1_yatov"]
+[ext_resource type="FontFile" uid="uid://meumw0om6dno" path="res://Assets/Fonts/Pixelify_Sans/static/PixelifySans-Medium.ttf" id="2_waum0"]
+[ext_resource type="FontFile" uid="uid://2qmd4js4xgcd" path="res://Assets/Fonts/Pixelify_Sans/static/PixelifySans-Regular.ttf" id="3_j8m6d"]
+[ext_resource type="FontFile" uid="uid://dkbfxk3gfe83o" path="res://Assets/Fonts/Pixelify_Sans/static/PixelifySans-Bold.ttf" id="4_y7u6u"]
+
+[resource]
+/fonts/Header = ExtResource("1_yatov")
+/fonts/SubHeader = ExtResource("2_waum0")
+/fonts/Text = ExtResource("3_j8m6d")
+/fonts/Title = ExtResource("4_y7u6u")
+Label/colors/font_color = Color(1, 1, 1, 1)
+Label/colors/font_outline_color = Color(1, 1, 1, 1)
+Label/colors/font_shadow_color = Color(0.552941, 0.552941, 0.552941, 0)
+Label/constants/line_spacing = 0
+Label/constants/outline_size = 0
+Label/constants/shadow_offset_x = 1
+Label/constants/shadow_offset_y = 1
+Label/constants/shadow_outline_size = 1
+Label/font_sizes/font_size = 32
+Label/fonts/font = ExtResource("4_y7u6u")

@@ -1,20 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://bfohk3dxx3qbv"]
+[gd_scene load_steps=8 format=3 uid="uid://bfohk3dxx3qbv"]
 
 [ext_resource type="Script" path="res://Actors/Menus+GUI/main_menu.gd" id="1_jw1op"]
-[ext_resource type="FontFile" uid="uid://brt3paij5eo6b" path="res://Assets/Fonts/Pixelify_Sans/PixelifySans-VariableFont_wght.ttf" id="1_xtmee"]
+[ext_resource type="Theme" uid="uid://cifp0gik2d7c3" path="res://Resources/Themes/menu_theme.tres" id="1_kos02"]
 [ext_resource type="PackedScene" uid="uid://cqkooyhov3s6r" path="res://Actors/Menus+GUI/menu_hallway.tscn" id="3_dffns"]
 [ext_resource type="Texture2D" uid="uid://qlcvxcxstp5c" path="res://Assets/Images/MenusAndUI/HallwayMask.png" id="3_ypohn"]
-
-[sub_resource type="Theme" id="Theme_s48co"]
-/colors/Dark = Color(0, 0, 0, 1)
-/colors/DarkAcc = Color(0.196078, 0.196078, 0.196078, 1)
-/colors/Light = Color(1, 1, 1, 1)
-/colors/LightAcc = Color(0.784314, 0.784314, 0.784314, 1)
-/constants/b = 0
-/font_sizes/d = 16
-/fonts/MainText = ExtResource("1_xtmee")
-/icons/e = null
-/styles/f = null
 
 [sub_resource type="Theme" id="Theme_fnc02"]
 
@@ -33,7 +22,7 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-theme = SubResource("Theme_s48co")
+theme = ExtResource("1_kos02")
 script = ExtResource("1_jw1op")
 
 [node name="TitleScreen" type="ColorRect" parent="."]
