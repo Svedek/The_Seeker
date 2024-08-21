@@ -8,10 +8,10 @@ enum ORB_PATTERN {Bounce, Orbit}
 
 
 
+@export var health: int
 @export var speed: SPEED
 @export var global_cooldown: float = 1.0  # Idle time between moves
 @export var leisure: float = 1.0  # Goofiness coefficient
-# @export var prep_time: float = 1.0  # Prep time between moves
 
 @export_group("Intermission")
 @export var intermission_stage_break: bool = false

@@ -16,12 +16,8 @@ func _ready():
 
 
 func physics_process(delta): # Called from orb_controller
-	if !$Hitbox.monitoring:
-		return
 	
 	movement_func.call(delta)
-	
-	position += _velocity
 
 
 func activate():
@@ -45,15 +41,36 @@ func set_move_pos():
 	movement_func = _move_pos
 
 
+func set_move_return():
+	movement_func = _move_return
+
+
 func _move_dir(delta):
+	if !$Hitbox.monitoring:
+		return
 	_velocity += target * speed * delta
 	_velocity = _velocity.limit_length(speed * delta)
+	position += _velocity
 
 
 func _move_pos(delta):
+	if !$Hitbox.monitoring:
+		return
 	var dir = (target - global_position).normalized()
 	_velocity += dir * speed * delta
 	_velocity = _velocity.limit_length(speed * delta)
+	if (target - global_position).length() < _velocity.length():
+		_velocity = target - global_position
+	position += _velocity
+
+
+func _move_return(delta):
+	var dir = (target - global_position).normalized()
+	_velocity += dir * speed * delta
+	_velocity = _velocity.limit_length(speed * delta)
+	if (target - global_position).length() < _velocity.length():
+		_velocity = target - global_position
+	position += _velocity
 
 
 func _on_right_bumper_body_entered(body):

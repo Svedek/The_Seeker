@@ -1,15 +1,22 @@
 extends Node
+class_name OrbController
 
 const ORB = preload("res://Actors/Orb/orb.tscn")
+const CENTER = Vector2()
 var orbs = 0
 var move_func
 
 var _radius = -1.0
 var _time = 0.0
+var _time_scale = 1.0
 
 func _input(event): # TODO TESTING
-	if Input.is_physical_key_pressed(KEY_6):
+	if Input.is_physical_key_pressed(KEY_4):
 		spawn_orb(Vector2.ZERO)
+	if Input.is_physical_key_pressed(KEY_5):
+		switch_to_return()
+	if Input.is_physical_key_pressed(KEY_6):
+		switch_to_center()
 	if Input.is_physical_key_pressed(KEY_7):
 		switch_to_spiral()
 	if Input.is_physical_key_pressed(KEY_8):
@@ -21,7 +28,7 @@ func _physics_process(delta):
 		move_func.call()
 	for orb in get_children():
 		orb.physics_process(delta)
-	_time += delta
+	_time += delta * _time_scale
 
 
 func spawn_orb(pos: Vector2):
@@ -31,9 +38,28 @@ func spawn_orb(pos: Vector2):
 	orbs += 1
 
 
-func switch_to_spiral():
-	_radius = 32 * (orbs/3)
+func switch_to_return():
+	_radius = 16
 	_time = 0.0
+	_time_scale = 1.00
+	move_func = move_spiral
+	for orb in get_children():
+		orb.set_move_return()
+
+
+func switch_to_center():
+	_radius = 16
+	_time = 0.0
+	_time_scale = 1.00
+	move_func = move_spiral
+	for orb in get_children():
+		orb.set_move_pos()
+
+
+func switch_to_spiral():
+	_radius = 24 + 8 * orbs
+	_time = 0.0
+	_time_scale = 1.0
 	move_func = move_spiral
 	for orb in get_children():
 		orb.set_move_pos()

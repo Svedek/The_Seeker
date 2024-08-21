@@ -8,7 +8,7 @@ extends DionState
 @onready var toss_orb_state = $"../TossOrbState"
 
 var action_timer: Timer
-# TODO logic to decide what to do
+
 
 func enter(direction: Vector2):
 	action_timer = create_timer(prepare_next_action, ai_controller.active_stage.global_cooldown)

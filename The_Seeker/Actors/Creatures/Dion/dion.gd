@@ -9,6 +9,8 @@ signal move_complete
 
 @onready var stats = $Stats
 @onready var dion_stage_ai_controller = $DionStageAIController
+@onready var orb_controller = $OrbController
+
 
 var _ghost_scene = preload("res://Actors/Effects/Ghost/ghost.tscn")
 var stage: int = 0

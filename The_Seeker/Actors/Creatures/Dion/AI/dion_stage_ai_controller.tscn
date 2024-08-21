@@ -17,24 +17,18 @@ script = ExtResource("2_gqpjq")
 
 [node name="Stage4" type="Node" parent="."]
 script = ExtResource("2_gqpjq")
-speed2 = 1
 
 [node name="Stage5" type="Node" parent="."]
 script = ExtResource("2_gqpjq")
-speed2 = 1
 
 [node name="Stage6" type="Node" parent="."]
 script = ExtResource("2_gqpjq")
-speed2 = 1
 
 [node name="Stage7" type="Node" parent="."]
 script = ExtResource("2_gqpjq")
-speed2 = 2
 
 [node name="Stage8" type="Node" parent="."]
 script = ExtResource("2_gqpjq")
-speed2 = 2
 
 [node name="Stage9" type="Node" parent="."]
 script = ExtResource("2_gqpjq")
-speed2 = 2
