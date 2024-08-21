@@ -44,8 +44,8 @@ func intermission_interrupt():
 	next_action = DionStageAI.ACTION.Intermission
 
 
-func damage_interrupt():
-	pass  # called when damaged -> for use to dodge attacks or something
+func attempt_damage() -> bool:  # called when damaged -> for use to dodge attacks or something
+	return true  # damage goes through
 
 
 func move_near_player(acceptable_distance: float):

@@ -11,13 +11,14 @@ func enter(direction: Vector2):
 
 func on_move_complete():  # Once dash to center complete
 	character.move_complete.disconnect(on_move_complete)
-	super.enter(Vector2.DOWN)  # Face down
-	pass  # TODO Start intermission (maybe handled in animation)
-	#animation handles orb_controller.switch_to_return()
-	#animation handles new stage call (where?)
-	#animation calls intermission_complete
+	orb_controller.switch_to_return()
+	super.enter(Vector2.DOWN)  # Start animation faced down, which calls intermission_complete when done
 
 
 func intermission_complete():
 	next_action = DionStageAI.ACTION.Idle  # maybe add some delay before returning
+	GameManager.new_stage.emit()
 
+
+func attempt_damage() -> bool:
+	return false  # damage goes through

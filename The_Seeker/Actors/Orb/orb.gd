@@ -1,6 +1,7 @@
 extends Area2D
 
 signal pierced
+
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 const ORB_LAYER = 1 << 8
 
@@ -11,12 +12,7 @@ var movement_func = _move_dir
 var _velocity = Vector2.ZERO
 
 
-func _ready():
-	GameManager.new_stage.connect(activate)
-
-
 func physics_process(delta): # Called from orb_controller
-	
 	movement_func.call(delta)
 
 
@@ -30,7 +26,7 @@ func orb_pierced():
 	collision_layer = 0
 	$Hitbox.monitoring = false
 	animation_player.play("deactive")
-	GameManager.orb_shot()
+	pierced.emit()
 
 
 func set_move_dir():

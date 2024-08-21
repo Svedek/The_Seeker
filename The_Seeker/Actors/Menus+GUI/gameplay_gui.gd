@@ -10,7 +10,7 @@ var game_time:float = 0.0
 
 func _ready():
 	GameManager.update_dion_health.connect(update_dion_health)
-	GameManager.update_orb_health.connect(update_orb_health)
+	GameManager.update_active_orbs.connect(update_active_orbs)
 	
 func _process(delta):
 	game_time_label.text = str(Time.get_ticks_msec()/1000.0)
@@ -25,8 +25,8 @@ func update_dion_health(current_hp:int):
 	healthbar_white.value = current_hp
 
 
-func update_orb_health(orb_hp:int):
-	healthbar_base.value = healthbar_base.max_value - orb_hp
+func update_active_orbs(orbs:int):
+	healthbar_base.value = healthbar_base.max_value - orbs
 	
 
 

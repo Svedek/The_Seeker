@@ -4,6 +4,10 @@ class_name OrbController
 const ORB = preload("res://Actors/Orb/orb.tscn")
 const CENTER = Vector2()
 var orbs = 0
+var active_orbs: int:
+	set(value):
+		GameManager.update_active_orbs.emit(value)
+		active_orbs = value
 var move_func
 
 var _radius = -1.0
@@ -23,6 +27,10 @@ func _input(event): # TODO TESTING
 		switch_to_bounce()
 
 
+func _ready():
+	GameManager.new_stage.connect(on_new_stage)
+
+
 func _physics_process(delta):
 	if move_func:
 		move_func.call()
@@ -36,6 +44,18 @@ func spawn_orb(pos: Vector2):
 	add_child(child)
 	child.global_position = pos
 	orbs += 1
+	child.pierced.connect(on_orb_pierced)
+
+
+func on_new_stage():
+	spawn_orb(Vector2.ZERO)
+	for orb in get_children():
+		orb.activate()
+	active_orbs = orbs
+
+
+func on_orb_pierced():
+	active_orbs -= 1
 
 
 func switch_to_return():
