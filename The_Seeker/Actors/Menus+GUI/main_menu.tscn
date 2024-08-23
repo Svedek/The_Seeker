@@ -85,7 +85,14 @@ text = "Options
 [node name="HSeparator2" type="HSeparator" parent="TitleScreen/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="ExitButton" type="Button" parent="TitleScreen/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer"]
+[node name="ExtraButton" type="Button" parent="TitleScreen/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Extra"
+
+[node name="HSeparator3" type="HSeparator" parent="TitleScreen/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="ExitButton2" type="Button" parent="TitleScreen/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "Exit
 "
@@ -135,6 +142,8 @@ grow_vertical = 2
 [node name="MarginContainer" type="MarginContainer" parent="OptionsScreen/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 4
+theme_override_constants/margin_top = 32
+theme_override_constants/margin_bottom = 32
 
 [node name="CenterContainer" type="CenterContainer" parent="OptionsScreen/VBoxContainer/MarginContainer"]
 layout_mode = 2
@@ -150,6 +159,7 @@ size_flags_vertical = 3
 
 [node name="MarginContainer" type="MarginContainer" parent="OptionsScreen/VBoxContainer/HBoxContainer"]
 layout_mode = 2
+theme_override_constants/margin_left = 32
 
 [node name="VBoxContainer" type="VBoxContainer" parent="OptionsScreen/VBoxContainer/HBoxContainer/MarginContainer"]
 layout_mode = 2
@@ -194,15 +204,98 @@ offset_right = 40.0
 offset_bottom = 40.0
 texture = ExtResource("3_ypohn")
 
+[node name="ExtraScreen" type="ColorRect" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0470588, 0.0470588, 0.0470588, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ExtraScreen"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="ExtraScreen/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_top = 32
+theme_override_constants/margin_bottom = 32
+
+[node name="CenterContainer" type="CenterContainer" parent="ExtraScreen/VBoxContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="ExtraScreen/VBoxContainer/MarginContainer/CenterContainer"]
+layout_mode = 2
+text = "Extra"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ExtraScreen/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="ExtraScreen/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 32
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ExtraScreen/VBoxContainer/HBoxContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="SomethingButton" type="Button" parent="ExtraScreen/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "PLACEHOLDER"
+
+[node name="HSeparator" type="HSeparator" parent="ExtraScreen/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="ExtraReturnButton" type="Button" parent="ExtraScreen/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Return"
+
+[node name="Control" type="Control" parent="ExtraScreen/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="TextureRect" type="TextureRect" parent="ExtraScreen/VBoxContainer/HBoxContainer/Control"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -512.0
+offset_top = -512.0
+grow_horizontal = 0
+grow_vertical = 0
+texture = SubResource("ViewportTexture_vn6i1")
+stretch_mode = 4
+
+[node name="TextureRect" type="TextureRect" parent="ExtraScreen/VBoxContainer/HBoxContainer/Control/TextureRect"]
+modulate = Color(1, 1, 1, 0.74902)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("3_ypohn")
+
 [node name="SubViewport" type="SubViewport" parent="."]
 
 [node name="MenuHallway" parent="SubViewport" instance=ExtResource("3_dffns")]
 
 [connection signal="pressed" from="TitleScreen/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="TitleScreen/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/OptionsButton" to="." method="_on_options_button_pressed"]
-[connection signal="pressed" from="TitleScreen/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/ExitButton" to="." method="_on_exit_button_pressed"]
+[connection signal="pressed" from="TitleScreen/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/ExtraButton" to="." method="_on_extra_button_pressed"]
+[connection signal="pressed" from="TitleScreen/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/ExitButton2" to="." method="_on_exit_button_pressed"]
 [connection signal="pressed" from="OptionsScreen/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/OptionsReturnButton" to="." method="_on_options_return_button_pressed"]
+[connection signal="pressed" from="ExtraScreen/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/ExtraReturnButton" to="." method="_on_extra_return_button_pressed"]
 [connection signal="exit_reached" from="SubViewport/MenuHallway" to="." method="_on_menu_hallway_exit_reached"]
+[connection signal="extra_left" from="SubViewport/MenuHallway" to="." method="_on_menu_hallway_extra_left"]
+[connection signal="extra_reached" from="SubViewport/MenuHallway" to="." method="_on_menu_hallway_extra_reached"]
 [connection signal="options_left" from="SubViewport/MenuHallway" to="." method="_on_menu_hallway_options_left"]
 [connection signal="options_reached" from="SubViewport/MenuHallway" to="." method="_on_menu_hallway_options_reached"]
 [connection signal="start_reached" from="SubViewport/MenuHallway" to="." method="_on_menu_hallway_start_reached"]

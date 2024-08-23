@@ -16,9 +16,14 @@ func on_move_complete():  # Once dash to center complete
 
 
 func intermission_complete():
-	next_action = DionStageAI.ACTION.Idle  # maybe add some delay before returning
 	GameManager.new_stage.emit()
+	next_action = DionStageAI.ACTION.Idle  # maybe add some delay before returning
+	orb_controller.switch_to_bounce()  # TODO temporary, but some orb action should be taken
 
 
 func attempt_damage() -> bool:
 	return false  # damage goes through
+
+
+func intermission_interrupt():
+	push_error("INTERMISSION INTERRUPT SHOULD NOT HAPPEN IN DIONINTERMISSIONSTATE")

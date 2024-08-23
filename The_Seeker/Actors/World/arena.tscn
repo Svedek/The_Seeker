@@ -30,6 +30,7 @@ layer_0/tile_data = PackedInt32Array(65535, 65537, 1, 65534, 65537, 1, 65533, 65
 shape = SubResource("RectangleShape2D_irlqw")
 
 [node name="Dion" parent="." instance=ExtResource("7_r0fpu")]
+position = Vector2(-96, -48)
 
 [node name="Marker2D" type="Marker2D" parent="."]
 

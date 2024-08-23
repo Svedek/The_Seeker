@@ -4,6 +4,7 @@ extends Control
 @onready var menu_hallway = $SubViewport/MenuHallway
 @onready var title_screen = $TitleScreen
 @onready var options_screen = $OptionsScreen
+@onready var extra_screen = $ExtraScreen
 
 const ARENA = preload("res://Actors/World/arena.tscn")
 var animating:bool = false
@@ -39,6 +40,18 @@ func _on_options_return_button_pressed():
 		animating = true
 
 
+func _on_extra_button_pressed():
+	if !animating:
+		menu_hallway.animate_extra()
+		animating = true
+
+
+func _on_extra_return_button_pressed():
+	if !animating:
+		menu_hallway.animate_extra_exit()
+		animating = true
+
+
 func _on_exit_button_pressed():
 	if !animating:
 		menu_hallway.animate_exit()
@@ -59,6 +72,18 @@ func _on_menu_hallway_options_reached():
 func _on_menu_hallway_options_left():
 	title_screen.visible = true
 	options_screen.visible = false
+	animating = false
+
+
+func _on_menu_hallway_extra_reached():
+	title_screen.visible = false
+	extra_screen.visible = true
+	animating = false
+
+
+func _on_menu_hallway_extra_left():
+	title_screen.visible = true
+	extra_screen.visible = false
 	animating = false
 
 

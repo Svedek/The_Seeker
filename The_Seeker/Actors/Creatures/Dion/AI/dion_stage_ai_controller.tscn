@@ -8,27 +8,36 @@ script = ExtResource("1_wk3tc")
 
 [node name="Stage1" type="Node" parent="."]
 script = ExtResource("2_gqpjq")
+health = 9
 
 [node name="Stage2" type="Node" parent="."]
 script = ExtResource("2_gqpjq")
+health = 8
 
 [node name="Stage3" type="Node" parent="."]
 script = ExtResource("2_gqpjq")
+health = 7
 
 [node name="Stage4" type="Node" parent="."]
 script = ExtResource("2_gqpjq")
+health = 6
 
 [node name="Stage5" type="Node" parent="."]
 script = ExtResource("2_gqpjq")
+health = 5
 
 [node name="Stage6" type="Node" parent="."]
 script = ExtResource("2_gqpjq")
+health = 4
 
 [node name="Stage7" type="Node" parent="."]
 script = ExtResource("2_gqpjq")
+health = 3
 
 [node name="Stage8" type="Node" parent="."]
 script = ExtResource("2_gqpjq")
+health = 2
 
 [node name="Stage9" type="Node" parent="."]
 script = ExtResource("2_gqpjq")
+health = 1

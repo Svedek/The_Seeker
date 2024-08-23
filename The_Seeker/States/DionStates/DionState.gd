@@ -44,7 +44,9 @@ func intermission_interrupt():
 	next_action = DionStageAI.ACTION.Intermission
 
 
-func attempt_damage() -> bool:  # called when damaged -> for use to dodge attacks or something
+func attempt_damage() -> bool:  # called when damaged -- for use to dodge attacks or something
+	if 0 < orb_controller.active_orbs:
+		return false
 	return true  # damage goes through
 
 

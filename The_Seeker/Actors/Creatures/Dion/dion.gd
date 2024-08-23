@@ -61,4 +61,4 @@ func _on_hurtbox_damaged(damage):
 
 
 func _on_stats_death():
-	pass # TODO intermission interrupt
+	_state_manager.current_state.intermission_interrupt()

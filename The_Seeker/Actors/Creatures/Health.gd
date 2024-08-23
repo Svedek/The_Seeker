@@ -12,4 +12,5 @@ var health:int:
 			death.emit()
 
 func _ready():
-	health = _max_health
+	if _max_health > 0:  # kinda scuffed, but it works
+		health = _max_health
