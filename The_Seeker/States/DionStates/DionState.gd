@@ -9,7 +9,6 @@ class_name DionState
 var ai_controller: DionStageAIController :
 	get:
 		return character.dion_stage_ai_controller
-var character_moving: bool = false
 var next_action: DionStageAI.ACTION = -1
 var orb_controller: OrbController :
 	get:
@@ -50,36 +49,105 @@ func attempt_damage() -> bool:  # called when damaged -- for use to dodge attack
 	return true  # damage goes through
 
 
-func move_near_player(acceptable_distance: float):
+
+
+
+
+var character_moving: bool = false
+var move_target: Vector2
+var move_func: Callable
+var move_animation: String
+var move_acceptable_distance: float
+func physics_process(delta:float) -> BaseState:
 	if character_moving:
-		cancel_move()
-	connect(character.move_complete, on_character_move_complete)
-	character.move_near_player(acceptable_distance)
+		move_func.call(delta)
+	return null
+	# GET DIR, USE DIR to make move vect, know when to end
+	# Start animation in initial call, 
+
+
+func get_move_animation(dodge: bool) -> String:
+	return ""  # TODO returns name of animation for SPEED
+
+
+func move_near_player(acceptable_distance: float):
+	move_acceptable_distance = acceptable_distance
+	move_func = move_near_player_process
 	character_moving = true
+	move_animation = get_move_animation(false)
+	character.play_animation(move_animation)
+
+
+func move_near_player_process(delta: float):
+	var to_player = player_pos() - character.position
+	
+	# Check if target reached
+	if to_player.length() <= move_acceptable_distance:
+		end_move()
+		return
+	
+	# Calculate move_vect and set animation blend position
+	var move_vect = to_player.normalized()
+	character.set_blend_position(move_animation, move_vect)
+	move_vect *= delta * DionStageAIController.move_speed_dict[ai_controller.active_stage.speed]
+	
+	# Clamp to not pass target
+	move_vect = move_vect.limit_length(to_player.length())
+	
+	# Do move
+	character.position += move_vect
 
 
 func move_to(loc: Vector2):
-	if character_moving:
-		cancel_move()
-	connect(character.move_complete, on_character_move_complete)
-	character.move_to(loc)
 	character_moving = true
+	move_func = move_to_process
+	move_animation = get_move_animation(false)
+	character.play_animation(move_animation)
+
+
+func move_to_process(delta: float):
+	var to_target = move_target - character.position
+	
+	# Calculate move_vect and set animation blend position
+	var move_vect = to_target.normalized()
+	character.set_blend_position(move_animation, move_vect)
+	move_vect *= delta * DionStageAIController.move_speed_dict[ai_controller.active_stage.speed]
+	
+	# Clamp to not pass target (and also test if destination reached)
+	if to_target.length() <= move_vect.length():
+		move_vect = to_target
+		end_move()  # Still changes character.position after this to actually reach destination
+	
+	# Do move
+	character.position += move_vect
 
 
 func dodge_to(loc: Vector2):
-	if character_moving:
-		cancel_move()
-	connect(character.move_complete, on_character_move_complete)
-	character.dodge_to(loc)
 	character_moving = true
+	move_animation = get_move_animation(true)
+	character.play_animation(move_animation)
 
 
-func cancel_move():
-	disconnect(character.move_complete, on_character_move_complete)
-	character.cancel_move()
+func dodge_to_process(delta: float):
+	var to_target = move_target - character.position
+	
+	# Calculate move_vect and set animation blend position
+	var move_vect = to_target.normalized()
+	character.set_blend_position(move_animation, move_vect)
+	move_vect *= delta * DionStageAIController.move_speed_dict["Dodge"]
+	
+	# Clamp to not pass target (and also test if destination reached)
+	if to_target.length() <= move_vect.length():
+		move_vect = to_target
+		end_move()  # Still changes character.position after this to actually reach destination
+	
+	# Do move
+	character.position += move_vect
+
+
+func end_move():  # Overridable, called when move reached destination
 	character_moving = false
 
 
-func on_character_move_complete():
-	disconnect(character.move_complete, on_character_move_complete)
+func cancel_move():  # Maybe unnessesary
 	character_moving = false

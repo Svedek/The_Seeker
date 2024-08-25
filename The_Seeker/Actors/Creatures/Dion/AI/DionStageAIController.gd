@@ -6,7 +6,7 @@ class_name DionStageAIController
 
 var active_stage: DionStageAI
 const _file_prefix: String = "Stage"
-const move_speed_dict: Dictionary = {DionStageAI.SPEED.Walk: 160.0, DionStageAI.SPEED.Run: 240.0, DionStageAI.SPEED.Scramble: 320.0}
+const move_speed_dict: Dictionary = {DionStageAI.SPEED.Walk: 160.0, DionStageAI.SPEED.Run: 240.0, DionStageAI.SPEED.Scramble: 320.0, "Dodge": 480.0}
 
 func _ready():
 	update_active_stage(1)

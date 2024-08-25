@@ -2,7 +2,6 @@ extends StateManagedCreature
 
 signal initiate_boss(id: int) # ???
 signal update_boss_health(health: int)
-signal move_complete
 
 
 @export var speeds: Array
@@ -26,22 +25,6 @@ func play_animation(animation: String):
 
 func set_blend_position(animation: String, blend_position: Vector2):
 	_animation_tree["parameters/" + animation + "/blend_position"] = blend_position
-
-
-func move_near_player(acceptable_distance: float):
-	pass
-
-
-func move_to(loc: Vector2):
-	pass
-
-
-func dodge_to(loc: Vector2):
-	pass
-
-
-func cancel_move():
-	pass
 
 
 func instance_ghost():
