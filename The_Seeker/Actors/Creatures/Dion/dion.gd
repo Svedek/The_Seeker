@@ -15,6 +15,11 @@ var _ghost_scene = preload("res://Actors/Effects/Ghost/ghost.tscn")
 var stage: int = 0
 
 
+func _ready():
+	GameManager.new_stage.connect(_on_new_stage)
+	super._ready()
+
+
 func movement_state() -> int:
 	return stage/3
 
@@ -37,6 +42,10 @@ func instance_ghost():
 	ghost.frame = _sprite.frame
 
 
+func _on_new_stage():
+	dion_stage_ai_controller.advance_active_stage()
+
+
 func _on_hurtbox_damaged(damage):
 	if _state_manager.current_state.attempt_damage():
 		stats.health -= damage
@@ -45,3 +54,6 @@ func _on_hurtbox_damaged(damage):
 
 func _on_stats_death():
 	_state_manager.current_state.intermission_interrupt()
+
+
+

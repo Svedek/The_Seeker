@@ -44,3 +44,12 @@ func process(delta:float) -> BaseState:
 func prepare_next_action():
 		next_action = ai_controller.active_stage.get_next_move()
 
+
+
+
+
+func input(event):
+	if Input.is_physical_key_pressed(KEY_V):
+		print(character.get_global_mouse_position())
+		move_to(character.get_global_mouse_position())
+

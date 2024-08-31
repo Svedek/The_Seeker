@@ -28,6 +28,7 @@ func _input(event): # TODO TESTING
 
 
 func _ready():
+	GameManager.update_active_orbs.emit(active_orbs)  # Update active orb bar
 	GameManager.new_stage.connect(on_new_stage)
 
 

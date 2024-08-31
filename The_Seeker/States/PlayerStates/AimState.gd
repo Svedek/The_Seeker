@@ -58,7 +58,7 @@ func input(event):
 		else:
 			return idle_state
 		
-	if event.is_action_pressed("attack"):
+	if event.is_action_pressed("attack"):  # TODO exit AimState after firing last arrow, don't allow entering aim state without any arrows
 		#_mouse_mode = event is InputEventMouseButton # maybe temp
 		var new_dir: Vector2
 		var target_position: Vector2

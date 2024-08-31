@@ -9,14 +9,14 @@ class_name DionState
 var ai_controller: DionStageAIController :
 	get:
 		return character.dion_stage_ai_controller
-var next_action: DionStageAI.ACTION = -1
+var next_action: DionStageAI.ACTION = DionStageAI.ACTION.None
 var orb_controller: OrbController :
 	get:
 		return character.orb_controller
 
 
 func exit():
-	next_action = -1
+	next_action = DionStageAI.ACTION.None
 	if character_moving:
 		cancel_move()
 	return super.exit()
@@ -67,7 +67,11 @@ func physics_process(delta:float) -> BaseState:
 
 
 func get_move_animation(dodge: bool) -> String:
-	return ""  # TODO returns name of animation for SPEED
+	ai_controller.active_stage.leisure  # TODO use leisure to decide animation
+	if dodge:
+		return "Dodge"
+	else:  # TODO returns name of animation for SPEED
+		return "Move"
 
 
 func move_near_player(acceptable_distance: float):
@@ -99,6 +103,7 @@ func move_near_player_process(delta: float):
 
 
 func move_to(loc: Vector2):
+	move_target = loc
 	character_moving = true
 	move_func = move_to_process
 	move_animation = get_move_animation(false)
@@ -123,7 +128,9 @@ func move_to_process(delta: float):
 
 
 func dodge_to(loc: Vector2):
+	move_target = loc
 	character_moving = true
+	move_func = dodge_to_process
 	move_animation = get_move_animation(true)
 	character.play_animation(move_animation)
 

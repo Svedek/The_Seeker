@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://bifbf5weev334"]
+[gd_scene load_steps=42 format=3 uid="uid://bifbf5weev334"]
 
 [ext_resource type="Script" path="res://Actors/Creatures/Dion/dion.gd" id="1_5qskg"]
 [ext_resource type="Script" path="res://States/StateManager.gd" id="2_340h8"]
@@ -388,10 +388,10 @@ tracks/3/path = NodePath("Sprite:frame_coords")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.125, 0.25, 0.375, 0.5, 0.625, 0.75, 0.875, 1, 1.125, 1.25, 1.375, 1.5, 1.625, 1.75, 1.875, 2, 2.125, 2.25, 2.375, 2.5, 2.625, 2.75, 2.875),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.25, 0.625, 1.125, 1.75, 2.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [Vector2i(0, 0), Vector2i(0, 3), Vector2i(0, 1), Vector2i(0, 2), Vector2i(0, 0), Vector2i(0, 3), Vector2i(0, 1), Vector2i(0, 2), Vector2i(0, 0), Vector2i(0, 3), Vector2i(0, 1), Vector2i(0, 2), Vector2i(0, 0), Vector2i(0, 3), Vector2i(0, 1), Vector2i(0, 2), Vector2i(0, 0), Vector2i(0, 3), Vector2i(0, 1), Vector2i(0, 2), Vector2i(0, 0), Vector2i(0, 3), Vector2i(0, 1), Vector2i(0, 2)]
+"values": [Vector2i(0, 0), Vector2i(0, 3), Vector2i(0, 1), Vector2i(0, 2), Vector2i(0, 0), Vector2i(0, 3)]
 }
 tracks/4/type = "method"
 tracks/4/imported = false
@@ -408,6 +408,60 @@ tracks/4/keys = {
 }]
 }
 
+[sub_resource type="Animation" id="Animation_7mweg"]
+resource_name = "move"
+length = 2.0
+loop_mode = 1
+step = 0.125
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("5_8fsln")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [5]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite:vframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [4]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite:frame_coords")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [Vector2i(2, 1), Vector2i(2, 2), Vector2i(2, 0), Vector2i(2, 3)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ryycd"]
 _data = {
 "RESET": SubResource("Animation_p7y5d"),
@@ -416,11 +470,29 @@ _data = {
 "idle_left": SubResource("Animation_o2f1r"),
 "idle_right": SubResource("Animation_mswlo"),
 "idle_up": SubResource("Animation_45lw2"),
-"intermission": SubResource("Animation_u5crp")
+"intermission": SubResource("Animation_u5crp"),
+"move": SubResource("Animation_7mweg")
 }
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_lx6lg"]
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_nnnrv"]
 animation = &"dodge"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_h2yux"]
+animation = &"dodge"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_j8f33"]
+animation = &"dodge"
+
+[sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_vc25s"]
+blend_point_0/node = SubResource("AnimationNodeAnimation_nnnrv")
+blend_point_0/pos = Vector2(-0.3, 0.4)
+blend_point_1/node = SubResource("AnimationNodeAnimation_h2yux")
+blend_point_1/pos = Vector2(0.1, -0.6)
+blend_point_2/node = SubResource("AnimationNodeAnimation_j8f33")
+blend_point_2/pos = Vector2(0.2, 0.3)
+min_space = Vector2(-1, -1.1)
+max_space = Vector2(1, 1.1)
+blend_mode = 1
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_wvt32"]
 animation = &"idle_left"
@@ -450,13 +522,34 @@ blend_mode = 1
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_714am"]
 animation = &"intermission"
 
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_kg064"]
+animation = &"move"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_nhun3"]
+animation = &"move"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_mcc3g"]
+animation = &"move"
+
+[sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_x3w1d"]
+blend_point_0/node = SubResource("AnimationNodeAnimation_kg064")
+blend_point_0/pos = Vector2(-0.2, 0.4)
+blend_point_1/node = SubResource("AnimationNodeAnimation_nhun3")
+blend_point_1/pos = Vector2(0.2, 0.1)
+blend_point_2/node = SubResource("AnimationNodeAnimation_mcc3g")
+blend_point_2/pos = Vector2(-0.1, -0.3)
+min_space = Vector2(-1, -1.1)
+blend_mode = 1
+
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_2nmbi"]
-states/Dodge/node = SubResource("AnimationNodeAnimation_lx6lg")
-states/Dodge/position = Vector2(745, 95)
+states/Dodge/node = SubResource("AnimationNodeBlendSpace2D_vc25s")
+states/Dodge/position = Vector2(732, 95)
 states/Idle/node = SubResource("AnimationNodeBlendSpace2D_tm4yv")
 states/Idle/position = Vector2(354, 95)
 states/Intermission/node = SubResource("AnimationNodeAnimation_714am")
-states/Intermission/position = Vector2(559, 95)
+states/Intermission/position = Vector2(556, 95)
+states/Move/node = SubResource("AnimationNodeBlendSpace2D_x3w1d")
+states/Move/position = Vector2(732, 160)
 
 [node name="Dion" type="CharacterBody2D"]
 script = ExtResource("1_5qskg")
@@ -484,7 +577,9 @@ libraries = {
 }
 tree_root = SubResource("AnimationNodeStateMachine_2nmbi")
 anim_player = NodePath("../AnimationPlayer")
+parameters/Dodge/blend_position = Vector2(0, 0)
 parameters/Idle/blend_position = Vector2(-0.6784, 0.015873)
+parameters/Move/blend_position = Vector2(0, 0)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -497,6 +592,7 @@ starting_state = NodePath("IdleState")
 
 [node name="IntermissionState" type="Node" parent="StateManager"]
 script = ExtResource("6_l72se")
+animation_name = "Intermission"
 
 [node name="IdleState" type="Node" parent="StateManager"]
 script = ExtResource("5_hilxb")

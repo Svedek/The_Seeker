@@ -3,7 +3,7 @@ class_name DionStageAI
 
 
 enum SPEED {Walk, Run, Scramble}
-enum ACTION {Intermission, Idle, Strike, Fan, Charge, Channel_orb, Toss_orb}
+enum ACTION {None=0, Intermission, Idle, Strike, Fan, Charge, Channel_orb, Toss_orb}
 enum ORB_PATTERN {Bounce, Orbit}
 
 

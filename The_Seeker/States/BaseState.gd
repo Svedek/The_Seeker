@@ -15,13 +15,13 @@ func enter(direction: Vector2):
 func exit() -> Vector2:
 	return dir
 
-func input(event):
+func input(_event):
 	pass
 	
-func process(delta:float) -> BaseState:
+func process(_delta:float) -> BaseState:
 	return null
 	
-func physics_process(delta: float) -> BaseState:
+func physics_process(_delta: float) -> BaseState:
 	return null
 
 
