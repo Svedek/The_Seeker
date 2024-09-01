@@ -1,7 +1,10 @@
 extends Node
 class_name OrbController
 
+# Arrows are also spawned here on new stage, make of that what you will...
+
 const ORB = preload("res://Actors/Orb/orb.tscn")
+const ARROW_COLLECTABLE = preload("res://Actors/Collectable/Arrow/arrow_collectable.tscn")
 const CENTER = Vector2()
 var orbs = 0
 var active_orbs: int:
@@ -48,11 +51,18 @@ func spawn_orb(pos: Vector2):
 	child.pierced.connect(on_orb_pierced)
 
 
+func spawn_arrow(pos: Vector2):
+	var child = ARROW_COLLECTABLE.instantiate()
+	get_tree().root.add_child(child)
+	child.global_position = pos
+
+
 func on_new_stage():
 	spawn_orb(Vector2.ZERO)
 	for orb in get_children():
 		orb.activate()
 	active_orbs = orbs
+	spawn_arrow(Vector2.ZERO)
 
 
 func on_orb_pierced():

@@ -14,25 +14,29 @@ signal update_arrows(count: int)
 static var Instance:Player
 
 var _ghost_scene = preload("res://Actors/Effects/Ghost/ghost.tscn")
-var _arrows:int = 0 :
+var _arrows:int = 110 :
 	set (count):
 		_arrows = count
 		emit_signal("update_arrows", _arrows)
-	
+
 
 func _ready():
 	super._ready()
 	GameCamera.player = self
 	Instance = self
 
+
 func _on_hurtbox_damaged(damage): # IS THIS CORRECT?
 	print("player took " + str(damage) + " damage")
-	
+
+
 func play_animation(animation: String):
 	_animation_playback.travel(animation)
 
+
 func set_weapon_pivot_dir(dir:Vector2):
 	_weapon_pivot.rotation = dir.angle()
+
 
 func instance_ghost():
 	var ghost: Sprite2D = _ghost_scene.instantiate()
@@ -42,9 +46,20 @@ func instance_ghost():
 	ghost.hframes = _sprite.hframes
 	ghost.vframes = _sprite.vframes
 	ghost.frame = _sprite.frame
-	
+
+
 func gain_arrow():
 	_arrows += 1
+	
+	
+func attempt_use_arrow() -> bool:
+	if _arrows > 0:
+		_arrows -= 1
+		return true
+	else:
+		# TODO annoying red arrow number and aaaaaiiiinnnnttttt sound or whatever you have no arrows bud
+		return false
+
 
 func update_stamina(value:float):
 	stamina_node_1.value = value*100

@@ -35,4 +35,4 @@ func update_arrows(count:int):
 
 
 func _on_player_update_arrows(count):
-	arrow_label.text = str(count)
+	arrow_label.text = "x" + str(count)

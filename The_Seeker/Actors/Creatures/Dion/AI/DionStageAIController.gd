@@ -18,6 +18,7 @@ func _ready():
 	advance_active_stage()
 
 
+
 func advance_active_stage():
 	active_stage_number += 1
 	print("Entering stage: " + str(active_stage_number))

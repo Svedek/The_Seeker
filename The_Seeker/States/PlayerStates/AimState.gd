@@ -58,7 +58,9 @@ func input(event):
 		else:
 			return idle_state
 		
-	if event.is_action_pressed("attack"):  # TODO exit AimState after firing last arrow, don't allow entering aim state without any arrows
+	if event.is_action_pressed("attack"):
+		if !character.attempt_use_arrow():  # don't fire an arrow if player doesn't have enough arrows
+			return
 		#_mouse_mode = event is InputEventMouseButton # maybe temp
 		var new_dir: Vector2
 		var target_position: Vector2
@@ -95,10 +97,13 @@ func input(event):
 		get_tree().root.add_child(arrow)
 		arrow.global_position = _raycast.get_collision_point()
 		arrow.rotate((_raycast.get_collision_point() - character._firepoint.global_position).angle())
+		if !orb_hit:
+			arrow.activate()
 		
 		var points : Array[Vector2] = [character._firepoint.global_position, _raycast.get_collision_point()]
 		_trails[_trails_index].set_trail(points)
 		_trails_index += 1
+
 
 func process(delta:float) -> BaseState:
 	var new_dir: Vector2
