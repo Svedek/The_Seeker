@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://bifbf5weev334"]
+[gd_scene load_steps=63 format=3 uid="uid://bifbf5weev334"]
 
 [ext_resource type="Script" path="res://Actors/Creatures/Dion/dion.gd" id="1_5qskg"]
 [ext_resource type="Script" path="res://States/StateManager.gd" id="2_340h8"]
@@ -462,8 +462,12 @@ tracks/3/keys = {
 "values": [Vector2i(2, 1), Vector2i(2, 2), Vector2i(2, 0), Vector2i(2, 3)]
 }
 
+[sub_resource type="Animation" id="Animation_dd3s0"]
+resource_name = "PLACEHOLDER"
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ryycd"]
 _data = {
+"PLACEHOLDER": SubResource("Animation_dd3s0"),
 "RESET": SubResource("Animation_p7y5d"),
 "dodge": SubResource("Animation_6hojl"),
 "idle_down": SubResource("Animation_gqpi3"),
@@ -473,6 +477,46 @@ _data = {
 "intermission": SubResource("Animation_u5crp"),
 "move": SubResource("Animation_7mweg")
 }
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_87g8m"]
+animation = &"PLACEHOLDER"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_j7dl7"]
+animation = &"PLACEHOLDER"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_qv5xy"]
+animation = &"PLACEHOLDER"
+
+[sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_th2ti"]
+blend_point_0/node = SubResource("AnimationNodeAnimation_87g8m")
+blend_point_0/pos = Vector2(-0.2, 0.4)
+blend_point_1/node = SubResource("AnimationNodeAnimation_j7dl7")
+blend_point_1/pos = Vector2(0.1, 0)
+blend_point_2/node = SubResource("AnimationNodeAnimation_qv5xy")
+blend_point_2/pos = Vector2(-0.1, -0.4)
+min_space = Vector2(-1, -1.1)
+max_space = Vector2(1, 1.1)
+blend_mode = 1
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_o7ebu"]
+animation = &"PLACEHOLDER"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_lsbnm"]
+animation = &"PLACEHOLDER"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_xnqrw"]
+animation = &"PLACEHOLDER"
+
+[sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_3eh8r"]
+blend_point_0/node = SubResource("AnimationNodeAnimation_o7ebu")
+blend_point_0/pos = Vector2(-0.2, 0.3)
+blend_point_1/node = SubResource("AnimationNodeAnimation_lsbnm")
+blend_point_1/pos = Vector2(0.2, -0.1)
+blend_point_2/node = SubResource("AnimationNodeAnimation_xnqrw")
+blend_point_2/pos = Vector2(0, -0.6)
+min_space = Vector2(-1, -1.1)
+max_space = Vector2(1, 1.1)
+blend_mode = 1
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_nnnrv"]
 animation = &"dodge"
@@ -490,6 +534,26 @@ blend_point_1/node = SubResource("AnimationNodeAnimation_h2yux")
 blend_point_1/pos = Vector2(0.1, -0.6)
 blend_point_2/node = SubResource("AnimationNodeAnimation_j8f33")
 blend_point_2/pos = Vector2(0.2, 0.3)
+min_space = Vector2(-1, -1.1)
+max_space = Vector2(1, 1.1)
+blend_mode = 1
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_s5x45"]
+animation = &"PLACEHOLDER"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_su3i0"]
+animation = &"PLACEHOLDER"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_vneep"]
+animation = &"PLACEHOLDER"
+
+[sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_oyc8m"]
+blend_point_0/node = SubResource("AnimationNodeAnimation_s5x45")
+blend_point_0/pos = Vector2(-0.1, 0.4)
+blend_point_1/node = SubResource("AnimationNodeAnimation_su3i0")
+blend_point_1/pos = Vector2(0.2, 0)
+blend_point_2/node = SubResource("AnimationNodeAnimation_vneep")
+blend_point_2/pos = Vector2(0, -0.6)
 min_space = Vector2(-1, -1.1)
 max_space = Vector2(1, 1.1)
 blend_mode = 1
@@ -541,15 +605,66 @@ blend_point_2/pos = Vector2(-0.1, -0.3)
 min_space = Vector2(-1, -1.1)
 blend_mode = 1
 
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_tjvwh"]
+animation = &"PLACEHOLDER"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_qd4s5"]
+animation = &"PLACEHOLDER"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_638mb"]
+animation = &"PLACEHOLDER"
+
+[sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_ysbrs"]
+blend_point_0/node = SubResource("AnimationNodeAnimation_tjvwh")
+blend_point_0/pos = Vector2(-0.2, 0.4)
+blend_point_1/node = SubResource("AnimationNodeAnimation_qd4s5")
+blend_point_1/pos = Vector2(0.2, 0.2)
+blend_point_2/node = SubResource("AnimationNodeAnimation_638mb")
+blend_point_2/pos = Vector2(0, -0.4)
+min_space = Vector2(-1, -1.1)
+max_space = Vector2(1, 1.1)
+blend_mode = 1
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_04eff"]
+animation = &"PLACEHOLDER"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_gl24l"]
+animation = &"PLACEHOLDER"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_7s8gh"]
+animation = &"PLACEHOLDER"
+
+[sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_7xgxc"]
+blend_point_0/node = SubResource("AnimationNodeAnimation_04eff")
+blend_point_0/pos = Vector2(-0.2, 0)
+blend_point_1/node = SubResource("AnimationNodeAnimation_gl24l")
+blend_point_1/pos = Vector2(0, 0.5)
+blend_point_2/node = SubResource("AnimationNodeAnimation_7s8gh")
+blend_point_2/pos = Vector2(0.1, -0.4)
+min_space = Vector2(-1, -1.1)
+max_space = Vector2(1, 1.1)
+blend_mode = 1
+
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_2nmbi"]
+states/ChannelOrb/node = SubResource("AnimationNodeBlendSpace2D_th2ti")
+states/ChannelOrb/position = Vector2(556, 224)
+states/Charge/node = SubResource("AnimationNodeBlendSpace2D_3eh8r")
+states/Charge/position = Vector2(354, 224)
 states/Dodge/node = SubResource("AnimationNodeBlendSpace2D_vc25s")
 states/Dodge/position = Vector2(732, 95)
+states/Fan/node = SubResource("AnimationNodeBlendSpace2D_oyc8m")
+states/Fan/position = Vector2(556, 160)
 states/Idle/node = SubResource("AnimationNodeBlendSpace2D_tm4yv")
 states/Idle/position = Vector2(354, 95)
 states/Intermission/node = SubResource("AnimationNodeAnimation_714am")
 states/Intermission/position = Vector2(556, 95)
 states/Move/node = SubResource("AnimationNodeBlendSpace2D_x3w1d")
 states/Move/position = Vector2(732, 160)
+states/Strike/node = SubResource("AnimationNodeBlendSpace2D_ysbrs")
+states/Strike/position = Vector2(354, 160)
+states/TossOrb/node = SubResource("AnimationNodeBlendSpace2D_7xgxc")
+states/TossOrb/position = Vector2(732, 224)
+graph_offset = Vector2(0, 46.9057)
 
 [node name="Dion" type="CharacterBody2D"]
 script = ExtResource("1_5qskg")
@@ -577,9 +692,14 @@ libraries = {
 }
 tree_root = SubResource("AnimationNodeStateMachine_2nmbi")
 anim_player = NodePath("../AnimationPlayer")
+parameters/ChannelOrb/blend_position = Vector2(0, 0)
+parameters/Charge/blend_position = Vector2(0, 0)
 parameters/Dodge/blend_position = Vector2(0, 0)
+parameters/Fan/blend_position = Vector2(0, 0)
 parameters/Idle/blend_position = Vector2(-0.6784, 0.015873)
 parameters/Move/blend_position = Vector2(0, 0)
+parameters/Strike/blend_position = Vector2(0, 0)
+parameters/TossOrb/blend_position = Vector2(0, 0)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
