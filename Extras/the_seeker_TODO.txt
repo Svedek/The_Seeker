@@ -1,0 +1,50 @@
+SEEKER TODO:
+
+DION FIGHT
+	DION ACTION AND LOGIC
+		IntermissionState
+			Disable Damage - dont allow multiple stages to be passed
+		
+			Transition into
+			
+			Dodge to center
+			
+			Suck orbs in
+			
+			Reset hp, orbs, and arrows
+			
+			Release new orb and arrow
+			
+			transition to new stage
+		
+		StrikeState
+		
+		FanState
+		
+		ChargeState
+		
+		ChannelOrbState
+		
+		TossOrbState
+	
+	ORBS
+		Orb health bar
+			Updated on orb pierced
+			
+			Updated on Intermission reset
+			
+		Toss orb
+			Select next orb
+			
+			Toss orb movement
+			
+	PLAYER
+		Arrows/shoot
+			Arrow art
+			
+			Arrow counter
+				updated on shoot
+				updated on pickup
+			
+			Shoot limited by number of arrows remaining (must have at least 1 to shoot)
+	

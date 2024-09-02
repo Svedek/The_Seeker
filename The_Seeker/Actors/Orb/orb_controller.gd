@@ -55,6 +55,7 @@ func spawn_arrow(pos: Vector2):
 	var child = ARROW_COLLECTABLE.instantiate()
 	get_tree().root.add_child(child)
 	child.global_position = pos
+	child.expell()
 
 
 func on_new_stage():

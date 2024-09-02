@@ -9,6 +9,10 @@ script = ExtResource("1_wk3tc")
 [node name="Stage1" type="Node" parent="."]
 script = ExtResource("2_gqpjq")
 health = 9
+global_cooldown = 2.5
+stirke_probability = 1.0
+fan_probability = 0.5
+fan_projectile_count = 3
 
 [node name="Stage2" type="Node" parent="."]
 script = ExtResource("2_gqpjq")

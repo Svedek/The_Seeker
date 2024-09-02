@@ -7,11 +7,11 @@ extends DionState
 @onready var channel_orb_state = $"../ChannelOrbState"
 @onready var toss_orb_state = $"../TossOrbState"
 
-var action_timer: Timer
+@onready var action_timer: Timer = create_timer(prepare_next_action, -1)
 
 
 func enter(direction: Vector2):
-	action_timer = create_timer(prepare_next_action, ai_controller.active_stage.global_cooldown)
+	action_timer.start(ai_controller.active_stage.global_cooldown)
 	super.enter(direction)
 
 
@@ -19,7 +19,6 @@ func enter(direction: Vector2):
 func exit() -> Vector2:
 	if action_timer:
 		action_timer.stop()
-		action_timer.queue_free()
 	return super.exit()
 
 
@@ -42,13 +41,14 @@ func process(delta:float) -> BaseState:
 
 
 func prepare_next_action():
-		next_action = ai_controller.active_stage.get_next_move()
+	print("Go off Dion")
+	next_action = ai_controller.active_stage.get_next_move()
 
 
 
 
 
-func input(event):
+func input(_event):  #TODO TESTING
 	if Input.is_physical_key_pressed(KEY_V):
 		print(character.get_global_mouse_position())
 		move_to(character.get_global_mouse_position())
