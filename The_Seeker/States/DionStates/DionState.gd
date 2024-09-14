@@ -152,8 +152,13 @@ func dodge_to_process(delta: float):
 	character.position += move_vect
 
 
-func end_move():  # Overridable, called when move reached destination
+func end_move():
 	character_moving = false
+	on_end_move()
+	
+	
+func on_end_move():  # Overridable, called when move reached destination
+	pass
 
 
 func cancel_move():  # Maybe unnessesary

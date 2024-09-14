@@ -20,6 +20,9 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dhw87"]
 size = Vector2(64, 64)
 
+[sub_resource type="Animation" id="Animation_dd3s0"]
+resource_name = "PLACEHOLDER"
+
 [sub_resource type="Animation" id="Animation_p7y5d"]
 length = 0.001
 tracks/0/type = "value"
@@ -461,9 +464,6 @@ tracks/3/keys = {
 "update": 1,
 "values": [Vector2i(2, 1), Vector2i(2, 2), Vector2i(2, 0), Vector2i(2, 3)]
 }
-
-[sub_resource type="Animation" id="Animation_dd3s0"]
-resource_name = "PLACEHOLDER"
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ryycd"]
 _data = {

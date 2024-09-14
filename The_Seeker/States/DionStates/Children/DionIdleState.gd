@@ -42,7 +42,7 @@ func process(delta:float) -> BaseState:
 
 func prepare_next_action():
 	print("Go off Dion")
-	next_action = ai_controller.active_stage.get_next_move()
+	#next_action = ai_controller.active_stage.get_next_move()
 
 
 

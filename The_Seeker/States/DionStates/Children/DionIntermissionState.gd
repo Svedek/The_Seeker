@@ -2,20 +2,15 @@ extends DionState
 
 
 
-# hitboxes/ being active needs to be disabled at start and re-enabled at end of intermission
+# TODO shitboxes/ being active needs to be disabled at start and re-enabled at end of intermission
 
 func enter(direction: Vector2):
 	dodge_to(Vector2.ZERO)  # Go to center of stage
-	
 
 
-func end_move():  # Overridable, called when move reached destination
+func on_end_move():  # Overridable, called when move reached destination
 	orb_controller.switch_to_return()
-	#super.enter(Vector2.DOWN)  # Start animation faced down, which calls intermission_complete when done
-	#dir = direction
-	#character.set_blend_position(animation_name, dir)
 	character.play_animation(animation_name)
-	super.end_move()
 
 
 func intermission_complete():
