@@ -70,8 +70,8 @@ func get_move_animation(dodge: bool) -> String:
 	ai_controller.active_stage.leisure  # TODO use leisure to decide animation
 	if dodge:
 		return "Dodge"
-	else:  # TODO returns name of animation for SPEED
-		return "Move"
+	else:  # TODO returns name of animation for MOVEMENT
+		return DionStageAIController.MOVE_NAME_DICT[ai_controller.active_stage.movement]
 
 
 func move_near_player(acceptable_distance: float):
@@ -93,7 +93,7 @@ func move_near_player_process(delta: float):
 	# Calculate move_vect and set animation blend position
 	var move_vect = to_player.normalized()
 	character.set_blend_position(move_animation, move_vect)
-	move_vect *= delta * DionStageAIController.move_speed_dict[ai_controller.active_stage.speed]
+	move_vect *= delta * DionStageAIController.MOVE_SPEED_DICT[ai_controller.active_stage.movement]
 	
 	# Clamp to not pass target
 	move_vect = move_vect.limit_length(to_player.length())
@@ -116,7 +116,7 @@ func move_to_process(delta: float):
 	# Calculate move_vect and set animation blend position
 	var move_vect = to_target.normalized()
 	character.set_blend_position(move_animation, move_vect)
-	move_vect *= delta * DionStageAIController.move_speed_dict[ai_controller.active_stage.speed]
+	move_vect *= delta * DionStageAIController.MOVE_SPEED_DICT[ai_controller.active_stage.movement]
 	
 	# Clamp to not pass target (and also test if destination reached)
 	if to_target.length() <= move_vect.length():
@@ -141,7 +141,7 @@ func dodge_to_process(delta: float):
 	# Calculate move_vect and set animation blend position
 	var move_vect = to_target.normalized()
 	character.set_blend_position(move_animation, move_vect)
-	move_vect *= delta * DionStageAIController.move_speed_dict["Dodge"]
+	move_vect *= delta * DionStageAIController.MOVE_SPEED_DICT[ai_controller.active_stage.MOVEMENT.Dodge]
 	
 	# Clamp to not pass target (and also test if destination reached)
 	if to_target.length() <= move_vect.length():

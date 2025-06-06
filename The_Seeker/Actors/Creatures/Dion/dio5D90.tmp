@@ -1618,7 +1618,7 @@ states/TossOrb/position = Vector2(739, 100)
 states/Walk/node = SubResource("AnimationNodeBlendSpace2D_x3w1d")
 states/Walk/position = Vector2(687, 33)
 transitions = ["Idle", "Strike1", SubResource("AnimationNodeStateMachineTransition_mhefh"), "Strike1", "Strike2", SubResource("AnimationNodeStateMachineTransition_qb1se"), "Strike2", "StrikeRecovery", SubResource("AnimationNodeStateMachineTransition_qdtnp"), "Strike1", "StrikeRecovery", SubResource("AnimationNodeStateMachineTransition_oa2sp"), "StrikeRecovery", "Idle", SubResource("AnimationNodeStateMachineTransition_twqrd"), "Start", "Idle", SubResource("AnimationNodeStateMachineTransition_rocef"), "Dodge", "Idle", SubResource("AnimationNodeStateMachineTransition_adn86"), "Intermission", "Idle", SubResource("AnimationNodeStateMachineTransition_hp5fg"), "Idle", "Walk", SubResource("AnimationNodeStateMachineTransition_a4sfl"), "Walk", "Idle", SubResource("AnimationNodeStateMachineTransition_7caqc"), "Idle", "TossOrb", SubResource("AnimationNodeStateMachineTransition_sg581"), "TossOrb", "Idle", SubResource("AnimationNodeStateMachineTransition_jf6bm"), "Idle", "ChannelOrb", SubResource("AnimationNodeStateMachineTransition_7ls1x"), "ChannelOrb", "Idle", SubResource("AnimationNodeStateMachineTransition_qul3j"), "Idle", "Charge", SubResource("AnimationNodeStateMachineTransition_d5qmi"), "Charge", "Idle", SubResource("AnimationNodeStateMachineTransition_0or40"), "Idle", "Fan", SubResource("AnimationNodeStateMachineTransition_maftp"), "Fan", "Idle", SubResource("AnimationNodeStateMachineTransition_gtsmy"), "Idle", "Scramble", SubResource("AnimationNodeStateMachineTransition_m1e5h"), "Scramble", "Idle", SubResource("AnimationNodeStateMachineTransition_obv6g"), "Idle", "Run", SubResource("AnimationNodeStateMachineTransition_y0sjj"), "Run", "Idle", SubResource("AnimationNodeStateMachineTransition_mompu"), "Scramble", "Walk", SubResource("AnimationNodeStateMachineTransition_dpgym"), "Run", "Walk", SubResource("AnimationNodeStateMachineTransition_uvwg6")]
-graph_offset = Vector2(-140, 16.9057)
+graph_offset = Vector2(-222, -61.0943)
 
 [node name="Dion" type="CharacterBody2D"]
 script = ExtResource("1_5qskg")
@@ -1679,27 +1679,21 @@ animation_name = "Idle"
 
 [node name="MoveState" type="Node" parent="StateManager"]
 script = ExtResource("13_h21qr")
-animation_name = "Move"
 
 [node name="StrikeState" type="Node" parent="StateManager"]
 script = ExtResource("8_lgdb2")
-animation_name = "Strike"
 
 [node name="FanState" type="Node" parent="StateManager"]
 script = ExtResource("9_p87vx")
-animation_name = "Fan"
 
 [node name="ChargeState" type="Node" parent="StateManager"]
 script = ExtResource("10_7l7x7")
-animation_name = "Charge"
 
 [node name="ChannelOrbState" type="Node" parent="StateManager"]
 script = ExtResource("11_mwfyc")
-animation_name = "ChannelOrb"
 
 [node name="TossOrbState" type="Node" parent="StateManager"]
 script = ExtResource("12_ew63l")
-animation_name = "TossOrb"
 
 [node name="Stats" parent="." instance=ExtResource("3_m2j67")]
 move_speed = -1.0

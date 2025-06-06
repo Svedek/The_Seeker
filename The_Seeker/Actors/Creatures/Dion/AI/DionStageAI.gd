@@ -2,14 +2,14 @@ extends Node
 class_name DionStageAI
 
 
-enum SPEED {Walk, Run, Scramble}
-enum ACTION {None=0, Intermission, Idle, Strike, Fan, Charge, Channel_orb, Toss_orb}
+enum MOVEMENT {Walk, Run, Scramble, Dodge}
+enum ACTION {None=0, Intermission, Idle, Strike, Fan, Charge, ChannelOrb, TossOrb}
 enum ORB_PATTERN {Bounce, Orbit}
 
 
 
 @export var health: int
-@export var speed: SPEED
+@export var movement: MOVEMENT
 @export var global_cooldown: float = 1.0  # Idle time between moves
 @export var leisure: float = 1.0  # Goofiness coefficient
 
@@ -53,7 +53,7 @@ enum ORB_PATTERN {Bounce, Orbit}
 @onready var total_probability = stirke_probability + fan_probability + charge_probability + channel_orb_probability + toss_orb_probability
 
 
-func get_next_move() -> ACTION:
+func get_next_move(exclude = ACTION.None) -> ACTION:  # TODO make this exclude (last used move) if needed
 	var roll = randf_range(0, total_probability)
 	
 	if roll <= stirke_probability:
@@ -69,11 +69,11 @@ func get_next_move() -> ACTION:
 	roll -= charge_probability
 	
 	if roll <= channel_orb_probability:
-		return ACTION.Channel_orb
+		return ACTION.ChannelOrb
 	roll -= channel_orb_probability
 	
 	if roll <= toss_orb_probability:
-		return ACTION.Toss_orb
+		return ACTION.TossOrb
 	roll -= toss_orb_probability
 	
 	return -1
